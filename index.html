@@ -6,623 +6,132 @@
   <title>Jonathan & Yesica 💕</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --rose:        #e8a0a0;
-      --rose-light:  #f5d5d5;
-      --rose-deep:   #c46f7a;
-      --cream:       #fdf6f0;
-      --cream-dark:  #f0e6dc;
-      --gold:        #c9a96e;
-      --text:        #4a2c35;
-      --text-light:  #8a5c65;
-      --white:       #fff9f6;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--cream);
-      color: var(--text);
-      font-family: 'Cormorant Garamond', serif;
-      overflow-x: hidden;
-    }
-
-    /* ── PARTÍCULAS ── */
-    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-    .petal {
-      position: absolute;
-      font-size: 1rem;
-      opacity: 0;
-      animation: fall linear infinite;
-    }
-    @keyframes fall {
-      0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
-      10%  { opacity: .7; }
-      90%  { opacity: .5; }
-      100% { opacity: 0; transform: translateY(105vh) rotate(360deg); }
-    }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 1.5rem;
-      position: relative;
-      background: linear-gradient(160deg, #fdf0f0 0%, #fdf6f0 60%, #f5ece8 100%);
-      z-index: 1;
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 40%, rgba(232,160,160,.25) 0%, transparent 70%);
-    }
-    .hero-ornament {
-      font-size: 2rem;
-      color: var(--rose);
-      letter-spacing: .5rem;
-      margin-bottom: 1.5rem;
-      animation: fadeUp .8s ease both;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 8vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--text);
-      animation: fadeUp .9s .1s ease both;
-    }
-    .hero-title span { color: var(--rose-deep); font-style: italic; }
-    .hero-subtitle {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.3rem, 4vw, 2rem);
-      color: var(--text-light);
-      margin: 1rem 0 2.5rem;
-      animation: fadeUp 1s .2s ease both;
-    }
-    .hero-date {
-      font-size: 1rem;
-      letter-spacing: .15rem;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 3rem;
-      animation: fadeUp 1s .3s ease both;
-    }
-
-    /* ── CONTADOR ── */
-    .counter-wrap {
-      display: flex;
-      gap: 1.2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 1s .4s ease both;
-    }
-    .counter-box {
-      background: rgba(255,255,255,.75);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(232,160,160,.4);
-      border-radius: 16px;
-      padding: 1.2rem 1.5rem;
-      min-width: 80px;
-      text-align: center;
-      box-shadow: 0 4px 24px rgba(196,111,122,.1);
-    }
-    .counter-num {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 6vw, 3rem);
-      font-weight: 700;
-      color: var(--rose-deep);
-      line-height: 1;
-    }
-    .counter-label {
-      font-size: .75rem;
-      letter-spacing: .12rem;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-top: .3rem;
-    }
-
-    .scroll-hint {
-      margin-top: 3.5rem;
-      font-size: .85rem;
-      color: var(--text-light);
-      letter-spacing: .1rem;
-      animation: bounce 2s 1.5s ease infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50%      { transform: translateY(6px); }
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(253,246,240,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(232,160,160,.3);
-      display: flex;
-      justify-content: center;
-      gap: .5rem;
-      padding: .8rem 1rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--text-light);
-      font-size: .85rem;
-      letter-spacing: .12rem;
-      text-transform: uppercase;
-      padding: .5rem 1rem;
-      border-radius: 50px;
-      transition: all .25s;
-    }
-    nav a:hover, nav a.active {
-      background: var(--rose-light);
-      color: var(--rose-deep);
-    }
-
-    /* ── SECCIONES GENERALES ── */
-    section {
-      position: relative;
-      z-index: 1;
-      padding: 5rem 1.5rem;
-    }
-    .section-inner { max-width: 900px; margin: 0 auto; }
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .section-tag {
-      font-size: .75rem;
-      letter-spacing: .2rem;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: .5rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 400;
-      font-style: italic;
-    }
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--rose), transparent);
-      margin: 1rem auto 0;
-    }
-
-    /* ── CARTAS ── */
-    #cartas { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%); }
-
-    .cartas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-    .carta-card {
-      background: var(--white);
-      border: 1px solid rgba(232,160,160,.35);
-      border-radius: 18px;
-      padding: 2rem 1.8rem;
-      cursor: pointer;
-      transition: transform .3s, box-shadow .3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .carta-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--rose), var(--rose-deep));
-      opacity: 0;
-      transition: opacity .3s;
-    }
-    .carta-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(196,111,122,.18); }
-    .carta-card:hover::before { opacity: 1; }
-    .carta-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--rose-light);
-      line-height: 1;
-      margin-bottom: .5rem;
-    }
-    .carta-titulo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--text);
-      margin-bottom: .5rem;
-    }
-    .carta-preview {
-      font-size: .95rem;
-      color: var(--text-light);
-      line-height: 1.6;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .carta-badge {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      font-size: 1.2rem;
-    }
-
-    /* Modal de carta */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(74,44,53,.5);
-      backdrop-filter: blur(6px);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal-box {
-      background: var(--white);
-      border-radius: 24px;
-      max-width: 620px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 3rem 2.5rem;
-      position: relative;
-      transform: translateY(30px);
-      transition: transform .35s;
-      box-shadow: 0 30px 80px rgba(74,44,53,.25);
-    }
-    .modal-overlay.open .modal-box { transform: translateY(0); }
-    .modal-close {
-      position: absolute;
-      top: 1.2rem; right: 1.5rem;
-      background: none; border: none;
-      font-size: 1.5rem;
-      color: var(--text-light);
-      cursor: pointer;
-      line-height: 1;
-      transition: color .2s;
-    }
-    .modal-close:hover { color: var(--rose-deep); }
-    .modal-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-style: italic;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-    .modal-body {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: var(--text);
-      white-space: pre-line;
-    }
-    .modal-firma {
-      margin-top: 2rem;
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.4rem;
-      color: var(--rose-deep);
-      text-align: right;
-    }
-
-    /* ── FOTOS ── */
-    #fotos { background: var(--cream); }
-
-    .fotos-instruccion {
-      text-align: center;
-      font-size: .95rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-    .upload-zone {
-      border: 2px dashed var(--rose);
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: background .3s;
-      margin-bottom: 2rem;
-      background: rgba(245,213,213,.1);
-    }
-    .upload-zone:hover { background: rgba(245,213,213,.25); }
-    .upload-icon { font-size: 2.5rem; margin-bottom: .8rem; }
-    .upload-text { font-size: .95rem; color: var(--text-light); }
-    #fileInput { display: none; }
-
-    .fotos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-    .foto-item {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      aspect-ratio: 1;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(74,44,53,.12);
-      transition: transform .3s, box-shadow .3s;
-    }
-    .foto-item:hover { transform: scale(1.03); box-shadow: 0 12px 36px rgba(74,44,53,.22); }
-    .foto-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .foto-item .foto-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(74,44,53,.5) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity .3s;
-      display: flex;
-      align-items: flex-end;
-      padding: 1rem;
-    }
-    .foto-item:hover .foto-overlay { opacity: 1; }
-    .foto-caption { color: white; font-style: italic; font-size: .9rem; }
-
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(30,10,15,.92);
-      z-index: 300;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s;
-      padding: 1.5rem;
-    }
-    .lightbox.open { opacity: 1; pointer-events: all; }
-    .lightbox img {
-      max-width: 100%;
-      max-height: 85vh;
-      border-radius: 12px;
-      object-fit: contain;
-      box-shadow: 0 30px 80px rgba(0,0,0,.5);
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 1.5rem; right: 1.5rem;
-      background: rgba(255,255,255,.15);
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s;
-    }
-    .lightbox-close:hover { background: rgba(255,255,255,.3); }
-
-    /* ── RAZONES ── */
-    #razones { background: linear-gradient(160deg, var(--cream-dark) 0%, var(--cream) 100%); }
-
-    .razones-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.2rem;
-    }
-    .razon-item {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 1.5rem;
-      border-left: 3px solid var(--rose);
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      transition: transform .25s, box-shadow .25s;
-    }
-    .razon-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(196,111,122,.15); }
-    .razon-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--rose-light);
-      line-height: 1;
-      min-width: 2rem;
-    }
-    .razon-text { font-size: 1rem; line-height: 1.6; color: var(--text); }
-
-    /* ── CANCIÓN ── */
-    #cancion { background: var(--cream); }
-
-    .cancion-card {
-      background: linear-gradient(135deg, #2a1520, #3d1f2a);
-      border-radius: 24px;
-      padding: 3rem 2rem;
-      text-align: center;
-      color: white;
-      max-width: 500px;
-      margin: 0 auto;
-      box-shadow: 0 20px 60px rgba(74,44,53,.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .cancion-card::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle, rgba(232,160,160,.08) 0%, transparent 60%);
-      animation: rotate 10s linear infinite;
-    }
-    @keyframes rotate { to { transform: rotate(360deg); } }
-    .disc-wrap {
-      position: relative;
-      width: 140px; height: 140px;
-      margin: 0 auto 2rem;
-    }
-    .disc {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, #1a0a10, #3d1f2a, #c46f7a, #1a0a10, #3d1f2a, #1a0a10);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 4px rgba(255,255,255,.1), 0 10px 40px rgba(0,0,0,.5);
-      transition: animation-play-state .3s;
-    }
-    .disc.spin { animation: spinDisc 4s linear infinite; }
-    @keyframes spinDisc { to { transform: rotate(360deg); } }
-    .disc-center {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: #1a0a10;
-      border: 3px solid rgba(255,255,255,.2);
-    }
-    .cancion-titulo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-style: italic;
-      margin-bottom: .3rem;
-      position: relative;
-    }
-    .cancion-artista { color: rgba(255,255,255,.6); font-size: .9rem; margin-bottom: 1.5rem; position: relative; }
-    .cancion-url-wrap { margin-bottom: 1.5rem; position: relative; }
-    .cancion-url-wrap input {
-      width: 100%;
-      padding: .7rem 1rem;
-      border-radius: 50px;
-      border: 1px solid rgba(255,255,255,.2);
-      background: rgba(255,255,255,.08);
-      color: white;
-      font-size: .85rem;
-      text-align: center;
-      outline: none;
-    }
-    .cancion-url-wrap input::placeholder { color: rgba(255,255,255,.35); }
-    .cancion-url-wrap input:focus { border-color: var(--rose); }
-    .player-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      position: relative;
-    }
-    .play-btn {
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
-      border: none;
-      color: white;
-      font-size: 1.4rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 20px rgba(196,111,122,.5);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .play-btn:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(196,111,122,.7); }
-    .cancion-nota { font-size: .8rem; color: rgba(255,255,255,.4); margin-top: 1rem; font-style: italic; position: relative; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      background: var(--cream-dark);
-      position: relative;
-      z-index: 1;
-    }
-    .footer-heart {
-      font-size: 2rem;
-      animation: pulse 1.4s ease infinite;
-      display: block;
-      margin-bottom: .8rem;
-    }
-    @keyframes pulse {
-      0%,100% { transform: scale(1); }
-      50%      { transform: scale(1.18); }
-    }
-    .footer-text {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.3rem;
-      color: var(--text-light);
-    }
-
-    /* ── ANIMACIONES ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      nav a { font-size: .72rem; padding: .4rem .6rem; letter-spacing: .06rem; }
-      .modal-box { padding: 2rem 1.5rem; }
-      .cancion-card { padding: 2rem 1.2rem; }
-    }
+    :root{--rose:#e8a0a0;--rose-light:#f5d5d5;--rose-deep:#c46f7a;--cream:#fdf6f0;--cream-dark:#f0e6dc;--gold:#c9a96e;--text:#4a2c35;--text-light:#8a5c65;--white:#fff9f6;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
+    #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
+    .petal{position:absolute;font-size:1rem;opacity:0;animation:fall linear infinite;}
+    @keyframes fall{0%{opacity:0;transform:translateY(-20px) rotate(0deg);}10%{opacity:.7;}90%{opacity:.5;}100%{opacity:0;transform:translateY(105vh) rotate(360deg);}}
+    #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;position:relative;background:linear-gradient(160deg,#fdf0f0 0%,#fdf6f0 60%,#f5ece8 100%);z-index:1;}
+    #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(232,160,160,.25) 0%,transparent 70%);}
+    .hero-ornament{font-size:2rem;color:var(--rose);letter-spacing:.5rem;margin-bottom:1.5rem;animation:fadeUp .8s ease both;}
+    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,8vw,5.5rem);font-weight:700;line-height:1.1;color:var(--text);animation:fadeUp .9s .1s ease both;}
+    .hero-title span{color:var(--rose-deep);font-style:italic;}
+    .hero-subtitle{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,4vw,2rem);color:var(--text-light);margin:1rem 0 2.5rem;animation:fadeUp 1s .2s ease both;}
+    .hero-date{font-size:1rem;letter-spacing:.15rem;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;animation:fadeUp 1s .3s ease both;}
+    .counter-wrap{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .4s ease both;}
+    .counter-box{background:rgba(255,255,255,.75);backdrop-filter:blur(8px);border:1px solid rgba(232,160,160,.4);border-radius:16px;padding:1.2rem 1.5rem;min-width:80px;text-align:center;box-shadow:0 4px 24px rgba(196,111,122,.1);}
+    .counter-num{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);font-weight:700;color:var(--rose-deep);line-height:1;}
+    .counter-label{font-size:.75rem;letter-spacing:.12rem;text-transform:uppercase;color:var(--text-light);margin-top:.3rem;}
+    .scroll-hint{margin-top:3.5rem;font-size:.85rem;color:var(--text-light);letter-spacing:.1rem;animation:bounce 2s 1.5s ease infinite;}
+    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+    nav{position:sticky;top:0;z-index:100;background:rgba(253,246,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,160,.3);display:flex;justify-content:center;gap:.5rem;padding:.8rem 1rem;}
+    nav a{text-decoration:none;color:var(--text-light);font-size:.85rem;letter-spacing:.12rem;text-transform:uppercase;padding:.5rem 1rem;border-radius:50px;transition:all .25s;}
+    nav a:hover,nav a.active{background:var(--rose-light);color:var(--rose-deep);}
+    section{position:relative;z-index:1;padding:5rem 1.5rem;}
+    .section-inner{max-width:900px;margin:0 auto;}
+    .section-header{text-align:center;margin-bottom:3rem;}
+    .section-tag{font-size:.75rem;letter-spacing:.2rem;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:400;font-style:italic;}
+    .divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--rose),transparent);margin:1rem auto 0;}
+    #cartas{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-dark) 100%);}
+    .cartas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;}
+    .carta-card{background:var(--white);border:1px solid rgba(232,160,160,.35);border-radius:18px;padding:2rem 1.8rem;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+    .carta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rose),var(--rose-deep));opacity:0;transition:opacity .3s;}
+    .carta-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(196,111,122,.18);}
+    .carta-card:hover::before{opacity:1;}
+    .carta-fecha{font-size:.75rem;letter-spacing:.1rem;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+    .carta-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:var(--rose-light);line-height:1;margin-bottom:.5rem;}
+    .carta-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--text);margin-bottom:.5rem;}
+    .carta-preview{font-size:.95rem;color:var(--text-light);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+    .carta-badge{position:absolute;top:1rem;right:1rem;font-size:1.2rem;}
+    .modal-overlay{position:fixed;inset:0;background:rgba(74,44,53,.5);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s;}
+    .modal-overlay.open{opacity:1;pointer-events:all;}
+    .modal-box{background:var(--white);border-radius:24px;max-width:620px;width:100%;max-height:85vh;overflow-y:auto;padding:3rem 2.5rem;position:relative;transform:translateY(30px);transition:transform .35s;box-shadow:0 30px 80px rgba(74,44,53,.25);}
+    .modal-overlay.open .modal-box{transform:translateY(0);}
+    .modal-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;font-size:1.5rem;color:var(--text-light);cursor:pointer;line-height:1;transition:color .2s;}
+    .modal-close:hover{color:var(--rose-deep);}
+    .modal-fecha{font-size:.8rem;letter-spacing:.15rem;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+    .modal-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-style:italic;margin-bottom:1.5rem;color:var(--text);}
+    .modal-body{font-size:1.05rem;line-height:1.9;color:var(--text);white-space:pre-line;}
+    .modal-firma{margin-top:2rem;font-family:'Dancing Script',cursive;font-size:1.4rem;color:var(--rose-deep);text-align:right;}
+    #fotos{background:var(--cream);}
+    .fotos-instruccion{text-align:center;font-size:.95rem;color:var(--text-light);margin-bottom:2rem;font-style:italic;}
+    .fotos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
+    .foto-item{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1;cursor:pointer;box-shadow:0 4px 20px rgba(74,44,53,.12);transition:transform .3s,box-shadow .3s;}
+    .foto-item:hover{transform:scale(1.03);box-shadow:0 12px 36px rgba(74,44,53,.22);}
+    .foto-item img{width:100%;height:100%;object-fit:cover;display:block;}
+    .foto-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(74,44,53,.5) 0%,transparent 60%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1rem;}
+    .foto-item:hover .foto-overlay{opacity:1;}
+    .foto-caption{color:white;font-style:italic;font-size:.9rem;}
+    .foto-placeholder{border-radius:16px;overflow:hidden;aspect-ratio:1;background:linear-gradient(135deg,var(--rose-light),var(--cream-dark));display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(196,111,122,.3);}
+    .foto-placeholder-icon{font-size:2rem;margin-bottom:.5rem;opacity:.4;}
+    .foto-placeholder-text{font-size:.75rem;color:var(--text-light);font-style:italic;text-align:center;padding:0 1rem;}
+    .lightbox{position:fixed;inset:0;background:rgba(30,10,15,.92);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1.5rem;}
+    .lightbox.open{opacity:1;pointer-events:all;}
+    .lightbox img{max-width:100%;max-height:85vh;border-radius:12px;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+    .lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.15);border:none;color:white;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .lightbox-close:hover{background:rgba(255,255,255,.3);}
+    #razones{background:linear-gradient(160deg,var(--cream-dark) 0%,var(--cream) 100%);}
+    .razones-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;}
+    .razon-item{background:var(--white);border-radius:16px;padding:1.5rem;border-left:3px solid var(--rose);display:flex;gap:1rem;align-items:flex-start;transition:transform .25s,box-shadow .25s;}
+    .razon-item:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(196,111,122,.15);}
+    .razon-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--rose-light);line-height:1;min-width:2rem;}
+    .razon-text{font-size:1rem;line-height:1.6;color:var(--text);}
+    #cancion{background:var(--cream);}
+    .cancion-card{background:linear-gradient(135deg,#2a1520,#3d1f2a);border-radius:24px;padding:3rem 2rem;text-align:center;color:white;max-width:500px;margin:0 auto;box-shadow:0 20px 60px rgba(74,44,53,.3);position:relative;overflow:hidden;}
+    .cancion-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(232,160,160,.08) 0%,transparent 60%);animation:rotate 10s linear infinite;}
+    @keyframes rotate{to{transform:rotate(360deg);}}
+    .disc-wrap{position:relative;width:140px;height:140px;margin:0 auto 2rem;}
+    .disc{width:140px;height:140px;border-radius:50%;background:conic-gradient(from 0deg,#1a0a10,#3d1f2a,#c46f7a,#1a0a10,#3d1f2a,#1a0a10);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(255,255,255,.1),0 10px 40px rgba(0,0,0,.5);}
+    .disc.spin{animation:spinDisc 4s linear infinite;}
+    @keyframes spinDisc{to{transform:rotate(360deg);}}
+    .disc-center{width:36px;height:36px;border-radius:50%;background:#1a0a10;border:3px solid rgba(255,255,255,.2);}
+    .cancion-titulo{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;margin-bottom:.3rem;position:relative;}
+    .cancion-artista{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:1.5rem;position:relative;}
+    .cancion-url-wrap{margin-bottom:1.5rem;position:relative;}
+    .cancion-url-wrap input{width:100%;padding:.7rem 1rem;border-radius:50px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.85rem;text-align:center;outline:none;}
+    .cancion-url-wrap input::placeholder{color:rgba(255,255,255,.35);}
+    .cancion-url-wrap input:focus{border-color:var(--rose);}
+    .player-controls{display:flex;justify-content:center;align-items:center;gap:1.5rem;position:relative;}
+    .play-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--rose-deep));border:none;color:white;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(196,111,122,.5);transition:transform .2s,box-shadow .2s;}
+    .play-btn:hover{transform:scale(1.08);box-shadow:0 12px 30px rgba(196,111,122,.7);}
+    .cancion-nota{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:1rem;font-style:italic;position:relative;}
+    footer{text-align:center;padding:3rem 1.5rem;background:var(--cream-dark);position:relative;z-index:1;}
+    .footer-heart{font-size:2rem;animation:pulse 1.4s ease infinite;display:block;margin-bottom:.8rem;}
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.18);}}
+    .footer-text{font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--text-light);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:600px){nav a{font-size:.72rem;padding:.4rem .6rem;letter-spacing:.06rem;}.modal-box{padding:2rem 1.5rem;}.cancion-card{padding:2rem 1.2rem;}}
   </style>
 </head>
 <body>
-
-<!-- Pétalos flotantes -->
 <div id="particles"></div>
-
-<!-- ══ HERO ══ -->
 <section id="inicio">
   <div id="hero">
     <div class="hero-ornament">✦ ✦ ✦</div>
     <h1 class="hero-title">Jonathan<br/><span>&amp; Yesica</span></h1>
     <p class="hero-subtitle">Nuestra historia de amor</p>
     <p class="hero-date">Desde el 7 de febrero de 2026</p>
-
     <div class="counter-wrap">
-      <div class="counter-box">
-        <div class="counter-num" id="cnt-dias">0</div>
-        <div class="counter-label">Días</div>
-      </div>
-      <div class="counter-box">
-        <div class="counter-num" id="cnt-horas">0</div>
-        <div class="counter-label">Horas</div>
-      </div>
-      <div class="counter-box">
-        <div class="counter-num" id="cnt-min">0</div>
-        <div class="counter-label">Minutos</div>
-      </div>
-      <div class="counter-box">
-        <div class="counter-num" id="cnt-seg">0</div>
-        <div class="counter-label">Segundos</div>
-      </div>
+      <div class="counter-box"><div class="counter-num" id="cnt-dias">0</div><div class="counter-label">Días</div></div>
+      <div class="counter-box"><div class="counter-num" id="cnt-horas">0</div><div class="counter-label">Horas</div></div>
+      <div class="counter-box"><div class="counter-num" id="cnt-min">0</div><div class="counter-label">Minutos</div></div>
+      <div class="counter-box"><div class="counter-num" id="cnt-seg">0</div><div class="counter-label">Segundos</div></div>
     </div>
-
     <p class="scroll-hint">↓ &nbsp; Explora nuestra historia &nbsp; ↓</p>
   </div>
 </section>
-
-<!-- ══ NAV ══ -->
 <nav id="mainNav">
-  <a href="#inicio"  class="active">Inicio</a>
+  <a href="#inicio" class="active">Inicio</a>
   <a href="#cartas">Cartas</a>
   <a href="#fotos">Fotos</a>
   <a href="#razones">Razones</a>
   <a href="#cancion">Canción</a>
 </nav>
-
-<!-- ══ CARTAS ══ -->
 <section id="cartas">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -633,8 +142,6 @@
     <div class="cartas-grid" id="cartasGrid"></div>
   </div>
 </section>
-
-<!-- ══ FOTOS ══ -->
 <section id="fotos">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -642,17 +149,10 @@
       <h2 class="section-title">Nuestros momentos</h2>
       <div class="divider"></div>
     </div>
-    <p class="fotos-instruccion">Agrega tus fotos favoritas — se guardan en tu dispositivo 📸</p>
-    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
-      <div class="upload-icon">🌸</div>
-      <p class="upload-text">Toca aquí para agregar fotos nuestras</p>
-      <input type="file" id="fileInput" accept="image/*" multiple/>
-    </div>
+    <p class="fotos-instruccion">Cada foto guarda un pedacito de nosotros 📸</p>
     <div class="fotos-grid" id="fotosGrid"></div>
   </div>
 </section>
-
-<!-- ══ RAZONES ══ -->
 <section id="razones">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -663,8 +163,6 @@
     <div class="razones-list" id="razonesList"></div>
   </div>
 </section>
-
-<!-- ══ CANCIÓN ══ -->
 <section id="cancion">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -673,11 +171,7 @@
       <div class="divider"></div>
     </div>
     <div class="cancion-card reveal">
-      <div class="disc-wrap">
-        <div class="disc" id="disc">
-          <div class="disc-center"></div>
-        </div>
-      </div>
+      <div class="disc-wrap"><div class="disc" id="disc"><div class="disc-center"></div></div></div>
       <p class="cancion-titulo">Tu canción especial</p>
       <p class="cancion-artista">Para Yesica, con amor</p>
       <div class="cancion-url-wrap">
@@ -690,275 +184,95 @@
     </div>
   </div>
 </section>
-
-<!-- ══ FOOTER ══ -->
 <footer>
   <span class="footer-heart">💕</span>
   <p class="footer-text">Hecho con amor infinito para Yesica — Jonathan</p>
 </footer>
-
-<!-- Modal carta -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
+    <p class="modal-fecha" id="modalFecha"></p>
     <h3 class="modal-title" id="modalTitle"></h3>
     <div class="modal-body" id="modalBody"></div>
-    <p class="modal-firma">Con amor, Jonathan 💌</p>
+    <p class="modal-firma">Con todo mi amor, Jonathan 💌</p>
   </div>
 </div>
-
-<!-- Lightbox fotos -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightboxImg" src="" alt="foto"/>
 </div>
-
 <script>
-// ── DATOS ──────────────────────────────────────────────
-const START_DATE = new Date('2026-02-07T00:00:00');
+const START_DATE=new Date('2026-02-07T00:00:00');
+function updateCounter(){const d=Math.max(0,new Date()-START_DATE);document.getElementById('cnt-dias').textContent=String(Math.floor(d/86400000)).padStart(2,'0');document.getElementById('cnt-horas').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');document.getElementById('cnt-min').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');document.getElementById('cnt-seg').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');}
+updateCounter();setInterval(updateCounter,1000);
 
-const CARTAS = [
-  {
-    titulo: "El día que te conocí",
-    preview: "Hay momentos que cambian todo, y ese fue uno de ellos…",
-    cuerpo: `Yesica,
-
-Hay momentos que cambian todo. Ese día que te conocí, algo en mí supo que eras especial. Tu sonrisa, tu manera de hablar, esa luz que llevas contigo… todo me atrapó sin que me diera cuenta.
-
-No sé si el destino existe, pero si existe, agradezco cada camino que nos llevó a encontrarnos. Eres la persona más bonita que ha llegado a mi vida.
-
-Gracias por ser tú.`
-  },
-  {
-    titulo: "Lo que más admiro de ti",
-    preview: "Tu fortaleza me inspira todos los días…",
-    cuerpo: `Mi Yesi,
-
-Admiro tanto de ti que no alcanzarían las páginas para escribirlo todo. Pero si tuviera que elegir algo, elegiría tu fortaleza. La forma en que enfrentas la vida, con valentía y con esa sonrisa que no se rinde.
-
-Me inspiras a ser mejor persona cada día. Cuando estoy contigo siento que puedo con todo.
-
-Eres mi mayor motivación.`
-  },
-  {
-    titulo: "Cosas que me gustan de nosotros",
-    preview: "Me gusta cómo el tiempo vuela cuando estamos juntos…",
-    cuerpo: `Amor,
-
-Me gusta cómo el tiempo vuela cuando estamos juntos. Me gusta que podamos reírnos de cualquier cosa. Me gusta cómo me miras cuando crees que no me doy cuenta.
-
-Me gusta que seamos nosotros, con todo lo que eso significa. Con los días perfectos y los que no lo son tanto. Con las conversaciones largas y los silencios cómodos.
-
-Me gusta todo lo que somos juntos.`
-  },
-  {
-    titulo: "Mis promesas para ti",
-    preview: "Te prometo estar en los días fáciles y también en los difíciles…",
-    cuerpo: `Yesica,
-
-Te prometo estar en los días fáciles y también en los difíciles. Te prometo escucharte siempre, aunque no tenga las palabras perfectas.
-
-Te prometo crecer contigo, equivocarme y aprender. Te prometo que nunca voy a dejar de elegirte.
-
-Eres lo mejor que me ha pasado y quiero cuidar eso cada día.
-
-Con todo lo que soy, Jonathan.`
-  },
-  {
-    titulo: "Cuando no estás",
-    preview: "Hay un silencio extraño cuando no estás cerca…",
-    cuerpo: `Mi Yesi,
-
-Hay un silencio extraño cuando no estás cerca. Como si los colores fueran un poco menos vivos y las cosas tuvieran menos sentido.
-
-Es curioso cómo alguien puede convertirse tan rápido en parte de tu mundo. Tú te convertiste en parte del mío sin que lo planeara, y ahora no me imagino el día a día sin saber que estás ahí.
-
-Extrañarte me recuerda lo mucho que te quiero.`
-  },
-  {
-    titulo: "Lo que el futuro nos guarda",
-    preview: "No sé exactamente qué nos espera, pero sé que lo quiero vivir contigo…",
-    cuerpo: `Amor,
-
-No sé exactamente qué nos espera. Nadie lo sabe. Pero sí sé que quiero vivirlo contigo. Los viajes que imaginamos, los proyectos que soñamos, los días ordinarios que se vuelven extraordinarios cuando estamos juntos.
-
-Quiero construir contigo. Quiero que el futuro, sea lo que sea, tenga tu nombre en él.
-
-Te quiero hoy, y también en todo lo que viene.
-Jonathan 💕`
-  },
+const CARTAS=[
+{fecha:"Lunes, 23 de marzo de 2026",titulo:"El universo en tu carita",preview:"Hay personas que llevan el cielo en los ojos, y tú eres una de ellas…",cuerpo:"Yesica,\n\nHay personas que llevan el cielo en los ojos. Tú eres una de ellas. Cada vez que te miro, encuentro algo nuevo — una luz que no tiene nombre, un verde que no existe en ningún otro lugar del mundo excepto en ti.\n\nTu carita es tan bella que a veces me detengo solo para mirarte y recordarme que tengo la suerte más grande del universo. No exagero. Eres literalmente mi parte favorita de cada día.\n\nTe amo más de lo que las palabras pueden alcanzar a decir."},
+{fecha:"Martes, 24 de marzo de 2026",titulo:"Admiro tu fuerza",preview:"Llegas cansada, con el peso del día encima, y aun así me regalas tu sonrisa…",cuerpo:"Mi Yesi,\n\nLlegas cansada, con el peso del día encima, con el estrés pegado en los hombros y aun así — aun así — me regalas tu tiempo, tu sonrisa, tu presencia.\n\nEso no es cualquier cosa. Eso es amor en su forma más pura.\n\nAdmiro tu fuerza más de lo que crees. La manera en que enfrentas cada día, trabajando duro sin rendirte, me inspira a ser mejor. Eres la persona más valiente que conozco, aunque tú no lo veas así.\n\nGracias por elegirme incluso cuando estás agotada. Eso vale todo para mí."},
+{fecha:"Miércoles, 25 de marzo de 2026",titulo:"Tus ojos verdes",preview:"Dicen que los ojos son la ventana del alma, y los tuyos son un jardín eterno…",cuerpo:"Yesica,\n\nDicen que los ojos son la ventana del alma. Los tuyos son un jardín eterno.\n\nEse verde que tienes — profundo, brillante, vivo — me atrapa cada vez que te miro. Como si dentro de ellos hubiera un mundo entero que solo yo tengo el privilegio de descubrir.\n\nA veces me pregunto si sabes el efecto que tienes. Cuando me miras, todo lo demás desaparece. No hay ruido, no hay prisa, no hay nada. Solo tú y esos ojos que me hacen sentir que soy el hombre más afortunado del planeta.\n\nNo dejes de mirarme así jamás."},
+{fecha:"Jueves, 26 de marzo de 2026",titulo:"Lo que siento cuando estás",preview:"Contigo aprendí que el amor no siempre grita, a veces simplemente está…",cuerpo:"Amor mío,\n\nContigo aprendí que el amor no siempre grita. A veces simplemente está — callado, tibio, presente.\n\nEstá en cuando me mandas un mensaje al final de tu día agotador. En cuando te ríes de algo tonto que digo. En cuando estamos en silencio y ese silencio se siente como el lugar más cómodo del mundo.\n\nContigo no necesito nada más. Con tu presencia ya es suficiente, ya es demasiado, ya es todo.\n\nTe amo, Yesica. Con cada parte de lo que soy, te amo."},
+{fecha:"Viernes, 27 de marzo de 2026",titulo:"Poema para ti",preview:"Eres el verde más bonito que han visto mis ojos…",cuerpo:"Para Yesica,\n\nEres el verde más bonito\nque han visto mis ojos,\nel nombre que repito\ncuando el mundo está en silencio.\n\nEres el cansancio que se vuelve abrazo,\nel trabajo duro que florece en sonrisa,\neres cada cosa bonita\nque no me merezco y que aun así me das.\n\nLlevas el universo en la carita\ny yo llevo tu nombre en el pecho\ncomo si fuera la cosa más sagrada\nque jamás haya tenido.\n\nGracias por existir, Yesica.\nGracias por ser tú."},
+{fecha:"Sábado, 28 de marzo de 2026",titulo:"El tiempo que me regalas",preview:"Sé lo que cuesta tu tiempo, y por eso lo cuido como si fuera oro…",cuerpo:"Mi Yesi hermosa,\n\nSé lo que cuesta tu tiempo. Sé que llegas del trabajo con el cuerpo pidiendo descanso y la mente pidiendo calma. Y aun así, me lo regalas.\n\nQuiero que sepas que no lo doy por sentado. Cada minuto contigo es un tesoro que guardo con cuidado. Cada conversación, cada risa compartida, cada momento en que decides estar conmigo a pesar del cansancio.\n\nPrometo cuidarte. Prometo ser el descanso que necesitas, no otro peso más en tu día. Prometo que cada momento que me des, lo voy a convertir en algo hermoso.\n\nTe amo con todo lo que tengo."},
+{fecha:"Domingo, 29 de marzo de 2026",titulo:"Para siempre, Yesica",preview:"Si me preguntaran qué es lo mejor que me ha pasado, diría tu nombre sin dudar…",cuerpo:"Yesica Altamirano,\n\nSi me preguntaran qué es lo mejor que me ha pasado en la vida, diría tu nombre sin dudar ni un segundo.\n\nTú llegaste y sin pedirlo, sin planearlo, te volviste la persona más importante de mi mundo. Con tus ojos verdes que parecen hechos de otro universo, con tu fuerza silenciosa que me inspira cada día, con tu carita tan bella que me cuesta creer que sea real.\n\nNo sé qué nos tiene guardado el futuro, pero sé que lo quiero vivir contigo. Cada día ordinario, cada momento difícil, cada alegría — todo lo quiero contigo.\n\nTe amo hoy, te amaré mañana y todos los días que vengan.\n\nTuyo para siempre,\nJonathan 💕"}
 ];
 
-const RAZONES = [
-  "Tu sonrisa ilumina cualquier lugar donde estés.",
-  "La forma en que ríes hace que todo valga la pena.",
-  "Eres fuerte, incluso cuando crees que no lo eres.",
-  "Me haces querer ser mejor persona cada día.",
-  "Tu mirada tiene algo que no puedo explicar con palabras.",
-  "Eres honesta, y eso vale más que mil cosas bonitas.",
-  "Me siento en casa cuando estoy contigo.",
-  "Tu manera de ver la vida me enseña algo nuevo siempre.",
-  "Cuidas a las personas que amas con todo el corazón.",
-  "Contigo, hasta los días normales se sienten especiales.",
-  "Tienes una forma única de hacer que me sienta importante.",
-  "Simplemente, eres tú — y eso es más que suficiente.",
-];
-
-// ── CONTADOR ───────────────────────────────────────────
-function updateCounter() {
-  const now = new Date();
-  const diff = Math.max(0, now - START_DATE);
-  const days    = Math.floor(diff / 86400000);
-  const hours   = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000)  / 60000);
-  const seconds = Math.floor((diff % 60000)    / 1000);
-  document.getElementById('cnt-dias').textContent = String(days).padStart(2,'0');
-  document.getElementById('cnt-horas').textContent = String(hours).padStart(2,'0');
-  document.getElementById('cnt-min').textContent = String(minutes).padStart(2,'0');
-  document.getElementById('cnt-seg').textContent = String(seconds).padStart(2,'0');
-}
-updateCounter();
-setInterval(updateCounter, 1000);
-
-// ── CARTAS ─────────────────────────────────────────────
-const cartasGrid = document.getElementById('cartasGrid');
-const emojis = ['💌','🌹','💕','✨','🌸','💖'];
-CARTAS.forEach((c, i) => {
-  const div = document.createElement('div');
-  div.className = 'carta-card reveal';
-  div.innerHTML = `
-    <div class="carta-num">0${i+1}</div>
-    <div class="carta-titulo">${c.titulo}</div>
-    <div class="carta-preview">${c.preview}</div>
-    <div class="carta-badge">${emojis[i % emojis.length]}</div>
-  `;
-  div.onclick = () => openModal(c);
+const emojis=['💌','🌹','💕','✨','🌸','💖','🌷'];
+const cartasGrid=document.getElementById('cartasGrid');
+CARTAS.forEach((c,i)=>{
+  const div=document.createElement('div');
+  div.className='carta-card reveal';
+  div.innerHTML=`<div class="carta-fecha">${c.fecha}</div><div class="carta-num">0${i+1}</div><div class="carta-titulo">${c.titulo}</div><div class="carta-preview">${c.preview}</div><div class="carta-badge">${emojis[i]}</div>`;
+  div.onclick=()=>openModal(c);
   cartasGrid.appendChild(div);
 });
 
-function openModal(carta) {
-  document.getElementById('modalTitle').textContent = carta.titulo;
-  document.getElementById('modalBody').textContent = carta.cuerpo;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(e) {
-  if (!e || e.target === document.getElementById('modalOverlay') || e.target.classList.contains('modal-close')) {
-    document.getElementById('modalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
+function openModal(c){document.getElementById('modalFecha').textContent=c.fecha;document.getElementById('modalTitle').textContent=c.titulo;document.getElementById('modalBody').textContent=c.cuerpo;document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(e){if(!e||e.target===document.getElementById('modalOverlay')||e.currentTarget.classList.contains('modal-close')){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}}
 
-// ── RAZONES ────────────────────────────────────────────
-const razonesList = document.getElementById('razonesList');
-RAZONES.forEach((r, i) => {
-  const div = document.createElement('div');
-  div.className = 'razon-item reveal';
-  div.innerHTML = `<div class="razon-num">${i+1}</div><div class="razon-text">${r}</div>`;
-  razonesList.appendChild(div);
-});
+// FOTOS — pon tus archivos foto1.jpeg, foto2.jpeg... en la misma carpeta que index.html
+const FOTOS=[
+  {archivo:"foto1.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto2.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto3.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto4.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto5.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto6.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto7.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto8.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto9.jpeg",caption:"Nuestro recuerdo 💕"},
+  {archivo:"foto10.jpeg",caption:"Nuestro recuerdo 💕"},
+];
 
-// ── FOTOS ──────────────────────────────────────────────
-const fotosGrid = document.getElementById('fotosGrid');
-const fileInput = document.getElementById('fileInput');
-
-fileInput.addEventListener('change', (e) => {
-  Array.from(e.target.files).forEach(file => {
-    const reader = new FileReader();
-    reader.onload = ev => addFoto(ev.target.result);
-    reader.readAsDataURL(file);
-  });
-  fileInput.value = '';
-});
-
-// Drag & drop
-const uploadZone = document.getElementById('uploadZone');
-uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.style.background = 'rgba(232,160,160,.25)'; });
-uploadZone.addEventListener('dragleave', () => { uploadZone.style.background = ''; });
-uploadZone.addEventListener('drop', e => {
-  e.preventDefault();
-  uploadZone.style.background = '';
-  Array.from(e.dataTransfer.files).forEach(f => {
-    if (!f.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = ev => addFoto(ev.target.result);
-    reader.readAsDataURL(f);
-  });
-});
-
-function addFoto(src) {
-  const item = document.createElement('div');
-  item.className = 'foto-item';
-  item.innerHTML = `<img src="${src}" alt="recuerdo"/><div class="foto-overlay"><span class="foto-caption">💕 Nuestro recuerdo</span></div>`;
-  item.onclick = () => openLightbox(src);
+const fotosGrid=document.getElementById('fotosGrid');
+FOTOS.forEach(f=>{
+  const item=document.createElement('div');
+  const img=new Image();
+  img.onload=()=>{item.className='foto-item';item.innerHTML=`<img src="${f.archivo}" alt="${f.caption}"/><div class="foto-overlay"><span class="foto-caption">${f.caption}</span></div>`;item.onclick=()=>openLightbox(f.archivo);};
+  img.onerror=()=>{item.className='foto-placeholder';item.innerHTML=`<div class="foto-placeholder-icon">🌸</div><div class="foto-placeholder-text">${f.archivo}</div>`;};
+  img.src=f.archivo;
   fotosGrid.appendChild(item);
-}
-
-function openLightbox(src) {
-  document.getElementById('lightboxImg').src = src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// ── CANCIÓN ────────────────────────────────────────────
-let playing = false;
-function togglePlay() {
-  const url = document.getElementById('spotifyUrl').value.trim();
-  const disc = document.getElementById('disc');
-  const btn  = document.getElementById('playBtn');
-  if (url) {
-    window.open(url, '_blank');
-    playing = true;
-  } else {
-    playing = !playing;
-  }
-  disc.classList.toggle('spin', playing);
-  btn.textContent = playing ? '⏸' : '▶';
-}
-
-// ── PÉTALOS ────────────────────────────────────────────
-const petals = ['🌸','🌹','✨','💕','🌷'];
-const container = document.getElementById('particles');
-for (let i = 0; i < 18; i++) {
-  const p = document.createElement('div');
-  p.className = 'petal';
-  p.textContent = petals[Math.floor(Math.random() * petals.length)];
-  p.style.cssText = `
-    left: ${Math.random()*100}%;
-    font-size: ${.6 + Math.random()*.8}rem;
-    animation-duration: ${6 + Math.random()*10}s;
-    animation-delay: ${Math.random()*8}s;
-  `;
-  container.appendChild(p);
-}
-
-// ── REVEAL ON SCROLL ───────────────────────────────────
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// ── NAV ACTIVO ─────────────────────────────────────────
-const sections = document.querySelectorAll('section[id], div#hero');
-const navLinks  = document.querySelectorAll('nav a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 120) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
 });
+
+function openLightbox(src){document.getElementById('lightboxImg').src=src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+
+const RAZONES=["Tus ojos verdes son lo más bonito que han visto los míos.","Tu sonrisa tiene el poder de arreglar cualquier día.","Admiro tu fuerza — trabajas duro y aun así das lo mejor de ti.","Me regalas tu tiempo aunque estés agotada, y eso es amor puro.","Tu carita es tan bella que parece sacada de otro universo.","Me inspiras a ser mejor persona cada día.","Contigo, hasta el silencio se siente como casa.","Eres honesta, y eso vale más que mil palabras bonitas.","La forma en que te ríes hace que todo valga la pena.","Cuidas a las personas que amas con todo tu corazón.","Contigo los días normales se vuelven extraordinarios.","Simplemente eres tú — y eso ya es todo lo que necesito."];
+const razonesList=document.getElementById('razonesList');
+RAZONES.forEach((r,i)=>{const div=document.createElement('div');div.className='razon-item reveal';div.innerHTML=`<div class="razon-num">${i+1}</div><div class="razon-text">${r}</div>`;razonesList.appendChild(div);});
+
+let playing=false;
+function togglePlay(){const url=document.getElementById('spotifyUrl').value.trim();const disc=document.getElementById('disc');const btn=document.getElementById('playBtn');if(url){window.open(url,'_blank');playing=true;}else{playing=!playing;}disc.classList.toggle('spin',playing);btn.textContent=playing?'⏸':'▶';}
+
+const petals=['🌸','🌹','✨','💕','🌷'];
+const container=document.getElementById('particles');
+for(let i=0;i<18;i++){const p=document.createElement('div');p.className='petal';p.textContent=petals[Math.floor(Math.random()*petals.length)];p.style.cssText=`left:${Math.random()*100}%;font-size:${.6+Math.random()*.8}rem;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;container.appendChild(p);}
+
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);observer.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{let current='inicio';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.id;});navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));});
 </script>
 </body>
 </html>
