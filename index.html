@@ -6,110 +6,209 @@
   <title>Jonathan & Yesica 💕</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
   <style>
-    :root{--rose:#e8a0a0;--rose-light:#f5d5d5;--rose-deep:#c46f7a;--cream:#fdf6f0;--cream-dark:#f0e6dc;--gold:#c9a96e;--text:#4a2c35;--text-light:#8a5c65;--white:#fff9f6;}
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--cream);color:var(--text);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
-    #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
-    .petal{position:absolute;font-size:1rem;opacity:0;animation:fall linear infinite;}
-    @keyframes fall{0%{opacity:0;transform:translateY(-20px) rotate(0deg);}10%{opacity:.7;}90%{opacity:.5;}100%{opacity:0;transform:translateY(105vh) rotate(360deg);}}
-    #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;position:relative;background:linear-gradient(160deg,#fdf0f0 0%,#fdf6f0 60%,#f5ece8 100%);z-index:1;}
-    #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(232,160,160,.25) 0%,transparent 70%);}
-    .hero-ornament{font-size:2rem;color:var(--rose);letter-spacing:.5rem;margin-bottom:1.5rem;animation:fadeUp .8s ease both;}
-    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,8vw,5.5rem);font-weight:700;line-height:1.1;color:var(--text);animation:fadeUp .9s .1s ease both;}
-    .hero-title span{color:var(--rose-deep);font-style:italic;}
-    .hero-subtitle{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,4vw,2rem);color:var(--text-light);margin:1rem 0 2.5rem;animation:fadeUp 1s .2s ease both;}
-    .hero-date{font-size:1rem;letter-spacing:.15rem;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;animation:fadeUp 1s .3s ease both;}
-    .counter-wrap{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .4s ease both;}
-    .counter-box{background:rgba(255,255,255,.75);backdrop-filter:blur(8px);border:1px solid rgba(232,160,160,.4);border-radius:16px;padding:1.2rem 1.5rem;min-width:80px;text-align:center;box-shadow:0 4px 24px rgba(196,111,122,.1);}
-    .counter-num{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);font-weight:700;color:var(--rose-deep);line-height:1;}
-    .counter-label{font-size:.75rem;letter-spacing:.12rem;text-transform:uppercase;color:var(--text-light);margin-top:.3rem;}
-    .scroll-hint{margin-top:3.5rem;font-size:.85rem;color:var(--text-light);letter-spacing:.1rem;animation:bounce 2s 1.5s ease infinite;}
-    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
-    nav{position:sticky;top:0;z-index:100;background:rgba(253,246,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,160,.3);display:flex;justify-content:center;gap:.5rem;padding:.8rem 1rem;}
-    nav a{text-decoration:none;color:var(--text-light);font-size:.85rem;letter-spacing:.12rem;text-transform:uppercase;padding:.5rem 1rem;border-radius:50px;transition:all .25s;}
-    nav a:hover,nav a.active{background:var(--rose-light);color:var(--rose-deep);}
-    section{position:relative;z-index:1;padding:5rem 1.5rem;}
-    .section-inner{max-width:900px;margin:0 auto;}
-    .section-header{text-align:center;margin-bottom:3rem;}
-    .section-tag{font-size:.75rem;letter-spacing:.2rem;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
-    .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:400;font-style:italic;}
-    .divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--rose),transparent);margin:1rem auto 0;}
-    #cartas{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-dark) 100%);}
-    .cartas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;}
-    .carta-card{background:var(--white);border:1px solid rgba(232,160,160,.35);border-radius:18px;padding:2rem 1.8rem;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
-    .carta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rose),var(--rose-deep));opacity:0;transition:opacity .3s;}
-    .carta-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(196,111,122,.18);}
-    .carta-card:hover::before{opacity:1;}
-    .carta-fecha{font-size:.75rem;letter-spacing:.1rem;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
-    .carta-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:var(--rose-light);line-height:1;margin-bottom:.5rem;}
-    .carta-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--text);margin-bottom:.5rem;}
-    .carta-preview{font-size:.95rem;color:var(--text-light);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-    .carta-badge{position:absolute;top:1rem;right:1rem;font-size:1.2rem;}
-    .modal-overlay{position:fixed;inset:0;background:rgba(74,44,53,.5);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s;}
-    .modal-overlay.open{opacity:1;pointer-events:all;}
-    .modal-box{background:var(--white);border-radius:24px;max-width:620px;width:100%;max-height:85vh;overflow-y:auto;padding:3rem 2.5rem;position:relative;transform:translateY(30px);transition:transform .35s;box-shadow:0 30px 80px rgba(74,44,53,.25);}
-    .modal-overlay.open .modal-box{transform:translateY(0);}
-    .modal-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;font-size:1.5rem;color:var(--text-light);cursor:pointer;line-height:1;transition:color .2s;}
-    .modal-close:hover{color:var(--rose-deep);}
-    .modal-fecha{font-size:.8rem;letter-spacing:.15rem;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
-    .modal-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-style:italic;margin-bottom:1.5rem;color:var(--text);}
-    .modal-body{font-size:1.05rem;line-height:1.9;color:var(--text);white-space:pre-line;}
-    .modal-firma{margin-top:2rem;font-family:'Dancing Script',cursive;font-size:1.4rem;color:var(--rose-deep);text-align:right;}
-    #fotos{background:var(--cream);}
-    .fotos-instruccion{text-align:center;font-size:.95rem;color:var(--text-light);margin-bottom:2rem;font-style:italic;}
-    .fotos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
-    .foto-item{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1;cursor:pointer;box-shadow:0 4px 20px rgba(74,44,53,.12);transition:transform .3s,box-shadow .3s;}
-    .foto-item:hover{transform:scale(1.03);box-shadow:0 12px 36px rgba(74,44,53,.22);}
-    .foto-item img{width:100%;height:100%;object-fit:cover;display:block;}
-    .foto-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(74,44,53,.5) 0%,transparent 60%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1rem;}
-    .foto-item:hover .foto-overlay{opacity:1;}
-    .foto-caption{color:white;font-style:italic;font-size:.9rem;}
-    .foto-placeholder{border-radius:16px;overflow:hidden;aspect-ratio:1;background:linear-gradient(135deg,var(--rose-light),var(--cream-dark));display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(196,111,122,.3);}
-    .foto-placeholder-icon{font-size:2rem;margin-bottom:.5rem;opacity:.4;}
-    .foto-placeholder-text{font-size:.75rem;color:var(--text-light);font-style:italic;text-align:center;padding:0 1rem;}
-    .lightbox{position:fixed;inset:0;background:rgba(30,10,15,.92);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1.5rem;}
-    .lightbox.open{opacity:1;pointer-events:all;}
-    .lightbox img{max-width:100%;max-height:85vh;border-radius:12px;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5);}
-    .lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.15);border:none;color:white;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
-    .lightbox-close:hover{background:rgba(255,255,255,.3);}
-    #razones{background:linear-gradient(160deg,var(--cream-dark) 0%,var(--cream) 100%);}
-    .razones-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;}
-    .razon-item{background:var(--white);border-radius:16px;padding:1.5rem;border-left:3px solid var(--rose);display:flex;gap:1rem;align-items:flex-start;transition:transform .25s,box-shadow .25s;}
-    .razon-item:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(196,111,122,.15);}
-    .razon-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--rose-light);line-height:1;min-width:2rem;}
-    .razon-text{font-size:1rem;line-height:1.6;color:var(--text);}
-    #cancion{background:var(--cream);}
-    .cancion-card{background:linear-gradient(135deg,#2a1520,#3d1f2a);border-radius:24px;padding:3rem 2rem;text-align:center;color:white;max-width:500px;margin:0 auto;box-shadow:0 20px 60px rgba(74,44,53,.3);position:relative;overflow:hidden;}
-    .cancion-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(232,160,160,.08) 0%,transparent 60%);animation:rotate 10s linear infinite;}
-    @keyframes rotate{to{transform:rotate(360deg);}}
-    .disc-wrap{position:relative;width:140px;height:140px;margin:0 auto 2rem;}
-    .disc{width:140px;height:140px;border-radius:50%;background:conic-gradient(from 0deg,#1a0a10,#3d1f2a,#c46f7a,#1a0a10,#3d1f2a,#1a0a10);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(255,255,255,.1),0 10px 40px rgba(0,0,0,.5);}
-    .disc.spin{animation:spinDisc 4s linear infinite;}
-    @keyframes spinDisc{to{transform:rotate(360deg);}}
-    .disc-center{width:36px;height:36px;border-radius:50%;background:#1a0a10;border:3px solid rgba(255,255,255,.2);}
-    .cancion-titulo{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;margin-bottom:.3rem;position:relative;}
-    .cancion-artista{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:1.5rem;position:relative;}
-    .cancion-url-wrap{margin-bottom:1.5rem;position:relative;}
-    .cancion-url-wrap input{width:100%;padding:.7rem 1rem;border-radius:50px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.85rem;text-align:center;outline:none;}
-    .cancion-url-wrap input::placeholder{color:rgba(255,255,255,.35);}
-    .cancion-url-wrap input:focus{border-color:var(--rose);}
-    .player-controls{display:flex;justify-content:center;align-items:center;gap:1.5rem;position:relative;}
-    .play-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--rose-deep));border:none;color:white;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(196,111,122,.5);transition:transform .2s,box-shadow .2s;}
-    .play-btn:hover{transform:scale(1.08);box-shadow:0 12px 30px rgba(196,111,122,.7);}
-    .cancion-nota{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:1rem;font-style:italic;position:relative;}
-    footer{text-align:center;padding:3rem 1.5rem;background:var(--cream-dark);position:relative;z-index:1;}
-    .footer-heart{font-size:2rem;animation:pulse 1.4s ease infinite;display:block;margin-bottom:.8rem;}
-    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.18);}}
-    .footer-text{font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--text-light);}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
-    .reveal.visible{opacity:1;transform:translateY(0);}
-    @media(max-width:600px){nav a{font-size:.72rem;padding:.4rem .6rem;letter-spacing:.06rem;}.modal-box{padding:2rem 1.5rem;}.cancion-card{padding:2rem 1.2rem;}}
+    :root {
+      --rose:        #e8a0a0;
+      --rose-light:  #f5d5d5;
+      --rose-deep:   #c46f7a;
+      --cream:       #fdf6f0;
+      --cream-dark:  #f0e6dc;
+      --gold:        #c9a96e;
+      --text:        #4a2c35;
+      --text-light:  #8a5c65;
+      --white:       #fff9f6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--text); font-family: 'Cormorant Garamond', serif; overflow-x: hidden; }
+
+    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+    .petal { position: absolute; font-size: 1rem; opacity: 0; animation: fall linear infinite; }
+    @keyframes fall { 0% { opacity:0; transform:translateY(-20px) rotate(0deg); } 10% { opacity:.7; } 90% { opacity:.5; } 100% { opacity:0; transform:translateY(105vh) rotate(360deg); } }
+
+    #hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem 1.5rem; position:relative; background:linear-gradient(160deg,#fdf0f0 0%,#fdf6f0 60%,#f5ece8 100%); z-index:1; }
+    #hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 40%,rgba(232,160,160,.25) 0%,transparent 70%); }
+    .hero-ornament { font-size:2rem; color:var(--rose); letter-spacing:.5rem; margin-bottom:1.5rem; animation:fadeUp .8s ease both; }
+    .hero-title { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,8vw,5.5rem); font-weight:700; line-height:1.1; color:var(--text); animation:fadeUp .9s .1s ease both; }
+    .hero-title span { color:var(--rose-deep); font-style:italic; }
+    .hero-subtitle { font-family:'Dancing Script',cursive; font-size:clamp(1.3rem,4vw,2rem); color:var(--text-light); margin:1rem 0 2.5rem; animation:fadeUp 1s .2s ease both; }
+    .hero-date { font-size:1rem; letter-spacing:.15rem; text-transform:uppercase; color:var(--gold); margin-bottom:3rem; animation:fadeUp 1s .3s ease both; }
+
+    .counter-wrap { display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap; animation:fadeUp 1s .4s ease both; }
+    .counter-box { background:rgba(255,255,255,.75); backdrop-filter:blur(8px); border:1px solid rgba(232,160,160,.4); border-radius:16px; padding:1.2rem 1.5rem; min-width:80px; text-align:center; box-shadow:0 4px 24px rgba(196,111,122,.1); }
+    .counter-num { font-family:'Playfair Display',serif; font-size:clamp(2rem,6vw,3rem); font-weight:700; color:var(--rose-deep); line-height:1; }
+    .counter-label { font-size:.75rem; letter-spacing:.12rem; text-transform:uppercase; color:var(--text-light); margin-top:.3rem; }
+    .scroll-hint { margin-top:3.5rem; font-size:.85rem; color:var(--text-light); letter-spacing:.1rem; animation:bounce 2s 1.5s ease infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+
+    nav { position:sticky; top:0; z-index:100; background:rgba(253,246,240,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(232,160,160,.3); display:flex; justify-content:center; gap:.5rem; padding:.8rem 1rem; }
+    nav a { text-decoration:none; color:var(--text-light); font-size:.85rem; letter-spacing:.12rem; text-transform:uppercase; padding:.5rem 1rem; border-radius:50px; transition:all .25s; }
+    nav a:hover, nav a.active { background:var(--rose-light); color:var(--rose-deep); }
+
+    section { position:relative; z-index:1; padding:5rem 1.5rem; }
+    .section-inner { max-width:900px; margin:0 auto; }
+    .section-header { text-align:center; margin-bottom:3rem; }
+    .section-tag { font-size:.75rem; letter-spacing:.2rem; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+    .section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3rem); font-weight:400; font-style:italic; }
+    .divider { width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--rose),transparent); margin:1rem auto 0; }
+
+    #cartas { background:linear-gradient(180deg,var(--cream) 0%,var(--cream-dark) 100%); }
+    .cartas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+    .carta-card { background:var(--white); border:1px solid rgba(232,160,160,.35); border-radius:18px; padding:2rem 1.8rem; cursor:pointer; transition:transform .3s,box-shadow .3s; position:relative; overflow:hidden; }
+    .carta-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--rose),var(--rose-deep)); opacity:0; transition:opacity .3s; }
+    .carta-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(196,111,122,.18); }
+    .carta-card:hover::before { opacity:1; }
+    .carta-fecha { font-size:.75rem; letter-spacing:.1rem; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+    .carta-num { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:700; color:var(--rose-light); line-height:1; margin-bottom:.5rem; }
+    .carta-titulo { font-family:'Playfair Display',serif; font-size:1.2rem; font-style:italic; color:var(--text); margin-bottom:.5rem; }
+    .carta-preview { font-size:.95rem; color:var(--text-light); line-height:1.6; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+    .carta-badge { position:absolute; top:1rem; right:1rem; font-size:1.2rem; }
+
+    .modal-overlay { position:fixed; inset:0; background:rgba(74,44,53,.5); backdrop-filter:blur(6px); z-index:200; display:flex; align-items:center; justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s; }
+    .modal-overlay.open { opacity:1; pointer-events:all; }
+    .modal-box { background:var(--white); border-radius:24px; max-width:620px; width:100%; max-height:85vh; overflow-y:auto; padding:3rem 2.5rem; position:relative; transform:translateY(30px); transition:transform .35s; box-shadow:0 30px 80px rgba(74,44,53,.25); }
+    .modal-overlay.open .modal-box { transform:translateY(0); }
+    .modal-close { position:absolute; top:1.2rem; right:1.5rem; background:none; border:none; font-size:1.5rem; color:var(--text-light); cursor:pointer; transition:color .2s; }
+    .modal-close:hover { color:var(--rose-deep); }
+    .modal-fecha { font-size:.8rem; letter-spacing:.12rem; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+    .modal-title { font-family:'Playfair Display',serif; font-size:1.8rem; font-style:italic; margin-bottom:1.5rem; color:var(--text); }
+    .modal-body { font-size:1.05rem; line-height:1.9; color:var(--text); white-space:pre-line; }
+    .modal-firma { margin-top:2rem; font-family:'Dancing Script',cursive; font-size:1.4rem; color:var(--rose-deep); text-align:right; }
+
+    #fotos { background:var(--cream); }
+    .fotos-instruccion { text-align:center; font-size:.95rem; color:var(--text-light); margin-bottom:2rem; font-style:italic; }
+    .fotos-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; }
+    .foto-item { position:relative; border-radius:16px; overflow:hidden; aspect-ratio:1; cursor:pointer; box-shadow:0 4px 20px rgba(74,44,53,.12); transition:transform .3s,box-shadow .3s; }
+    .foto-item:hover { transform:scale(1.03); box-shadow:0 12px 36px rgba(74,44,53,.22); }
+    .foto-item img { width:100%; height:100%; object-fit:cover; display:block; }
+    .foto-placeholder { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; background:var(--cream-dark); border:2px dashed rgba(232,160,160,.4); border-radius:16px; color:var(--text-light); font-size:.85rem; }
+    .foto-placeholder span { font-size:2rem; }
+    .foto-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(74,44,53,.5) 0%,transparent 60%); opacity:0; transition:opacity .3s; display:flex; align-items:flex-end; padding:1rem; }
+    .foto-item:hover .foto-overlay { opacity:1; }
+    .foto-caption { color:white; font-style:italic; font-size:.9rem; }
+
+    .lightbox { position:fixed; inset:0; background:rgba(30,10,15,.92); z-index:300; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; padding:1.5rem; }
+    .lightbox.open { opacity:1; pointer-events:all; }
+    .lightbox img { max-width:100%; max-height:85vh; border-radius:12px; object-fit:contain; }
+    .lightbox-close { position:absolute; top:1.5rem; right:1.5rem; background:rgba(255,255,255,.15); border:none; color:white; font-size:1.5rem; width:44px; height:44px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+
+    #razones { background:linear-gradient(160deg,var(--cream-dark) 0%,var(--cream) 100%); }
+    .razones-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.2rem; }
+    .razon-item { background:var(--white); border-radius:16px; padding:1.5rem; border-left:3px solid var(--rose); display:flex; gap:1rem; align-items:flex-start; transition:transform .25s,box-shadow .25s; }
+    .razon-item:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(196,111,122,.15); }
+    .razon-num { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--rose-light); line-height:1; min-width:2rem; }
+    .razon-text { font-size:1rem; line-height:1.6; color:var(--text); }
+
+    #cancion { background:var(--cream); }
+    .cancion-card { background:linear-gradient(135deg,#2a1520,#3d1f2a); border-radius:24px; padding:3rem 2rem; text-align:center; color:white; max-width:500px; margin:0 auto; box-shadow:0 20px 60px rgba(74,44,53,.3); position:relative; overflow:hidden; }
+    .cancion-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle,rgba(232,160,160,.08) 0%,transparent 60%); animation:rotate 10s linear infinite; }
+    @keyframes rotate { to{transform:rotate(360deg);} }
+    .disc-wrap { width:140px; height:140px; margin:0 auto 2rem; }
+    .disc { width:140px; height:140px; border-radius:50%; background:conic-gradient(from 0deg,#1a0a10,#3d1f2a,#c46f7a,#1a0a10,#3d1f2a,#1a0a10); display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 4px rgba(255,255,255,.1),0 10px 40px rgba(0,0,0,.5); }
+    .disc.spin { animation:spinDisc 4s linear infinite; }
+    @keyframes spinDisc { to{transform:rotate(360deg);} }
+    .disc-center { width:36px; height:36px; border-radius:50%; background:#1a0a10; border:3px solid rgba(255,255,255,.2); }
+    .cancion-titulo { font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; margin-bottom:.3rem; position:relative; }
+    .cancion-artista { color:rgba(255,255,255,.6); font-size:.9rem; margin-bottom:1.5rem; position:relative; }
+    .cancion-url-wrap { margin-bottom:1.5rem; position:relative; }
+    .cancion-url-wrap input { width:100%; padding:.7rem 1rem; border-radius:50px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.08); color:white; font-size:.85rem; text-align:center; outline:none; }
+    .cancion-url-wrap input::placeholder { color:rgba(255,255,255,.35); }
+    .player-controls { display:flex; justify-content:center; position:relative; }
+    .play-btn { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg,var(--rose),var(--rose-deep)); border:none; color:white; font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(196,111,122,.5); transition:transform .2s; }
+    .play-btn:hover { transform:scale(1.08); }
+    .cancion-nota { font-size:.8rem; color:rgba(255,255,255,.4); margin-top:1rem; font-style:italic; position:relative; }
+
+    footer { text-align:center; padding:3rem 1.5rem; background:var(--cream-dark); position:relative; z-index:1; }
+    .footer-heart { font-size:2rem; animation:pulse 1.4s ease infinite; display:block; margin-bottom:.8rem; }
+    @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.18);} }
+    .footer-text { font-family:'Dancing Script',cursive; font-size:1.3rem; color:var(--text-light); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:600px){
+      nav a{font-size:.72rem;padding:.4rem .6rem;letter-spacing:.06rem;}
+      .modal-box{padding:2rem 1.5rem;}
+      .cancion-card{padding:2rem 1.2rem;}
+    }
+
+    /* ── SISTEMA SOLAR ── */
+    #universo { background: radial-gradient(ellipse at 50% 30%, #1a0a1a 0%, #0d0510 60%, #060208 100%); position: relative; overflow: hidden; padding: 4rem 1.5rem 6rem; }
+    #universo .section-header { position: relative; z-index: 2; }
+    #universo .section-tag { color: var(--rose-light); }
+    #universo .section-title { color: #f5d5d5; }
+    #universo .divider { background: linear-gradient(90deg, transparent, var(--rose-deep), transparent); }
+
+    /* Estrellas de fondo */
+    .stars-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+    .star { position: absolute; border-radius: 50%; background: white; animation: twinkle ease-in-out infinite; }
+    @keyframes twinkle { 0%,100%{opacity:.2;transform:scale(1);} 50%{opacity:1;transform:scale(1.4);} }
+
+    /* Contenedor del sistema */
+    .solar-system { position: relative; width: 100%; max-width: 700px; margin: 2rem auto 0; aspect-ratio: 1; z-index: 2; }
+
+    /* Sol */
+    .sol { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width: 80px; height: 80px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffe8c0, #f4c06e, #c46f7a, #8a2030);
+      box-shadow: 0 0 40px 15px rgba(244,192,110,.35), 0 0 80px 30px rgba(196,111,122,.2);
+      cursor: pointer; z-index: 10; transition: transform .3s, box-shadow .3s;
+      display: flex; align-items: center; justify-content: center; }
+    .sol:hover { transform:translate(-50%,-50%) scale(1.12);
+      box-shadow: 0 0 60px 25px rgba(244,192,110,.5), 0 0 100px 45px rgba(196,111,122,.3); }
+    .sol-label { color: #ffe8c0; font-family:'Dancing Script',cursive; font-size:.85rem; pointer-events:none; }
+
+    /* Órbitas */
+    .orbit { position: absolute; top:50%; left:50%; border-radius:50%;
+      border: 1px solid rgba(232,160,160,.12); transform: translate(-50%,-50%);
+      animation: orbitSpin linear infinite; }
+    @keyframes orbitSpin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    /* Planetas */
+    .planeta { position: absolute; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .25s, box-shadow .25s; z-index: 5; }
+    .planeta:hover { transform: scale(1.35) !important; }
+    .planeta-label { position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+      font-size: .6rem; letter-spacing: .08rem; text-transform: uppercase;
+      color: rgba(245,213,213,.7); white-space: nowrap; font-family:'Cormorant Garamond',serif;
+      pointer-events: none; }
+
+    /* Modal universo */
+    .universo-modal-overlay { position:fixed; inset:0; background:rgba(10,4,16,.85);
+      backdrop-filter:blur(8px); z-index:400; display:flex; align-items:center;
+      justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+    .universo-modal-overlay.open { opacity:1; pointer-events:all; }
+    .universo-modal-box { background: linear-gradient(145deg, #1e0d1e, #140a20);
+      border: 1px solid rgba(232,160,160,.25); border-radius:24px;
+      max-width:540px; width:100%; padding:3rem 2.5rem; position:relative;
+      transform:scale(.92); transition:transform .35s;
+      box-shadow: 0 0 60px rgba(196,111,122,.2), 0 30px 80px rgba(0,0,0,.6); }
+    .universo-modal-overlay.open .universo-modal-box { transform:scale(1); }
+    .universo-modal-close { position:absolute; top:1.2rem; right:1.5rem; background:none;
+      border:none; font-size:1.4rem; color:rgba(245,213,213,.5); cursor:pointer; transition:color .2s; }
+    .universo-modal-close:hover { color:var(--rose-light); }
+    .universo-modal-emoji { font-size:2.8rem; text-align:center; margin-bottom:.8rem; }
+    .universo-modal-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-style:italic;
+      color:var(--rose-light); text-align:center; margin-bottom:.4rem; }
+    .universo-modal-subtitle { font-size:.75rem; letter-spacing:.18rem; text-transform:uppercase;
+      color:rgba(201,169,110,.8); text-align:center; margin-bottom:1.8rem; }
+    .universo-modal-body { font-size:1rem; line-height:1.9; color:rgba(245,213,213,.85);
+      white-space:pre-line; font-family:'Cormorant Garamond',serif; }
+    .universo-modal-firma { margin-top:1.8rem; font-family:'Dancing Script',cursive;
+      font-size:1.3rem; color:var(--rose); text-align:right; }
+
+    @media(max-width:600px){
+      .solar-system { max-width: 340px; }
+      .sol { width:50px; height:50px; }
+      .universo-modal-box { padding:2rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
+
 <div id="particles"></div>
+
 <section id="inicio">
   <div id="hero">
     <div class="hero-ornament">✦ ✦ ✦</div>
@@ -125,13 +224,16 @@
     <p class="scroll-hint">↓ &nbsp; Explora nuestra historia &nbsp; ↓</p>
   </div>
 </section>
+
 <nav id="mainNav">
   <a href="#inicio" class="active">Inicio</a>
   <a href="#cartas">Cartas</a>
   <a href="#fotos">Fotos</a>
   <a href="#razones">Razones</a>
   <a href="#cancion">Canción</a>
+  <a href="#universo">Universo</a>
 </nav>
+
 <section id="cartas">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -142,6 +244,7 @@
     <div class="cartas-grid" id="cartasGrid"></div>
   </div>
 </section>
+
 <section id="fotos">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -149,10 +252,11 @@
       <h2 class="section-title">Nuestros momentos</h2>
       <div class="divider"></div>
     </div>
-    <p class="fotos-instruccion">Cada foto guarda un pedacito de nosotros 📸</p>
+    <p class="fotos-instruccion">Cada foto es un recuerdo que guardaré para siempre 📸</p>
     <div class="fotos-grid" id="fotosGrid"></div>
   </div>
 </section>
+
 <section id="razones">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -163,6 +267,7 @@
     <div class="razones-list" id="razonesList"></div>
   </div>
 </section>
+
 <section id="cancion">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -184,10 +289,40 @@
     </div>
   </div>
 </section>
+
+<section id="universo">
+  <div class="stars-bg" id="starsBg"></div>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-tag">Nuestro cosmos</p>
+      <h2 class="section-title">Tu universo personal</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="solar-system" id="solarSystem">
+      <div class="sol" id="solBtn">
+        <span class="sol-label">☀️ Tú</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal universo -->
+<div class="universo-modal-overlay" id="universoModal" onclick="closeUniversoModal(event)">
+  <div class="universo-modal-box">
+    <button class="universo-modal-close" onclick="closeUniversoModal()">✕</button>
+    <div class="universo-modal-emoji" id="uEmoji"></div>
+    <div class="universo-modal-name" id="uName"></div>
+    <div class="universo-modal-subtitle" id="uSubtitle"></div>
+    <div class="universo-modal-body" id="uBody"></div>
+    <div class="universo-modal-firma">Con amor, Jonathan 💕</div>
+  </div>
+</div>
+
 <footer>
   <span class="footer-heart">💕</span>
   <p class="footer-text">Hecho con amor infinito para Yesica — Jonathan</p>
 </footer>
+
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -197,81 +332,617 @@
     <p class="modal-firma">Con todo mi amor, Jonathan 💌</p>
   </div>
 </div>
+
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightboxImg" src="" alt="foto"/>
 </div>
-<script>
-const START_DATE=new Date('2026-02-07T00:00:00');
-function updateCounter(){const d=Math.max(0,new Date()-START_DATE);document.getElementById('cnt-dias').textContent=String(Math.floor(d/86400000)).padStart(2,'0');document.getElementById('cnt-horas').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');document.getElementById('cnt-min').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');document.getElementById('cnt-seg').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');}
-updateCounter();setInterval(updateCounter,1000);
 
-const CARTAS=[
-{fecha:"Lunes, 30 de marzo de 2026",titulo:"Tu mirada me roba el aliento",preview:"Hay miradas que cuentan historias, la tuya cuenta la más bonita que he escuchado…",emoji:"💌",cuerpo:"Yesica,\n\nHay miradas que cuentan historias. La tuya cuenta la más bonita que he escuchado en mi vida.\n\nCuando me miras — así, directo, sin avisar — siento que el tiempo decide tomarse un descanso. Todo se pausa. El ruido del mundo baja el volumen. Y solo quedo yo, flotando dentro de ese verde tuyo que no se parece a ningún otro verde que haya visto.\n\nA veces creo que no sabes lo que haces cuando me miras así. Y eso me encanta. Que algo tan poderoso en ti sea tan natural, tan tuyo, tan sin querer.\n\nSigue mirándome así siempre. Que yo nunca me voy a cansar de sentir que el mundo se detiene.\n\nTuyo, Jonathan 💕"},
-{fecha:"Martes, 31 de marzo de 2026",titulo:"Oda a tus quejas",preview:"Descubrí algo: tus quejas son una de mis cosas favoritas en el mundo…",emoji:"🌸",cuerpo:"Mi Yesi,\n\nTengo que confesarte algo.\n\nTus quejas son una de mis cosas favoritas del mundo entero.\n\nCuando te quejas — con esa voz, con esa carita, con ese modo tan tuyo que parece el de una niña pequeña reclamando algo importantísimo — me dan ganas de abrazarte y reírme al mismo tiempo. No de ti, sino contigo. Porque eres tan genuina, tan real, tan tú, que hasta cuando te quejas eres la persona más adorable que conozco.\n\nNo cambies eso nunca. Esas quejas tuyas me recuerdan que estoy con alguien de verdad. Con alguien que siente, que reacciona, que vive con intensidad.\n\nSigue quejándote. Aquí estaré, escuchándote con una sonrisa que no puedo esconder.\n\nCon amor, Jonathan 💕"},
-{fecha:"Miércoles, 1 de abril de 2026",titulo:"Poema — La niña que llevas dentro",preview:"A veces eres toda la fuerza del mundo, y a veces eres la niña más tierna…",emoji:"✨",cuerpo:"Para Yesica,\n\nA veces eres toda la fuerza del mundo,\nmujer que trabaja, que aguanta, que puede.\nY a veces, de pronto, sin avisar,\naparece la niña que llevas adentro.\n\nLa que se queja con la boca chiquita,\nla que frunce el ceño por algo pequeño,\nla que sin querer me regala una escena\nmás tierna que todo lo que haya visto.\n\nMe enamoro de las dos por igual —\nde la mujer que admiro con el alma,\ny de esa niña suave que aparece\ncuando el mundo te pesa demasiado.\n\nQuédate las dos. Las dos son Yesica.\nLas dos son mías. Las dos son todo."},
-{fecha:"Jueves, 2 de abril de 2026",titulo:"Lo que no te he dicho en voz alta",preview:"Hay cosas que siento y que me cuesta poner en palabras habladas…",emoji:"💖",cuerpo:"Yesica,\n\nHay cosas que siento y que me cuesta decirte en voz alta. No porque no quiera, sino porque cuando estás frente a mí, las palabras se enredan y me quedo mirándote como un tonto.\n\nAsí que lo escribo.\n\nMe cuesta imaginar mi día sin saber que estás ahí. Me acostumbré a ti de una forma tan natural que ya eres parte de cómo funciona todo. Eres el mensaje que espero, la voz que me calma, la persona con quien quiero compartir las cosas que me pasan — las importantes y las que no lo son tanto.\n\nTu humildad me desarma. En un mundo donde todo el mundo quiere aparentar, tú simplemente eres. Sin máscaras, sin poses. Solo Yesica, y con eso sobra y falta.\n\nTe amo de verdad. De ese amor que no necesita gritarse para sentirse.\n\nJonathan 💕"},
-{fecha:"Viernes, 3 de abril de 2026",titulo:"Poema — Tu humildad",preview:"No llevas corona, pero caminas como si el mundo fuera mejor gracias a ti…",emoji:"🌹",cuerpo:"Para mi Yesi,\n\nNo llevas corona,\nno necesitas anunciarte.\nLlegas y el lugar se llena\nde algo que no tiene nombre exacto\npero que todos sienten.\n\nTu humildad no es timidez —\nes la elegancia de quien sabe quién es\ny no necesita demostrárselo a nadie.\n\nCaminas liviana por el mundo\ncomo si no supieras el peso\nque tienes en el corazón de los que te quieren.\n\nYo sí lo sé.\nYo cargo ese peso con gusto,\ncon orgullo,\ncon amor.\n\nGracias por ser tan tú,\ntan sin querer,\ntan sin saber\ncuánto me cambias la vida.\n\nJonathan 💕"},
-{fecha:"Sábado, 4 de abril de 2026",titulo:"Un sábado pensando en ti",preview:"Los sábados tienen algo especial cuando sé que hay posibilidad de verte…",emoji:"🌷",cuerpo:"Mi amor,\n\nLos sábados tienen algo diferente cuando sé que hay posibilidad de verte.\n\nEs curioso cómo una persona puede cambiar hasta el sabor de los días. Antes un sábado era solo eso — un día sin trabajo. Ahora es un día con posibilidad de ti. Y eso lo convierte en algo completamente distinto.\n\nPienso en tu carita cuando te despiertas. Pienso en cómo serías de dormilona o madrugadora. Pienso en lo bonito que sería un sábado cualquiera, sin planes grandes, solo nosotros dos y el tiempo pasando despacio como cuando uno es feliz de verdad.\n\nQuiero muchos sábados contigo, Yesica. Muchos, y que nunca alcancen.\n\nTe amo, Jonathan 💕"},
-{fecha:"Domingo, 5 de abril de 2026",titulo:"Gracias por enamórarme cada día",preview:"No fue un solo momento — me enamoro de ti todos los días, una y otra vez…",emoji:"💕",cuerpo:"Yesica Altamirano,\n\nNo fue un solo momento en el que me enamoré de ti. Fue muchos.\n\nMe enamoré de ti cuando vi tu mirada por primera vez y pensé: ahí hay algo distinto. Me enamoré cuando te quejaste de algo con esa carita tuya y no pude evitar sonreír. Me enamoré cuando supe lo duro que trabajas y aun así tienes corazón para dar.\n\nMe enamoro de ti todos los días. Una y otra vez. Como si el corazón necesitara recordarse a sí mismo lo afortunado que es.\n\nGracias por existir. Gracias por ser humilde cuando el mundo te pide que seas más. Gracias por esos ojos verdes que me miran y me hacen sentir que todo tiene sentido.\n\nTe amo hoy más que ayer, y mañana más que hoy.\n\nSiempre tuyo,\nJonathan 💕"}
+<script>
+const START_DATE = new Date('2026-02-07T00:00:00');
+
+function updateCounter() {
+  const d = Math.max(0, new Date() - START_DATE);
+  document.getElementById('cnt-dias').textContent  = String(Math.floor(d / 86400000)).padStart(2,'0');
+  document.getElementById('cnt-horas').textContent = String(Math.floor((d % 86400000) / 3600000)).padStart(2,'0');
+  document.getElementById('cnt-min').textContent   = String(Math.floor((d % 3600000) / 60000)).padStart(2,'0');
+  document.getElementById('cnt-seg').textContent   = String(Math.floor((d % 60000) / 1000)).padStart(2,'0');
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+
+const CARTAS = [
+  {
+    fecha: "Lunes, 6 de abril de 2026",
+    titulo: "Eres una diosa y no lo sabes",
+    preview: "Hay algo que necesito que sepas hoy, aunque me tarde en encontrar las palabras…",
+    emoji: "💌",
+    cuerpo: `Yesica,
+
+Hay algo que necesito que sepas hoy, aunque me tarde en encontrar las palabras exactas.
+
+Tú no te ves como yo te veo. Eso me parte el corazón un poco, porque lo que yo veo cuando te miro es algo que no tiene comparación. Eres una diosa, Yesi. No en el sentido exagerado de la palabra — en el sentido más real y más profundo.
+
+Tu cuerpo es tuyo, y es perfecto porque es el que te carga, el que te lleva al trabajo cada día, el que te permite reírte, quejarte, mirarme con esos ojos verdes que me deshacen. Ese cuerpo que tú a veces no aprecias es el mismo que yo admiro y que me enamora cada vez más.
+
+No te compares. No te juzgues. Eres exactamente como debes ser.
+
+Y para mí, eres la mujer más bella del universo entero.
+
+Con todo mi amor, Jonathan 💕`
+  },
+  {
+    fecha: "Martes, 7 de abril de 2026",
+    titulo: "Felices dos meses, mi amor",
+    preview: "Hoy cumplimos dos meses… y aunque suene increíble, siento que el tiempo ha pasado tan rápido…",
+    emoji: "💕",
+    cuerpo: `Mi amor,
+
+Hoy cumplimos dos meses… y aunque suene increíble, siento que el tiempo ha pasado tan rápido, como si cada momento contigo se hubiera escapado entre mis manos sin darme cuenta. Pero al mismo tiempo, cada recuerdo contigo se queda tan marcado en mi corazón que parece que llevo toda una vida amándote.
+
+Quiero darte las gracias… gracias por quedarte. Porque sé que no todo ha sido perfecto, hemos tenido problemas, momentos difíciles, dudas y silencios… pero aun así, tú decidiste no soltarme al primer obstáculo. Y eso, amor, vale más que mil palabras.
+
+Gracias por luchar cada día por nosotros, incluso en esos momentos en los que tal vez no quieres saber nada de mí. Gracias por seguir aquí, por no rendirte, por demostrarme que lo nuestro importa. Yo también estoy aquí, aprendiendo, creciendo, intentando ser mejor para ti y para nosotros.
+
+Eres una persona tan especial… y no solo por lo que eres conmigo, sino por lo que eres en esencia. Me encanta tu forma de ser, tu manera de ver el mundo, tu alma tan única… y cada día me enamoro un poco más de ti.
+
+Quiero que esto siga creciendo, que sigamos aprendiendo juntos, que los problemas no nos separen sino que nos hagan más fuertes. Porque si algo tengo claro… es que te quiero en mi vida.
+
+Feliz dos meses, mi amor. Te amo muchísimo ❤️`
+  },
+  {
+    fecha: "Miércoles, 8 de abril de 2026",
+    titulo: "Perdóname, Yesica",
+    preview: "Hay palabras que uno tiene que decir aunque cuesten, y esta es una de ellas…",
+    emoji: "💖",
+    cuerpo: `Yesica,
+
+Hay palabras que uno tiene que decir aunque cuesten. Esta es una de ellas.
+
+Perdóname.
+
+Perdóname por los momentos en que mi mal humor llegó antes que mi amor. Por las veces que te hice sentir mal sin querer — o sin pensar lo suficiente en cómo te afectaría. No tienes la culpa de mis tormentas, y no es justo que las hayas cargado tú.
+
+Tú mereces un Jonathan que cuando tenga un mal día, lo diga con palabras y no con distancia. Que aprenda a separar lo que le pasa por dentro de lo que te da a ti.
+
+Estoy trabajando en eso. Por mí, pero sobre todo por nosotros.
+
+Te amo, y por eso esta disculpa importa.
+
+Jonathan 💕`
+  },
+  {
+    fecha: "Jueves, 9 de abril de 2026",
+    titulo: "Poema — Lo que sentí el domingo",
+    preview: "Hubo un momento el domingo en que el tiempo se detuvo de golpe…",
+    emoji: "✨",
+    cuerpo: `Para Yesica,
+
+Hubo un momento el domingo
+en que el tiempo se detuvo de golpe
+y lo primero que pensé,
+lo primero que sentí,
+fuiste tú.
+
+No pensé en mil cosas.
+Pensé en tu nombre.
+En tus ojos verdes que no había visto suficiente.
+En todo lo que me faltaba decirte.
+
+Y entonces supe —
+con esa claridad que solo dan los sustos —
+que no hay nada en este mundo
+que valga más que seguir aquí,
+contigo,
+un día más.
+
+Gracias por ser lo primero.
+Gracias por ser lo más importante.
+Gracias por contestar cuando llamé.
+
+Jonathan 💕`
+  },
+  {
+    fecha: "Viernes, 10 de abril de 2026",
+    titulo: "Tu cuerpo es sagrado",
+    preview: "Quiero hablarte de algo que me duele que no veas en ti misma…",
+    emoji: "🌹",
+    cuerpo: `Mi Yesi hermosa,
+
+Quiero hablarte de algo que me duele un poco que no veas en ti misma.
+
+Tú a veces miras tu cuerpo y no te gusta lo que ves. Y yo te miro a ti y no puedo entenderlo. Porque lo que yo veo es una mujer que lleva ese cuerpo con una gracia que no se aprende, que camina con una presencia que llena cualquier lugar, que tiene una carita tan bella que me cuesta respirar normal.
+
+Tu cuerpo no es un problema que resolver. Es el hogar de la persona que más me importa en el mundo.
+
+Quiero que te mires como yo te miro. Con admiración. Con ternura. Con amor.
+
+Eres una diosa, Yesica. Y punto.
+
+Jonathan 💕`
+  },
+  {
+    fecha: "Sábado, 11 de abril de 2026",
+    titulo: "Lo primero que pensé fue en ti",
+    preview: "El domingo aprendí algo que no voy a olvidar nunca en la vida…",
+    emoji: "🌷",
+    cuerpo: `Yesica,
+
+El domingo aprendí algo que no voy a olvidar nunca en la vida.
+
+Aprendí que cuando el miedo llega de verdad, cuando el mundo se sacude y uno no sabe qué va a pasar, la mente va directo a lo que más quiere. Y lo que más quiero eres tú.
+
+No tuve dudas. No hubo segundo pensamiento. Fui a ti.
+
+Eso me dice todo lo que necesito saber sobre lo que siento. Eres mi prioridad, Yesi. Eres la persona con quien quiero estar, a quien quiero llamar, a quien quiero ver cuando el mundo no está bien.
+
+Gracias por estar. Gracias por contestar. Gracias por ser lo más importante.
+
+Te amo más de lo que sé explicar.
+Jonathan 💕`
+  },
+  {
+    fecha: "Domingo, 12 de abril de 2026",
+    titulo: "Poema — Diosa sin corona",
+    preview: "No necesitas corona para ser lo más sagrado que existe en mi mundo…",
+    emoji: "💕",
+    cuerpo: `Para mi Yesica,
+
+No necesitas corona
+ni saberlo tú misma —
+eres diosa igual,
+en silencio, sin prisa.
+
+Caminas por el mundo
+sin saber el efecto,
+sin saber que hay ojos
+que te siguen con respeto.
+
+Te miras al espejo
+y no ves lo que yo veo —
+una mujer completa,
+un universo entero.
+
+Yo sí lo veo, Yesi.
+Yo sí me doy cuenta.
+Y voy a recordártelo
+cada vez que lo necesites.
+
+Eres suficiente.
+Eres demasiado.
+Eres exactamente
+lo que este corazón ha buscado.
+
+Siempre tuyo,
+Jonathan 💕`
+  }
 ];
 
-const cartasGrid=document.getElementById('cartasGrid');
-CARTAS.forEach((c,i)=>{
-  const div=document.createElement('div');
-  div.className='carta-card reveal';
-  div.innerHTML=`<div class="carta-fecha">${c.fecha}</div><div class="carta-num">0${i+1}</div><div class="carta-titulo">${c.titulo}</div><div class="carta-preview">${c.preview}</div><div class="carta-badge">${c.emoji}</div>`;
-  div.onclick=()=>openModal(c);
+const cartasGrid = document.getElementById('cartasGrid');
+CARTAS.forEach((c, i) => {
+  const div = document.createElement('div');
+  div.className = 'carta-card reveal';
+  div.innerHTML = `
+    <div class="carta-fecha">${c.fecha}</div>
+    <div class="carta-num">0${i+1}</div>
+    <div class="carta-titulo">${c.titulo}</div>
+    <div class="carta-preview">${c.preview}</div>
+    <div class="carta-badge">${c.emoji}</div>
+  `;
+  div.onclick = () => openModal(c);
   cartasGrid.appendChild(div);
 });
 
-function openModal(c){document.getElementById('modalFecha').textContent=c.fecha;document.getElementById('modalTitle').textContent=c.titulo;document.getElementById('modalBody').textContent=c.cuerpo;document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeModal(e){if(!e||e.target===document.getElementById('modalOverlay')||e.currentTarget.classList.contains('modal-close')){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}}
+function openModal(c) {
+  document.getElementById('modalFecha').textContent = c.fecha;
+  document.getElementById('modalTitle').textContent = c.titulo;
+  document.getElementById('modalBody').textContent = c.cuerpo;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modalOverlay') || e.target.classList.contains('modal-close')) {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
 
-// FOTOS — pon tus archivos foto1.jpeg, foto2.jpeg... en la misma carpeta que index.html
-const FOTOS=[
-  {archivo:"foto1.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto2.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto3.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto4.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto5.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto6.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto7.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto8.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto9.jpeg",caption:"Nuestro recuerdo 💕"},
-  {archivo:"foto10.jpeg",caption:"Nuestro recuerdo 💕"},
+const FOTOS = [
+  { src: 'fotos/foto1.jpeg',  caption: 'Nuestro recuerdo 💕' },
+  { src: 'fotos/foto2.jpeg',  caption: 'Juntos siempre 🌹' },
+  { src: 'fotos/foto3.jpeg',  caption: 'Mi favorita ✨' },
+  { src: 'fotos/foto4.jpeg',  caption: 'Momentos así 🌸' },
+  { src: 'fotos/foto5.jpeg',  caption: 'Para siempre 💖' },
+  { src: 'fotos/foto6.jpeg',  caption: 'Te amo 🌷' },
+  { src: 'fotos/foto7.jpeg',  caption: 'Nuestra historia 💕' },
+  { src: 'fotos/foto8.jpeg',  caption: 'Recuerdo especial 🌹' },
+  { src: 'fotos/foto9.jpeg',  caption: 'Mi universo ✨' },
+  { src: 'fotos/foto10.jpeg', caption: 'Siempre tú 💕' },
 ];
 
-const fotosGrid=document.getElementById('fotosGrid');
-FOTOS.forEach(f=>{
-  const item=document.createElement('div');
-  const img=new Image();
-  img.onload=()=>{item.className='foto-item';item.innerHTML=`<img src="${f.archivo}" alt="${f.caption}"/><div class="foto-overlay"><span class="foto-caption">${f.caption}</span></div>`;item.onclick=()=>openLightbox(f.archivo);};
-  img.onerror=()=>{item.className='foto-placeholder';item.innerHTML=`<div class="foto-placeholder-icon">🌸</div><div class="foto-placeholder-text">${f.archivo}</div>`;};
-  img.src=f.archivo;
-  fotosGrid.appendChild(item);
+const fotosGrid = document.getElementById('fotosGrid');
+FOTOS.forEach((f, i) => {
+  const img = new Image();
+  img.onload = () => {
+    const item = document.createElement('div');
+    item.className = 'foto-item';
+    item.innerHTML = `<img src="${f.src}" alt="recuerdo"/><div class="foto-overlay"><span class="foto-caption">${f.caption}</span></div>`;
+    item.onclick = () => openLightbox(f.src);
+    fotosGrid.appendChild(item);
+  };
+  img.onerror = () => {
+    const item = document.createElement('div');
+    item.className = 'foto-placeholder';
+    item.innerHTML = `<span>📷</span><p>foto${i+1}.jpeg</p>`;
+    fotosGrid.appendChild(item);
+  };
+  img.src = f.src;
 });
 
-function openLightbox(src){document.getElementById('lightboxImg').src=src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-const RAZONES=["Tus ojos verdes son lo más bonito que han visto los míos.","Tu sonrisa tiene el poder de arreglar cualquier día.","Admiro tu fuerza — trabajas duro y aun así das lo mejor de ti.","Me regalas tu tiempo aunque estés agotada, y eso es amor puro.","Tu carita es tan bella que parece sacada de otro universo.","Me inspiras a ser mejor persona cada día.","Contigo, hasta el silencio se siente como casa.","Eres honesta, y eso vale más que mil palabras bonitas.","La forma en que te ríes hace que todo valga la pena.","Cuidas a las personas que amas con todo tu corazón.","Contigo los días normales se vuelven extraordinarios.","Simplemente eres tú — y eso ya es todo lo que necesito."];
-const razonesList=document.getElementById('razonesList');
-RAZONES.forEach((r,i)=>{const div=document.createElement('div');div.className='razon-item reveal';div.innerHTML=`<div class="razon-num">${i+1}</div><div class="razon-text">${r}</div>`;razonesList.appendChild(div);});
+const RAZONES = [
+  "Tus ojos verdes son lo más bonito que han visto los míos.",
+  "Tu manera de trabajar me inspira a esforzarme más cada día.",
+  "Aun cansada, encuentras tiempo para mí — y eso vale todo.",
+  "Tu sonrisa cambia el ambiente de cualquier lugar.",
+  "Tienes una carita que parece hecha de luz y universo.",
+  "Me haces sentir que soy importante sin decir una sola palabra.",
+  "Tu corazón es tan grande como tu valentía.",
+  "Me enseñas que el amor se demuestra en los detalles pequeños.",
+  "Eres fuerte, aunque a veces no te lo creas.",
+  "Contigo, hasta los días difíciles tienen algo de bonito.",
+  "Te entregas a todo lo que haces con una pasión que me enamora.",
+  "Simplemente, eres Yesica — y eso es más que suficiente.",
+];
 
-let playing=false;
-function togglePlay(){const url=document.getElementById('spotifyUrl').value.trim();const disc=document.getElementById('disc');const btn=document.getElementById('playBtn');if(url){window.open(url,'_blank');playing=true;}else{playing=!playing;}disc.classList.toggle('spin',playing);btn.textContent=playing?'⏸':'▶';}
+const razonesList = document.getElementById('razonesList');
+RAZONES.forEach((r, i) => {
+  const div = document.createElement('div');
+  div.className = 'razon-item reveal';
+  div.innerHTML = `<div class="razon-num">${i+1}</div><div class="razon-text">${r}</div>`;
+  razonesList.appendChild(div);
+});
 
-const petals=['🌸','🌹','✨','💕','🌷'];
-const container=document.getElementById('particles');
-for(let i=0;i<18;i++){const p=document.createElement('div');p.className='petal';p.textContent=petals[Math.floor(Math.random()*petals.length)];p.style.cssText=`left:${Math.random()*100}%;font-size:${.6+Math.random()*.8}rem;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;container.appendChild(p);}
+let playing = false;
+function togglePlay() {
+  const url = document.getElementById('spotifyUrl').value.trim();
+  const disc = document.getElementById('disc');
+  const btn  = document.getElementById('playBtn');
+  if (url) { window.open(url, '_blank'); playing = true; }
+  else { playing = !playing; }
+  disc.classList.toggle('spin', playing);
+  btn.textContent = playing ? '⏸' : '▶';
+}
 
-const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);observer.unobserve(e.target);}});},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// ── SISTEMA SOLAR ──
+const CUERPOS = [
+  {
+    nombre: 'El Sol',
+    subtitulo: 'El centro de todo',
+    emoji: '☀️',
+    isSol: true,
+    color: 'radial-gradient(circle at 35% 35%, #ffe8c0, #f4c06e, #c46f7a, #8a2030)',
+    mensaje: `Yesica,
 
-const sections=document.querySelectorAll('section[id]');
-const navLinks=document.querySelectorAll('nav a');
-window.addEventListener('scroll',()=>{let current='inicio';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.id;});navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));});
+Si el sistema solar tiene un sol, tú eres el mío.
+No porque seas perfecta —
+sino porque sin ti, todo lo demás pierde su luz.
+
+Giro alrededor de ti sin darme cuenta.
+Te busco en cada momento.
+Eres el centro al que siempre vuelvo.
+
+Eres mi sol, mi calor, mi razón de seguir.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'Mercurio',
+    subtitulo: 'El más cercano a tu corazón',
+    emoji: '🪨',
+    radio: 30,
+    size: 14,
+    color: '#b0a090',
+    shadow: 'rgba(176,160,144,.7)',
+    duracion: 10,
+    angulo: 20,
+    mensaje: `Eres lo primero que pienso al despertar.
+
+Antes del café, antes del teléfono, antes de todo —
+aparece tu nombre en mi cabeza
+como si hubiera estado esperando ahí toda la noche.
+
+Eso es lo que significa estar cerca de alguien de verdad.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'Venus',
+    subtitulo: 'El planeta del amor',
+    emoji: '🤍',
+    radio: 42,
+    size: 20,
+    color: 'radial-gradient(circle at 35% 30%, #f5e6d0, #e8c9a0, #c9956e)',
+    shadow: 'rgba(232,201,160,.8)',
+    duracion: 16,
+    angulo: 120,
+    mensaje: `Venus es el planeta del amor.
+Pero yo no necesito mirar al cielo para encontrarlo —
+lo tengo en ti.
+
+En tu manera de hablar.
+En cómo te ríes cuando algo te da mucha gracia.
+En la forma en que me miras cuando crees que no me doy cuenta.
+
+Eres lo más bonito de mi universo.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'La Tierra',
+    subtitulo: 'Donde te encontré',
+    emoji: '🌍',
+    radio: 57,
+    size: 22,
+    color: 'radial-gradient(circle at 35% 30%, #6ab8d4, #3a8fa8, #2d7a5e, #1a5c42)',
+    shadow: 'rgba(106,184,212,.7)',
+    duracion: 24,
+    angulo: 240,
+    mensaje: `De todos los planetas del universo,
+tuve la suerte increíble
+de estar en el mismo.
+
+En la misma ciudad.
+En el mismo momento.
+Contigo.
+
+No creo en las coincidencias.
+Creo que el universo conspiró para ponerte en mi camino.
+
+Y le voy a agradecer eso por el resto de mi vida.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'Marte',
+    subtitulo: 'Mi valentía por ti',
+    emoji: '🔴',
+    radio: 74,
+    size: 17,
+    color: 'radial-gradient(circle at 30% 30%, #e8806a, #c45040, #963020)',
+    shadow: 'rgba(196,80,64,.7)',
+    duracion: 35,
+    angulo: 60,
+    mensaje: `Hay cosas en la vida que asustan.
+Amar de verdad es una de ellas.
+
+Pero contigo aprendí
+que el miedo no es razón suficiente para no intentarlo.
+
+Me da miedo perderte.
+Me da más miedo no haberte amado con todo.
+
+Así que aquí estoy —
+eligiéndote, cada día, con todo el valor que tengo.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'Júpiter',
+    subtitulo: 'El más grande de todos',
+    emoji: '🪐',
+    radio: 95,
+    size: 30,
+    color: 'radial-gradient(circle at 40% 35%, #e8c89a, #c8a070, #a07840, #885830)',
+    shadow: 'rgba(200,160,112,.7)',
+    duracion: 55,
+    angulo: 180,
+    mensaje: `Lo que siento por ti no cabe en pocas palabras.
+
+Es enorme, como Júpiter —
+que tiene suficiente espacio
+para que quepan mil tierras dentro.
+
+Así de grande es el espacio que ocupas en mí.
+No hay rincón en mi corazón donde no estés.
+
+Eres todo, Yesi. Todo.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'Saturno',
+    subtitulo: 'Con anillos para ti',
+    emoji: '💍',
+    radio: 118,
+    size: 26,
+    color: 'radial-gradient(circle at 35% 30%, #e8d8b0, #c8b880, #a09060)',
+    shadow: 'rgba(200,184,128,.7)',
+    duracion: 80,
+    angulo: 300,
+    mensaje: `Saturno tiene anillos
+porque incluso los planetas
+saben que las cosas más bonitas
+merecen adorno.
+
+Tú no necesitas nada extra —
+ya eres suficiente tal como eres.
+
+Pero si algún día pudiera darte los anillos de Saturno,
+lo haría.
+Sin pensarlo.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'Urano',
+    subtitulo: 'El diferente, como tú',
+    emoji: '🩵',
+    radio: 138,
+    size: 21,
+    color: 'radial-gradient(circle at 35% 30%, #a8e0e8, #70c0d0, #4090a8)',
+    shadow: 'rgba(112,192,208,.7)',
+    duracion: 110,
+    angulo: 80,
+    mensaje: `Urano gira diferente a todos los demás.
+Inclinado, a su manera, sin pedir permiso.
+
+Me recuerdas a él —
+no porque seas rara,
+sino porque eres original.
+
+No te pareces a nadie que haya conocido.
+Y eso, Yesi,
+es una de las cosas que más me enamora de ti.
+
+Jonathan 💕`
+  },
+  {
+    nombre: 'Neptuno',
+    subtitulo: 'Lo más profundo de mi amor',
+    emoji: '🌊',
+    radio: 158,
+    size: 20,
+    color: 'radial-gradient(circle at 35% 30%, #6080e8, #3050c8, #1030a0)',
+    shadow: 'rgba(48,80,200,.7)',
+    duracion: 145,
+    angulo: 200,
+    mensaje: `Neptuno es el planeta más lejano —
+el que nadie ve a simple vista.
+El que hay que buscar con paciencia.
+
+Mi amor por ti es así.
+Profundo, enorme, tranquilo.
+No siempre lo grito —
+pero está ahí, constante,
+en lo más hondo de mí.
+
+Tan real como Neptuno.
+Tan tuyo como siempre.
+
+Jonathan 💕`
+  }
+];
+
+// Crear estrellas
+const starsBg = document.getElementById('starsBg');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `
+    left:${Math.random()*100}%;top:${Math.random()*100}%;
+    width:${size}px;height:${size}px;
+    animation-duration:${2+Math.random()*4}s;
+    animation-delay:${Math.random()*4}s;
+    opacity:${Math.random()*.6+.1};
+  `;
+  starsBg.appendChild(s);
+}
+
+// Construir sistema solar
+const solarSystem = document.getElementById('solarSystem');
+const planetas = CUERPOS.filter(c => !c.isSol);
+
+planetas.forEach(p => {
+  // Órbita
+  const orbit = document.createElement('div');
+  orbit.className = 'orbit';
+  const diam = p.radio * 2;
+  orbit.style.cssText = `
+    width:${diam}%;height:${diam}%;
+    position:absolute;top:50%;left:50%;border-radius:50%;
+    border:1px solid rgba(232,160,160,.1);
+    transform:translate(-50%,-50%);
+    animation:orbitSpin ${p.duracion}s linear infinite;
+  `;
+  // Planeta en el extremo superior de la órbita
+  const planeta = document.createElement('div');
+  planeta.className = 'planeta';
+  planeta.style.cssText = `
+    width:${p.size}px;height:${p.size}px;
+    background:${p.color};
+    box-shadow:0 0 14px 5px ${p.shadow};
+    position:absolute;
+    top:0;left:50%;
+    transform:translate(-50%,-50%);
+    animation:counterSpin${p.nombre.replace(/\s/g,'')} ${p.duracion}s linear infinite;
+  `;
+  // Inyectar keyframe de contra-rotación
+  const style = document.createElement('style');
+  style.textContent = `@keyframes counterSpin${p.nombre.replace(/\s/g,'')} { to { transform: translate(-50%,-50%) rotate(-360deg); } }`;
+  document.head.appendChild(style);
+
+  const label = document.createElement('div');
+  label.className = 'planeta-label';
+  label.textContent = p.nombre;
+  planeta.appendChild(label);
+  planeta.addEventListener('click', (e) => { e.stopPropagation(); openUniversoModal(p); });
+  orbit.appendChild(planeta);
+
+  // Rotar órbita según ángulo inicial (inline style override de animation)
+  orbit.style.setProperty('--init-angle', p.angulo + 'deg');
+  // Aplicar offset inicial via animationDelay negativo proporcional al ángulo
+  const delay = -(p.angulo / 360) * p.duracion;
+  orbit.style.animationDelay = delay + 's';
+
+  solarSystem.appendChild(orbit);
+});
+
+// Sol click
+document.getElementById('solBtn').onclick = () => openUniversoModal(CUERPOS[0]);
+
+function openUniversoModal(cuerpo) {
+  document.getElementById('uEmoji').textContent = cuerpo.emoji;
+  document.getElementById('uName').textContent = cuerpo.nombre;
+  document.getElementById('uSubtitle').textContent = cuerpo.subtitulo;
+  document.getElementById('uBody').textContent = cuerpo.mensaje;
+  document.getElementById('universoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeUniversoModal(e) {
+  if (!e || e.target === document.getElementById('universoModal') || e.target.classList.contains('universo-modal-close')) {
+    document.getElementById('universoModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+const petals = ['🌸','🌹','✨','💕','🌷'];
+const container = document.getElementById('particles');
+for (let i = 0; i < 18; i++) {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.textContent = petals[Math.floor(Math.random() * petals.length)];
+  p.style.cssText = `left:${Math.random()*100}%;font-size:${.6+Math.random()*.8}rem;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;
+  container.appendChild(p);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = 'inicio';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+});
 </script>
 </body>
 </html>
