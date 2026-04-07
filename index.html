@@ -132,77 +132,92 @@
       .cancion-card{padding:2rem 1.2rem;}
     }
 
-    /* ── SISTEMA SOLAR ── */
-    #universo { background: radial-gradient(ellipse at 50% 30%, #1a0a1a 0%, #0d0510 60%, #060208 100%); position: relative; overflow: hidden; padding: 4rem 1.5rem 6rem; }
+    /* ══ UNIVERSO ══ */
+    #universo {
+      background: radial-gradient(ellipse at 50% 20%, #1c0a1c 0%, #0a0410 55%, #04020a 100%);
+      position: relative; overflow: hidden; padding: 4rem 1.5rem 5rem;
+    }
     #universo .section-header { position: relative; z-index: 2; }
-    #universo .section-tag { color: var(--rose-light); }
+    #universo .section-tag   { color: #f5d5d5; }
     #universo .section-title { color: #f5d5d5; }
-    #universo .divider { background: linear-gradient(90deg, transparent, var(--rose-deep), transparent); }
+    #universo .divider { background: linear-gradient(90deg,transparent,var(--rose-deep),transparent); }
+    .u-stars { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .u-star  { position: absolute; border-radius: 50%; background: #fff;
+      animation: uTwinkle ease-in-out infinite; }
+    @keyframes uTwinkle { 0%,100%{opacity:.12;} 50%{opacity:.85;} }
 
-    /* Estrellas de fondo */
-    .stars-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-    .star { position: absolute; border-radius: 50%; background: white; animation: twinkle ease-in-out infinite; }
-    @keyframes twinkle { 0%,100%{opacity:.2;transform:scale(1);} 50%{opacity:1;transform:scale(1.4);} }
+    /* Sistema solar — tamaño fijo, centrado */
+    #sWrap {
+      position: relative; width: 480px; height: 480px;
+      margin: 2rem auto 0; z-index: 2; flex-shrink: 0;
+    }
+    @media(max-width:520px){ #sWrap { width:300px; height:300px; } }
 
-    /* Contenedor del sistema */
-    .solar-system { position: relative; width: 100%; max-width: 700px; margin: 2rem auto 0; aspect-ratio: 1; z-index: 2; }
+    #sSol {
+      position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:48px; height:48px; border-radius:50%; border:none; cursor:pointer;
+      background: radial-gradient(circle at 38% 35%, #ffe8c0, #f4c06e 45%, #c46f7a 75%, #8a2030);
+      box-shadow: 0 0 18px 6px rgba(244,192,110,.45), 0 0 44px 16px rgba(196,111,122,.22);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Dancing Script',cursive; font-size:.65rem; color:#fff8e0;
+      z-index:10; transition:transform .3s;
+    }
+    #sSol:hover { transform:translate(-50%,-50%) scale(1.15); }
 
-    /* Sol */
-    .sol { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      width: 80px; height: 80px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffe8c0, #f4c06e, #c46f7a, #8a2030);
-      box-shadow: 0 0 40px 15px rgba(244,192,110,.35), 0 0 80px 30px rgba(196,111,122,.2);
-      cursor: pointer; z-index: 10; transition: transform .3s, box-shadow .3s;
-      display: flex; align-items: center; justify-content: center; }
-    .sol:hover { transform:translate(-50%,-50%) scale(1.12);
-      box-shadow: 0 0 60px 25px rgba(244,192,110,.5), 0 0 100px 45px rgba(196,111,122,.3); }
-    .sol-label { color: #ffe8c0; font-family:'Dancing Script',cursive; font-size:.85rem; pointer-events:none; }
-
-    /* Órbitas */
-    .orbit { position: absolute; top:50%; left:50%; border-radius:50%;
-      border: 1px solid rgba(232,160,160,.12); transform: translate(-50%,-50%);
-      animation: orbitSpin linear infinite; }
-    @keyframes orbitSpin { to { transform: translate(-50%,-50%) rotate(360deg); } }
-
-    /* Planetas */
-    .planeta { position: absolute; border-radius: 50%; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform .25s, box-shadow .25s; z-index: 5; }
-    .planeta:hover { transform: scale(1.35) !important; }
-    .planeta-label { position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
-      font-size: .6rem; letter-spacing: .08rem; text-transform: uppercase;
-      color: rgba(245,213,213,.7); white-space: nowrap; font-family:'Cormorant Garamond',serif;
-      pointer-events: none; }
+    .sRing {
+      position:absolute; top:50%; left:50%; border-radius:50%;
+      border:1px solid rgba(232,160,160,.2);
+      transform:translate(-50%,-50%); pointer-events:none;
+    }
+    .sDot {
+      position:absolute; border-radius:50%; cursor:pointer; z-index:5;
+      transition:filter .2s;
+    }
+    .sDot:hover { filter:brightness(1.5) drop-shadow(0 0 6px #fff); }
+    .sLbl {
+      position:absolute; z-index:6; pointer-events:none;
+      font-family:'Cormorant Garamond',serif;
+      font-size:.6rem; letter-spacing:.07rem; text-transform:uppercase;
+      color:rgba(245,213,213,.8); white-space:nowrap;
+      transform:translateX(-50%);
+    }
+    .u-hint {
+      text-align:center; margin-top:1rem; position:relative; z-index:2;
+      font-size:.82rem; font-style:italic; color:rgba(245,213,213,.38);
+      font-family:'Cormorant Garamond',serif;
+    }
 
     /* Modal universo */
-    .universo-modal-overlay { position:fixed; inset:0; background:rgba(10,4,16,.85);
-      backdrop-filter:blur(8px); z-index:400; display:flex; align-items:center;
-      justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .35s; }
-    .universo-modal-overlay.open { opacity:1; pointer-events:all; }
-    .universo-modal-box { background: linear-gradient(145deg, #1e0d1e, #140a20);
-      border: 1px solid rgba(232,160,160,.25); border-radius:24px;
-      max-width:540px; width:100%; padding:3rem 2.5rem; position:relative;
-      transform:scale(.92); transition:transform .35s;
-      box-shadow: 0 0 60px rgba(196,111,122,.2), 0 30px 80px rgba(0,0,0,.6); }
-    .universo-modal-overlay.open .universo-modal-box { transform:scale(1); }
-    .universo-modal-close { position:absolute; top:1.2rem; right:1.5rem; background:none;
-      border:none; font-size:1.4rem; color:rgba(245,213,213,.5); cursor:pointer; transition:color .2s; }
-    .universo-modal-close:hover { color:var(--rose-light); }
-    .universo-modal-emoji { font-size:2.8rem; text-align:center; margin-bottom:.8rem; }
-    .universo-modal-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-style:italic;
-      color:var(--rose-light); text-align:center; margin-bottom:.4rem; }
-    .universo-modal-subtitle { font-size:.75rem; letter-spacing:.18rem; text-transform:uppercase;
-      color:rgba(201,169,110,.8); text-align:center; margin-bottom:1.8rem; }
-    .universo-modal-body { font-size:1rem; line-height:1.9; color:rgba(245,213,213,.85);
-      white-space:pre-line; font-family:'Cormorant Garamond',serif; }
-    .universo-modal-firma { margin-top:1.8rem; font-family:'Dancing Script',cursive;
-      font-size:1.3rem; color:var(--rose); text-align:right; }
-
-    @media(max-width:600px){
-      .solar-system { max-width: 340px; }
-      .sol { width:50px; height:50px; }
-      .universo-modal-box { padding:2rem 1.5rem; }
+    #uModal {
+      position:fixed; inset:0; z-index:400;
+      background:rgba(8,3,14,.88); backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:center;
+      padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s;
     }
+    #uModal.open { opacity:1; pointer-events:all; }
+    #uBox {
+      background:linear-gradient(145deg,#1e0c1e,#120820);
+      border:1px solid rgba(232,160,160,.22); border-radius:22px;
+      max-width:520px; width:100%; padding:2.5rem 2rem;
+      position:relative; max-height:85vh; overflow-y:auto;
+      transform:scale(.92); transition:transform .32s;
+      box-shadow:0 0 55px rgba(196,111,122,.18),0 28px 70px rgba(0,0,0,.65);
+    }
+    #uModal.open #uBox { transform:scale(1); }
+    #uClose {
+      position:absolute; top:1rem; right:1.2rem; background:none;
+      border:none; font-size:1.4rem; color:rgba(245,213,213,.4); cursor:pointer;
+    }
+    #uClose:hover { color:var(--rose-light); }
+    #uEmoji    { font-size:2.4rem; text-align:center; margin-bottom:.5rem; }
+    #uName     { font-family:'Playfair Display',serif; font-size:1.45rem; font-style:italic;
+                 color:var(--rose-light); text-align:center; margin-bottom:.3rem; }
+    #uSub      { font-size:.7rem; letter-spacing:.16rem; text-transform:uppercase;
+                 color:rgba(201,169,110,.85); text-align:center; margin-bottom:1.4rem; }
+    #uBody     { font-size:.97rem; line-height:1.95; color:rgba(245,213,213,.85);
+                 white-space:pre-line; font-family:'Cormorant Garamond',serif; }
+    #uFirma    { margin-top:1.4rem; font-family:'Dancing Script',cursive;
+                 font-size:1.25rem; color:var(--rose); text-align:right; }
   </style>
 </head>
 <body>
@@ -290,31 +305,31 @@
   </div>
 </section>
 
+<!-- SECCIÓN UNIVERSO -->
 <section id="universo">
-  <div class="stars-bg" id="starsBg"></div>
+  <div class="u-stars" id="uStars"></div>
   <div class="section-inner">
     <div class="section-header reveal">
       <p class="section-tag">Nuestro cosmos</p>
       <h2 class="section-title">Tu universo personal</h2>
       <div class="divider"></div>
     </div>
-    <div class="solar-system" id="solarSystem">
-      <div class="sol" id="solBtn">
-        <span class="sol-label">☀️ Tú</span>
-      </div>
+    <div id="sWrap">
+      <button id="sSol">☀️ Tú</button>
     </div>
+    <p class="u-hint">Toca cada planeta para leer su mensaje 💌</p>
   </div>
 </section>
 
 <!-- Modal universo -->
-<div class="universo-modal-overlay" id="universoModal" onclick="closeUniversoModal(event)">
-  <div class="universo-modal-box">
-    <button class="universo-modal-close" onclick="closeUniversoModal()">✕</button>
-    <div class="universo-modal-emoji" id="uEmoji"></div>
-    <div class="universo-modal-name" id="uName"></div>
-    <div class="universo-modal-subtitle" id="uSubtitle"></div>
-    <div class="universo-modal-body" id="uBody"></div>
-    <div class="universo-modal-firma">Con amor, Jonathan 💕</div>
+<div id="uModal">
+  <div id="uBox">
+    <button id="uClose" onclick="closeUModal()">✕</button>
+    <div id="uEmoji"></div>
+    <div id="uName"></div>
+    <div id="uSub"></div>
+    <div id="uBody"></div>
+    <div id="uFirma">Con amor, Jonathan 💕</div>
   </div>
 </div>
 
@@ -623,299 +638,6 @@ function togglePlay() {
   btn.textContent = playing ? '⏸' : '▶';
 }
 
-// ── SISTEMA SOLAR ──
-const CUERPOS = [
-  {
-    nombre: 'El Sol',
-    subtitulo: 'El centro de todo',
-    emoji: '☀️',
-    isSol: true,
-    color: 'radial-gradient(circle at 35% 35%, #ffe8c0, #f4c06e, #c46f7a, #8a2030)',
-    mensaje: `Yesica,
-
-Si el sistema solar tiene un sol, tú eres el mío.
-No porque seas perfecta —
-sino porque sin ti, todo lo demás pierde su luz.
-
-Giro alrededor de ti sin darme cuenta.
-Te busco en cada momento.
-Eres el centro al que siempre vuelvo.
-
-Eres mi sol, mi calor, mi razón de seguir.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'Mercurio',
-    subtitulo: 'El más cercano a tu corazón',
-    emoji: '🪨',
-    radio: 30,
-    size: 14,
-    color: '#b0a090',
-    shadow: 'rgba(176,160,144,.7)',
-    duracion: 10,
-    angulo: 20,
-    mensaje: `Eres lo primero que pienso al despertar.
-
-Antes del café, antes del teléfono, antes de todo —
-aparece tu nombre en mi cabeza
-como si hubiera estado esperando ahí toda la noche.
-
-Eso es lo que significa estar cerca de alguien de verdad.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'Venus',
-    subtitulo: 'El planeta del amor',
-    emoji: '🤍',
-    radio: 42,
-    size: 20,
-    color: 'radial-gradient(circle at 35% 30%, #f5e6d0, #e8c9a0, #c9956e)',
-    shadow: 'rgba(232,201,160,.8)',
-    duracion: 16,
-    angulo: 120,
-    mensaje: `Venus es el planeta del amor.
-Pero yo no necesito mirar al cielo para encontrarlo —
-lo tengo en ti.
-
-En tu manera de hablar.
-En cómo te ríes cuando algo te da mucha gracia.
-En la forma en que me miras cuando crees que no me doy cuenta.
-
-Eres lo más bonito de mi universo.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'La Tierra',
-    subtitulo: 'Donde te encontré',
-    emoji: '🌍',
-    radio: 57,
-    size: 22,
-    color: 'radial-gradient(circle at 35% 30%, #6ab8d4, #3a8fa8, #2d7a5e, #1a5c42)',
-    shadow: 'rgba(106,184,212,.7)',
-    duracion: 24,
-    angulo: 240,
-    mensaje: `De todos los planetas del universo,
-tuve la suerte increíble
-de estar en el mismo.
-
-En la misma ciudad.
-En el mismo momento.
-Contigo.
-
-No creo en las coincidencias.
-Creo que el universo conspiró para ponerte en mi camino.
-
-Y le voy a agradecer eso por el resto de mi vida.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'Marte',
-    subtitulo: 'Mi valentía por ti',
-    emoji: '🔴',
-    radio: 74,
-    size: 17,
-    color: 'radial-gradient(circle at 30% 30%, #e8806a, #c45040, #963020)',
-    shadow: 'rgba(196,80,64,.7)',
-    duracion: 35,
-    angulo: 60,
-    mensaje: `Hay cosas en la vida que asustan.
-Amar de verdad es una de ellas.
-
-Pero contigo aprendí
-que el miedo no es razón suficiente para no intentarlo.
-
-Me da miedo perderte.
-Me da más miedo no haberte amado con todo.
-
-Así que aquí estoy —
-eligiéndote, cada día, con todo el valor que tengo.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'Júpiter',
-    subtitulo: 'El más grande de todos',
-    emoji: '🪐',
-    radio: 95,
-    size: 30,
-    color: 'radial-gradient(circle at 40% 35%, #e8c89a, #c8a070, #a07840, #885830)',
-    shadow: 'rgba(200,160,112,.7)',
-    duracion: 55,
-    angulo: 180,
-    mensaje: `Lo que siento por ti no cabe en pocas palabras.
-
-Es enorme, como Júpiter —
-que tiene suficiente espacio
-para que quepan mil tierras dentro.
-
-Así de grande es el espacio que ocupas en mí.
-No hay rincón en mi corazón donde no estés.
-
-Eres todo, Yesi. Todo.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'Saturno',
-    subtitulo: 'Con anillos para ti',
-    emoji: '💍',
-    radio: 118,
-    size: 26,
-    color: 'radial-gradient(circle at 35% 30%, #e8d8b0, #c8b880, #a09060)',
-    shadow: 'rgba(200,184,128,.7)',
-    duracion: 80,
-    angulo: 300,
-    mensaje: `Saturno tiene anillos
-porque incluso los planetas
-saben que las cosas más bonitas
-merecen adorno.
-
-Tú no necesitas nada extra —
-ya eres suficiente tal como eres.
-
-Pero si algún día pudiera darte los anillos de Saturno,
-lo haría.
-Sin pensarlo.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'Urano',
-    subtitulo: 'El diferente, como tú',
-    emoji: '🩵',
-    radio: 138,
-    size: 21,
-    color: 'radial-gradient(circle at 35% 30%, #a8e0e8, #70c0d0, #4090a8)',
-    shadow: 'rgba(112,192,208,.7)',
-    duracion: 110,
-    angulo: 80,
-    mensaje: `Urano gira diferente a todos los demás.
-Inclinado, a su manera, sin pedir permiso.
-
-Me recuerdas a él —
-no porque seas rara,
-sino porque eres original.
-
-No te pareces a nadie que haya conocido.
-Y eso, Yesi,
-es una de las cosas que más me enamora de ti.
-
-Jonathan 💕`
-  },
-  {
-    nombre: 'Neptuno',
-    subtitulo: 'Lo más profundo de mi amor',
-    emoji: '🌊',
-    radio: 158,
-    size: 20,
-    color: 'radial-gradient(circle at 35% 30%, #6080e8, #3050c8, #1030a0)',
-    shadow: 'rgba(48,80,200,.7)',
-    duracion: 145,
-    angulo: 200,
-    mensaje: `Neptuno es el planeta más lejano —
-el que nadie ve a simple vista.
-El que hay que buscar con paciencia.
-
-Mi amor por ti es así.
-Profundo, enorme, tranquilo.
-No siempre lo grito —
-pero está ahí, constante,
-en lo más hondo de mí.
-
-Tan real como Neptuno.
-Tan tuyo como siempre.
-
-Jonathan 💕`
-  }
-];
-
-// Crear estrellas
-const starsBg = document.getElementById('starsBg');
-for (let i = 0; i < 120; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  const size = Math.random() * 2.5 + 0.5;
-  s.style.cssText = `
-    left:${Math.random()*100}%;top:${Math.random()*100}%;
-    width:${size}px;height:${size}px;
-    animation-duration:${2+Math.random()*4}s;
-    animation-delay:${Math.random()*4}s;
-    opacity:${Math.random()*.6+.1};
-  `;
-  starsBg.appendChild(s);
-}
-
-// Construir sistema solar
-const solarSystem = document.getElementById('solarSystem');
-const planetas = CUERPOS.filter(c => !c.isSol);
-
-planetas.forEach(p => {
-  // Órbita
-  const orbit = document.createElement('div');
-  orbit.className = 'orbit';
-  const diam = p.radio * 2;
-  orbit.style.cssText = `
-    width:${diam}%;height:${diam}%;
-    position:absolute;top:50%;left:50%;border-radius:50%;
-    border:1px solid rgba(232,160,160,.1);
-    transform:translate(-50%,-50%);
-    animation:orbitSpin ${p.duracion}s linear infinite;
-  `;
-  // Planeta en el extremo superior de la órbita
-  const planeta = document.createElement('div');
-  planeta.className = 'planeta';
-  planeta.style.cssText = `
-    width:${p.size}px;height:${p.size}px;
-    background:${p.color};
-    box-shadow:0 0 14px 5px ${p.shadow};
-    position:absolute;
-    top:0;left:50%;
-    transform:translate(-50%,-50%);
-    animation:counterSpin${p.nombre.replace(/\s/g,'')} ${p.duracion}s linear infinite;
-  `;
-  // Inyectar keyframe de contra-rotación
-  const style = document.createElement('style');
-  style.textContent = `@keyframes counterSpin${p.nombre.replace(/\s/g,'')} { to { transform: translate(-50%,-50%) rotate(-360deg); } }`;
-  document.head.appendChild(style);
-
-  const label = document.createElement('div');
-  label.className = 'planeta-label';
-  label.textContent = p.nombre;
-  planeta.appendChild(label);
-  planeta.addEventListener('click', (e) => { e.stopPropagation(); openUniversoModal(p); });
-  orbit.appendChild(planeta);
-
-  // Rotar órbita según ángulo inicial (inline style override de animation)
-  orbit.style.setProperty('--init-angle', p.angulo + 'deg');
-  // Aplicar offset inicial via animationDelay negativo proporcional al ángulo
-  const delay = -(p.angulo / 360) * p.duracion;
-  orbit.style.animationDelay = delay + 's';
-
-  solarSystem.appendChild(orbit);
-});
-
-// Sol click
-document.getElementById('solBtn').onclick = () => openUniversoModal(CUERPOS[0]);
-
-function openUniversoModal(cuerpo) {
-  document.getElementById('uEmoji').textContent = cuerpo.emoji;
-  document.getElementById('uName').textContent = cuerpo.nombre;
-  document.getElementById('uSubtitle').textContent = cuerpo.subtitulo;
-  document.getElementById('uBody').textContent = cuerpo.mensaje;
-  document.getElementById('universoModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeUniversoModal(e) {
-  if (!e || e.target === document.getElementById('universoModal') || e.target.classList.contains('universo-modal-close')) {
-    document.getElementById('universoModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-
 const petals = ['🌸','🌹','✨','💕','🌷'];
 const container = document.getElementById('particles');
 for (let i = 0; i < 18; i++) {
@@ -924,6 +646,128 @@ for (let i = 0; i < 18; i++) {
   p.textContent = petals[Math.floor(Math.random() * petals.length)];
   p.style.cssText = `left:${Math.random()*100}%;font-size:${.6+Math.random()*.8}rem;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;
   container.appendChild(p);
+}
+
+// ══ UNIVERSO ══
+(function() {
+  // Datos de cada cuerpo
+  var PLANETAS = [
+    { nombre:'Mercurio', sub:'El más cercano a tu corazón', emoji:'🪨',
+      r:34, sz:9,  col:'#b5a898', sombra:'rgba(180,168,152,.9)', vel:0.00035,
+      msg:'Eres lo primero que pienso al despertar.\n\nAntes del café, antes del teléfono, antes de todo — aparece tu nombre en mi cabeza como si hubiera estado esperando ahí toda la noche.\n\nEso es lo que significa estar cerca de alguien de verdad.\n\nJonathan 💕' },
+    { nombre:'Venus',    sub:'El planeta del amor',          emoji:'🤍',
+      r:54, sz:14, col:'#e8c9a0', sombra:'rgba(232,201,160,.9)', vel:0.00025,
+      msg:'Venus es el planeta del amor.\nPero yo no necesito mirar al cielo para encontrarlo — lo tengo en ti.\n\nEn tu manera de hablar. En cómo te ríes cuando algo te da mucha gracia. En la forma en que me miras cuando crees que no me doy cuenta.\n\nEres lo más bonito de mi universo.\n\nJonathan 💕' },
+    { nombre:'La Tierra', sub:'Donde te encontré',           emoji:'🌍',
+      r:75, sz:15, col:'#6ab8d4', sombra:'rgba(106,184,212,.9)', vel:0.00018,
+      msg:'De todos los planetas del universo, tuve la suerte increíble de estar en el mismo.\n\nEn la misma ciudad. En el mismo momento. Contigo.\n\nNo creo en las coincidencias. Creo que el universo conspiró para ponerte en mi camino.\n\nY le voy a agradecer eso por el resto de mi vida.\n\nJonathan 💕' },
+    { nombre:'Marte',    sub:'Mi valentía por ti',           emoji:'🔴',
+      r:96, sz:11, col:'#c45040', sombra:'rgba(196,80,64,.9)',   vel:0.00014,
+      msg:'Hay cosas en la vida que asustan. Amar de verdad es una de ellas.\n\nPero contigo aprendí que el miedo no es razón suficiente para no intentarlo.\n\nMe da miedo perderte. Me da más miedo no haberte amado con todo.\n\nAsí que aquí estoy — eligiéndote, cada día, con todo el valor que tengo.\n\nJonathan 💕' },
+    { nombre:'Júpiter',  sub:'El más grande de todos',       emoji:'🪐',
+      r:118, sz:20, col:'#c8a070', sombra:'rgba(200,160,112,.9)', vel:0.0001,
+      msg:'Lo que siento por ti no cabe en pocas palabras.\n\nEs enorme, como Júpiter — que tiene suficiente espacio para que quepan mil tierras dentro.\n\nAsí de grande es el espacio que ocupas en mí. No hay rincón en mi corazón donde no estés.\n\nEres todo, Yesi. Todo.\n\nJonathan 💕' },
+    { nombre:'Saturno',  sub:'Con anillos para ti',          emoji:'💍',
+      r:140, sz:17, col:'#c8b880', sombra:'rgba(200,184,128,.9)', vel:0.00008,
+      msg:'Saturno tiene anillos porque incluso los planetas saben que las cosas más bonitas merecen adorno.\n\nTú no necesitas nada extra — ya eres suficiente tal como eres.\n\nPero si algún día pudiera darte los anillos de Saturno, lo haría. Sin pensarlo.\n\nJonathan 💕' },
+    { nombre:'Urano',    sub:'El diferente, como tú',        emoji:'🩵',
+      r:160, sz:14, col:'#70c0d0', sombra:'rgba(112,192,208,.9)', vel:0.000055,
+      msg:'Urano gira diferente a todos los demás. Inclinado, a su manera, sin pedir permiso.\n\nMe recuerdas a él — no porque seas rara, sino porque eres original.\n\nNo te pareces a nadie que haya conocido. Y eso, Yesi, es una de las cosas que más me enamora de ti.\n\nJonathan 💕' },
+    { nombre:'Neptuno',  sub:'Lo más profundo de mi amor',   emoji:'🌊',
+      r:182, sz:13, col:'#3858d0', sombra:'rgba(56,88,208,.9)',  vel:0.000038,
+      msg:'Neptuno es el planeta más lejano — el que nadie ve a simple vista. El que hay que buscar con paciencia.\n\nMi amor por ti es así. Profundo, enorme, tranquilo. No siempre lo grito — pero está ahí, constante, en lo más hondo de mí.\n\nTan real como Neptuno. Tan tuyo como siempre.\n\nJonathan 💕' }
+  ];
+
+  var SOL = {
+    nombre:'El Sol', sub:'El centro de todo', emoji:'☀️',
+    msg:'Yesica,\n\nSi el sistema solar tiene un sol, tú eres el mío.\nNo porque seas perfecta — sino porque sin ti, todo lo demás pierde su luz.\n\nGiro alrededor de ti sin darme cuenta. Te busco en cada momento. Eres el centro al que siempre vuelvo.\n\nEres mi sol, mi calor, mi razón de seguir.\n\nJonathan 💕'
+  };
+
+  // Estrellas de fondo
+  var uStars = document.getElementById('uStars');
+  for (var i=0; i<90; i++) {
+    var s = document.createElement('div');
+    s.className = 'u-star';
+    var sz2 = Math.random()*2+0.4;
+    s.style.cssText = 'left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+sz2+'px;height:'+sz2+'px;animation-duration:'+(2+Math.random()*5)+'s;animation-delay:'+(Math.random()*6)+'s;';
+    uStars.appendChild(s);
+  }
+
+  // Construir anillos y planetas
+  var wrap = document.getElementById('sWrap');
+  PLANETAS.forEach(function(p) {
+    // Anillo
+    var ring = document.createElement('div');
+    ring.className = 'sRing';
+    // El wrap es 480px → radio máx = 240px; r está en esa escala
+    // Usamos % para que escale en móvil igual
+    var pct = (p.r / 240) * 100;
+    ring.style.width  = pct*2 + '%';
+    ring.style.height = pct*2 + '%';
+    wrap.appendChild(ring);
+
+    // Punto
+    var dot = document.createElement('div');
+    dot.className = 'sDot';
+    dot.style.width  = p.sz + 'px';
+    dot.style.height = p.sz + 'px';
+    dot.style.background = p.col;
+    dot.style.boxShadow  = '0 0 8px 3px ' + p.sombra;
+    dot.addEventListener('click', (function(pd){ return function(){ openUModal(pd); }; })(p));
+    wrap.appendChild(dot);
+
+    // Label
+    var lbl = document.createElement('div');
+    lbl.className = 'sLbl';
+    lbl.textContent = p.nombre;
+    wrap.appendChild(lbl);
+
+    p._dot = dot;
+    p._lbl = lbl;
+    p._ang = Math.random() * Math.PI * 2;
+  });
+
+  // Sol click
+  document.getElementById('sSol').addEventListener('click', function(){ openUModal(SOL); });
+
+  // Modal click fondo
+  document.getElementById('uModal').addEventListener('click', function(e){
+    if (e.target === this) closeUModal();
+  });
+
+  // Animación — espera a que el DOM esté pintado para leer offsetWidth
+  function animate() {
+    var cw = wrap.offsetWidth || 480;
+    var cx = cw / 2;
+    PLANETAS.forEach(function(p) {
+      p._ang += p.vel;
+      var rPx = (p.r / 240) * cx;
+      var x = cx + Math.cos(p._ang) * rPx;
+      var y = cx + Math.sin(p._ang) * rPx;
+      var h = p.sz / 2;
+      p._dot.style.left = (x - h) + 'px';
+      p._dot.style.top  = (y - h) + 'px';
+      p._lbl.style.left = x + 'px';
+      p._lbl.style.top  = (y - h - 13) + 'px';
+    });
+    requestAnimationFrame(animate);
+  }
+  // Esperar un frame para que el layout esté listo
+  requestAnimationFrame(function(){ requestAnimationFrame(animate); });
+
+})();
+
+function openUModal(d) {
+  document.getElementById('uEmoji').textContent = d.emoji;
+  document.getElementById('uName').textContent  = d.nombre;
+  document.getElementById('uSub').textContent   = d.sub;
+  document.getElementById('uBody').textContent  = d.msg;
+  document.getElementById('uModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeUModal() {
+  document.getElementById('uModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 const observer = new IntersectionObserver((entries) => {
