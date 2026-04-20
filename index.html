@@ -40,7 +40,7 @@
     .scroll-hint { margin-top:3.5rem; font-size:.85rem; color:var(--text-light); letter-spacing:.1rem; animation:bounce 2s 1.5s ease infinite; }
     @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
 
-    nav { position:sticky; top:0; z-index:100; background:rgba(253,246,240,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(232,160,160,.3); display:flex; justify-content:center; gap:.5rem; padding:.8rem 1rem; }
+    nav { position:sticky; top:0; z-index:100; background:rgba(253,246,240,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(232,160,160,.3); display:flex; justify-content:center; gap:.5rem; padding:.8rem 1rem; flex-wrap:wrap; }
     nav a { text-decoration:none; color:var(--text-light); font-size:.85rem; letter-spacing:.12rem; text-transform:uppercase; padding:.5rem 1rem; border-radius:50px; transition:all .25s; }
     nav a:hover, nav a.active { background:var(--rose-light); color:var(--rose-deep); }
 
@@ -142,11 +142,9 @@
     #universo .section-title { color: #f5d5d5; }
     #universo .divider { background: linear-gradient(90deg,transparent,var(--rose-deep),transparent); }
     .u-stars { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .u-star  { position: absolute; border-radius: 50%; background: #fff;
-      animation: uTwinkle ease-in-out infinite; }
+    .u-star  { position: absolute; border-radius: 50%; background: #fff; animation: uTwinkle ease-in-out infinite; }
     @keyframes uTwinkle { 0%,100%{opacity:.12;} 50%{opacity:.85;} }
 
-    /* Sistema solar — tamaño fijo, centrado */
     #sWrap {
       position: relative; width: 480px; height: 480px;
       margin: 2rem auto 0; z-index: 2; flex-shrink: 0;
@@ -164,60 +162,23 @@
     }
     #sSol:hover { transform:translate(-50%,-50%) scale(1.15); }
 
-    .sRing {
-      position:absolute; top:50%; left:50%; border-radius:50%;
-      border:1px solid rgba(232,160,160,.2);
-      transform:translate(-50%,-50%); pointer-events:none;
-    }
-    .sDot {
-      position:absolute; border-radius:50%; cursor:pointer; z-index:5;
-      transition:filter .2s;
-    }
+    .sRing { position:absolute; top:50%; left:50%; border-radius:50%; border:1px solid rgba(232,160,160,.2); transform:translate(-50%,-50%); pointer-events:none; }
+    .sDot { position:absolute; border-radius:50%; cursor:pointer; z-index:5; transition:filter .2s; }
     .sDot:hover { filter:brightness(1.5) drop-shadow(0 0 6px #fff); }
-    .sLbl {
-      position:absolute; z-index:6; pointer-events:none;
-      font-family:'Cormorant Garamond',serif;
-      font-size:.6rem; letter-spacing:.07rem; text-transform:uppercase;
-      color:rgba(245,213,213,.8); white-space:nowrap;
-      transform:translateX(-50%);
-    }
-    .u-hint {
-      text-align:center; margin-top:1rem; position:relative; z-index:2;
-      font-size:.82rem; font-style:italic; color:rgba(245,213,213,.38);
-      font-family:'Cormorant Garamond',serif;
-    }
+    .sLbl { position:absolute; z-index:6; pointer-events:none; font-family:'Cormorant Garamond',serif; font-size:.6rem; letter-spacing:.07rem; text-transform:uppercase; color:rgba(245,213,213,.8); white-space:nowrap; transform:translateX(-50%); }
+    .u-hint { text-align:center; margin-top:1rem; position:relative; z-index:2; font-size:.82rem; font-style:italic; color:rgba(245,213,213,.38); font-family:'Cormorant Garamond',serif; }
 
-    /* Modal universo */
-    #uModal {
-      position:fixed; inset:0; z-index:400;
-      background:rgba(8,3,14,.88); backdrop-filter:blur(8px);
-      display:flex; align-items:center; justify-content:center;
-      padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s;
-    }
+    #uModal { position:fixed; inset:0; z-index:400; background:rgba(8,3,14,.88); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s; }
     #uModal.open { opacity:1; pointer-events:all; }
-    #uBox {
-      background:linear-gradient(145deg,#1e0c1e,#120820);
-      border:1px solid rgba(232,160,160,.22); border-radius:22px;
-      max-width:520px; width:100%; padding:2.5rem 2rem;
-      position:relative; max-height:85vh; overflow-y:auto;
-      transform:scale(.92); transition:transform .32s;
-      box-shadow:0 0 55px rgba(196,111,122,.18),0 28px 70px rgba(0,0,0,.65);
-    }
+    #uBox { background:linear-gradient(145deg,#1e0c1e,#120820); border:1px solid rgba(232,160,160,.22); border-radius:22px; max-width:520px; width:100%; padding:2.5rem 2rem; position:relative; max-height:85vh; overflow-y:auto; transform:scale(.92); transition:transform .32s; box-shadow:0 0 55px rgba(196,111,122,.18),0 28px 70px rgba(0,0,0,.65); }
     #uModal.open #uBox { transform:scale(1); }
-    #uClose {
-      position:absolute; top:1rem; right:1.2rem; background:none;
-      border:none; font-size:1.4rem; color:rgba(245,213,213,.4); cursor:pointer;
-    }
+    #uClose { position:absolute; top:1rem; right:1.2rem; background:none; border:none; font-size:1.4rem; color:rgba(245,213,213,.4); cursor:pointer; }
     #uClose:hover { color:var(--rose-light); }
-    #uEmoji    { font-size:2.4rem; text-align:center; margin-bottom:.5rem; }
-    #uName     { font-family:'Playfair Display',serif; font-size:1.45rem; font-style:italic;
-                 color:var(--rose-light); text-align:center; margin-bottom:.3rem; }
-    #uSub      { font-size:.7rem; letter-spacing:.16rem; text-transform:uppercase;
-                 color:rgba(201,169,110,.85); text-align:center; margin-bottom:1.4rem; }
-    #uBody     { font-size:.97rem; line-height:1.95; color:rgba(245,213,213,.85);
-                 white-space:pre-line; font-family:'Cormorant Garamond',serif; }
-    #uFirma    { margin-top:1.4rem; font-family:'Dancing Script',cursive;
-                 font-size:1.25rem; color:var(--rose); text-align:right; }
+    #uEmoji { font-size:2.4rem; text-align:center; margin-bottom:.5rem; }
+    #uName { font-family:'Playfair Display',serif; font-size:1.45rem; font-style:italic; color:var(--rose-light); text-align:center; margin-bottom:.3rem; }
+    #uSub { font-size:.7rem; letter-spacing:.16rem; text-transform:uppercase; color:rgba(201,169,110,.85); text-align:center; margin-bottom:1.4rem; }
+    #uBody { font-size:.97rem; line-height:1.95; color:rgba(245,213,213,.85); white-space:pre-line; font-family:'Cormorant Garamond',serif; }
+    #uFirma { margin-top:1.4rem; font-family:'Dancing Script',cursive; font-size:1.25rem; color:var(--rose); text-align:right; }
   </style>
 </head>
 <body>
@@ -305,7 +266,6 @@
   </div>
 </section>
 
-<!-- SECCIÓN UNIVERSO -->
 <section id="universo">
   <div class="u-stars" id="uStars"></div>
   <div class="section-inner">
@@ -321,7 +281,6 @@
   </div>
 </section>
 
-<!-- Modal universo -->
 <div id="uModal">
   <div id="uBox">
     <button id="uClose" onclick="closeUModal()">✕</button>
@@ -366,193 +325,171 @@ function updateCounter() {
 updateCounter();
 setInterval(updateCounter, 1000);
 
-// NUEVAS CARTAS SEMANA DEL 13 AL 19 DE ABRIL
 const CARTAS = [
   {
-    fecha: "Lunes, 13 de abril de 2026",
-    titulo: "Orgulloso de la mujer que eres",
-    preview: "Hoy no quiero hablarte de lo bonita que eres — aunque también — quiero hablarte de lo increíblemente fuerte que te has vuelto...",
-    emoji: "💪",
-    cuerpo: `Yesica mía,
-
-Hoy no quiero hablarte solo de lo bonita que eres — aunque también. Quiero hablarte de lo increíblemente fuerte que te has vuelto.
-
-Te veo levantarte cada día aunque no tengas ganas. Te veo hacer malabares con el tiempo, con la plata, con la cabeza llena de cosas que hacer. Y aún así, ahí estás tú. Entera. Firme.
-
-Me siento orgulloso de ti. No solo porque seas mi novia, sino porque eres una mujer que no se rinde. Que a veces reniega de la vida de adulto (con razón) pero que siempre, siempre, sale adelante.
-
-Eso es ser valiente. Eso es ser tú.
-
-Y yo te miro y pienso: "qué suerte la mía".
-
-Te amo muchísimo 💕`
-  },
-  {
-    fecha: "Martes, 14 de abril de 2026",
-    titulo: "Poema — La adulta que no quería ser",
-    preview: "Reniegas de pagar cuentas, de madrugar, de las responsabilidades... pero mira lo lejos que has llegado.",
-    emoji: "🌱",
-    cuerpo: `Para mi Yesi,
-
-Reniegas del café frío,
-del lunes que pesa,
-de tener que ser fuerte
-cuando el alma está traviesa.
-
-Pero aún así,
-con queja o sin ella,
-te pones el mundo al hombro
-y lo cargas con estrella.
-
-No es fácil ser adulto,
-lo sé.
-Pero tú lo haces con una gracia
-que no se aprende, que se ve.
-
-No eres la que querías ser
-cuando eras niña,
-pero eres mucho más:
-valiente, real, hormiga.
-
-Y yo te aplaudo en silencio,
-y te abrazo en la tormenta.
-Eres mi orgullo, Yesi.
-Mi guerrera contenta.
-
-Con todo mi amor,
-Jonathan 🌷`
-  },
-  {
-    fecha: "Miércoles, 15 de abril de 2026",
-    titulo: "Me derrites sin querer",
-    preview: "Hoy quiero decirte algo que pienso en silencio muchas veces... cuando te mueves, cuando te ríes, cuando me miras.",
-    emoji: "🔥",
-    cuerpo: `Mi amor,
-
-Voy a ser directo porque no sé decirlo bonito sin sonrojarme un poco.
-
-Eres una mujer increíblemente atractiva. Pero no es solo eso — es cómo te mueves, cómo caminas, cómo se te escapa esa sonrisa que me desarma. Hay algo en ti que me parece hipnótico.
-
-A veces te veo concentrada en algo, sin maquillaje, con el pelo recogido, y no puedo dejar de mirarte. Me gusta tu cuerpo, sí, pero me gusta más cómo lo habitás. Con esa seguridad que ni siquiera sabés que tenés.
-
-Eres sensual sin querer. Y eso, Yesi, es lo más bonito de todo.
-
-Te deseo. Te admiro. Te quiero.
-
-Y no me cansaré de decírtelo 💕`
-  },
-  {
-    fecha: "Jueves, 16 de abril de 2026",
-    titulo: "Poema — Te veo crecer",
-    preview: "Cada día que pasa, te veo un poquito más fuerte, un poquito más sabia, un poquito más mía.",
-    emoji: "🌻",
+    fecha: "Lunes, 20 de abril de 2026",
+    titulo: "El sábado que no voy a olvidar",
+    preview: "Te vi el sábado y todavía no puedo dejar de pensar en lo hermosa que estabas…",
+    emoji: "💅",
     cuerpo: `Yesica,
 
-Te veo crecer
-como no te viste crecer vos.
-Te veo soltar lo que pesaba
-y quedarte con lo que sos.
+Te vi el sábado y todavía no puedo dejar de pensar en lo hermosa que estabas.
 
-Te veo equivocarte
-y levantarte al toque.
-Te veo llorar a escondidas
-y salir con otro look.
+Estabas haciéndote las uñas — algo tan simple, tan tuyo — y yo no podía apartar los ojos de ti. Había algo en ese momento que se me quedó grabado: tú, concentrada, cuidándote, siendo tú misma sin pretensiones. Y eras la mujer más bonita que he visto en mi vida.
 
-Esa es mi Yesi.
-La que se cae y se ríe.
-La que no sabe lo fuerte que es
-porque nadie se lo dijo bien.
+No necesitas una ocasión especial para brillar, Yesi. Brillas en los momentos más normales, en los más cotidianos, en los que ni siquiera lo intentas. Y eso, para mí, es lo más atractivo del mundo.
 
-Hoy te lo digo yo:
-sos fuego, sos calma,
-sos una adulta a medio hacer
-pero con una enorme alma.
+Ese sábado fue un regalo. Verte así, cerca, siendo tú — lo guardo como uno de mis recuerdos favoritos.
 
-Te quiero ver llegar lejos.
-Pero más me gusta el camino.
-A tu lado, todo es más fácil,
-todo tiene más sentido.
+Con todo mi amor, Jonathan 💕`
+  },
+  {
+    fecha: "Martes, 21 de abril de 2026",
+    titulo: "Gracias por confiarme tu historia",
+    preview: "Me contaste cosas de tu pasado que no eran fáciles de decir, y eso me importa…",
+    emoji: "🤍",
+    cuerpo: `Mi amor,
+
+Quiero hablarte de algo que llevas cargando tú sola y que el sábado decidiste compartir conmigo.
+
+Me contaste cosas de tu pasado. Cosas que no eran fáciles de decir — lo noté en tu voz, en la manera en que las palabras te salieron despacio, con cuidado. Y quiero que sepas que ese gesto de confianza me llegó muy hondo.
+
+No voy a mentirte: me generó algo por dentro. Una incomodidad pequeña, honesta, humana. No te lo voy a esconder porque prefiero la verdad entre nosotros.
+
+Pero escúchame bien: eso no cambia nada de lo que siento por ti. Tu pasado es tuyo, es lo que te formó, es parte de la mujer que hoy admiro y amo. Y yo te elijo a ti — entera, con todo, con tu historia incluida.
+
+Gracias por confiar en mí. Eso vale más que cualquier cosa.
+
+Jonathan 💕`
+  },
+  {
+    fecha: "Miércoles, 22 de abril de 2026",
+    titulo: "Te amo a pesar de todo, y por todo",
+    preview: "Quiero que lo leas claro: lo que sientes que pudo alejarme, no lo hizo…",
+    emoji: "💖",
+    cuerpo: `Yesica,
+
+Quiero que esto quede escrito para que lo puedas leer las veces que necesites.
+
+Si en algún momento sentiste que me alejé un poco después de nuestra conversación del sábado, necesito pedirte perdón por eso. No fue mi intención hacerte sentir mal ni dejarte sola con algo que te costó tanto contarme.
+
+A veces uno necesita un momento para procesar, para ordenarse por dentro. Pero eso no significa que lo que siento por ti haya cambiado. Al contrario.
+
+Te amo a pesar de todo. Te amo por todo. Te amo con tu historia, con tus cicatrices, con las partes que crees que son difíciles de querer. Porque el amor de verdad no elige solo las partes bonitas — elige a la persona completa.
+
+Y yo te elijo a ti, Yesi. Hoy, mañana y todos los días que siguen.
+
+Jonathan 💕`
+  },
+  {
+    fecha: "Jueves, 23 de abril de 2026",
+    titulo: "Poema — Cada día más",
+    preview: "Hay algo que pasa con el tiempo que nadie te avisa: que se ama más, no menos…",
+    emoji: "🌙",
+    cuerpo: `Para Yesica,
+
+Pensé que con el tiempo
+uno se acostumbraba,
+que el amor se aplainaba
+y el corazón descansaba.
+
+Pero contigo pasa algo
+que no esperaba sentir —
+cada día que amanece
+te amo más que el día anterior al venir.
+
+Cada cosa que me cuentas,
+cada silencio compartido,
+cada sábado que pasa
+me deja más convencido.
+
+No te amo menos por saber
+lo que el tiempo cargó en ti —
+te amo más, mucho más,
+porque tuviste el valor de decírmelo a mí.
+
+Eso es lo que somos, Yesi —
+dos personas aprendiendo
+que el amor de verdad no huye:
+se queda, crece, va creciendo.
 
 Siempre tuyo,
 Jonathan 💕`
   },
   {
-    fecha: "Viernes, 17 de abril de 2026",
-    titulo: "Esa mirada que me mata",
-    preview: "Hoy quiero hablarte de algo que me tiene mal... de la forma en que me miras cuando crees que no estoy viendo.",
-    emoji: "👀",
-    cuerpo: `Yesi,
+    fecha: "Viernes, 24 de abril de 2026",
+    titulo: "Tus amigas y la luna son testigos",
+    preview: "Que quede dicho delante de quienes más importan: te amo, y no es poca cosa…",
+    emoji: "🌕",
+    cuerpo: `Mi Yesi,
 
-No sé si te has dado cuenta, pero cuando me miras de cierta manera, se me olvida hasta mi nombre.
+Hay cosas que merecen decirse en voz alta, delante de testigos.
 
-Tus ojos verdes tienen algo que no sé explicar. A veces son dulces, a veces traviesos, a veces parece que están diciendo un montón de cosas sin abrir la boca.
+Que lo sepan tus amigas — las que te conocen de verdad, las que han estado en los momentos buenos y en los difíciles, las que te quieren como se quiere a alguien de verdad. Que sepan que hay alguien que te ama con todo, que te ve como mereces ser vista, que está aquí sin condiciones.
 
-Y tu cuerpo... no sé cómo decirlo sin sonar cursi, pero cada curva tuya me parece perfecta. Me encanta cuando te pones esa ropa que te hace sentir bonita — porque ahí te veo brillar de verdad.
+Y que lo sepa la luna — que nos ha visto tantas veces, que guarda los secretos de la noche, que ilumina lo que el día a veces esconde.
 
-No es solo lo físico, es cómo lo llevás. Con esa naturalidad tuya que me vuelve loco.
+Te amo, Yesica. No como un acto pasajero. No como algo que depende de las circunstancias. Te amo de esa manera que no necesita explicación — la que simplemente está, constante, real, tuya.
 
-Eres hermosa, sí. Pero también eres mía. Y eso es lo que más me gusta.
+Que quede dicho. Que quede guardado. Que nunca lo dudes.
 
-Te amo, preciosa 💕`
+Jonathan 💕`
   },
   {
-    fecha: "Sábado, 18 de abril de 2026",
-    titulo: "Deudas, sueños y vos",
-    preview: "La vida adulta a veces apesta, lo sé. Pero hay algo que hace que todo valga la pena...",
-    emoji: "🌙",
-    cuerpo: `Mi amor,
-
-Sé que a veces odias tener que pensar en plata, en horarios, en responsabilidades. Yo también. La vida de adulto es una mentira — nadie nos preparó para esto.
-
-Pero si hay algo que me hace levantarme todos los días con ganas, eres tú.
-
-Vos que te quejás pero no parás. Vos que decís "no puedo más" y al rato seguís. Vos que sos un ejemplo silencioso de que se puede, aunque cueste.
-
-No sé qué nos depare el futuro, pero quiero que sepas que estoy orgulloso de compartir esta locura llamada "ser grande" con vos.
-
-Un día de estos nos vamos a reír de todo esto. Pero mientras tanto, seguimos. Juntos.
-
-Te quiero con todo,
-Jonathan 🌟`
-  },
-  {
-    fecha: "Domingo, 19 de abril de 2026",
-    titulo: "Poema — Eres mi domingo",
-    preview: "Un poema para cerrar la semana, para recordarte que sos mi lugar favorito en el mundo.",
-    emoji: "☀️",
+    fecha: "Sábado, 25 de abril de 2026",
+    titulo: "Poema — La luna nos vio",
+    preview: "Aquella noche la luna estuvo ahí, callada, guardando lo nuestro…",
+    emoji: "✨",
     cuerpo: `Para mi Yesica,
 
-Eres mi domingo
-cuando todo pesa.
-Mi respiro hondo,
-mi calma traviesa.
+La luna nos vio esa noche —
+callada, redonda, testigo fiel,
+guardando entre sus rayos
+lo que nuestras palabras no supieron bien.
 
-Eres la vuelta a casa
-después de la tormenta.
-La risa que no esperaba
-y que el alma contenta.
+Tus amigas también lo saben,
+las que te conocen el alma,
+las que ven cómo te iluminan los ojos
+cuando tu corazón se calma.
 
-Me gustas de espaldas,
-de frente, de lado.
-Me gustas seria,
-me gustas a tu lado.
+Yo lo digo sin miedo,
+sin dudas, sin condición:
+te amo con todo lo que soy
+y con todo lo que soy, sin excepción.
 
-Pero más que el cuerpo,
-más que la mirada,
-me gusta tu lucha
-callada, amada.
+No importa lo que el ayer guarde,
+no importa lo que el tiempo vivió —
+lo que importa es este momento,
+este amor que entre los dos creció.
 
-No dejes de ser
-esa mujer que avanza.
-Que aunque todo cueste,
-siempre hay esperanza.
+La luna fue testigo.
+Tus amigas lo saben ya.
+Y yo lo repito esta noche:
+te amo hoy, y te amaré siempre más.
 
-Te llevo conmigo
-a donde vaya.
-Sos mi orgullo, Yesi.
-Mi medalla, mi espada.
+Siempre tuyo,
+Jonathan 💕`
+  },
+  {
+    fecha: "Domingo, 26 de abril de 2026",
+    titulo: "Hasta el fin de mis días",
+    preview: "Hay promesas que uno hace en silencio, pero esta la quiero decir bien alto…",
+    emoji: "💕",
+    cuerpo: `Yesica,
 
-Te ama,
+Hay una cosa que quiero que sepas hoy, mañana y todos los días que vengan.
+
+Te voy a amar hasta el fin de mis días.
+
+No lo digo como frase hecha. Lo digo porque lo siento en cada parte de mí — en la manera en que pienso en ti cuando no estás, en cómo me alegra el día saber que existes, en lo mucho que me importa todo lo que te pasa.
+
+Cada día que pasa te amo más que el anterior. Lo viví esta semana. Lo sentí después del sábado, después de tus confesiones, después de los silencios y las palabras. Y la conclusión siempre es la misma: eres tú, Yesi. Siempre vas a ser tú.
+
+Tus amigas lo saben. La luna lo vio. Y yo te lo digo aquí, escrito, para que nunca lo olvides:
+
+Eres la mujer de mi vida. Y pienso amarte — con todo, a pesar de todo, por encima de todo — hasta que me quede sin días.
+
+Con todo mi corazón, para siempre,
 Jonathan 💕`
   }
 ];
@@ -674,31 +611,30 @@ for (let i = 0; i < 18; i++) {
 
 // ══ UNIVERSO ══
 (function() {
-  // Datos de cada cuerpo
   var PLANETAS = [
     { nombre:'Mercurio', sub:'El más cercano a tu corazón', emoji:'🪨',
-      r:34, sz:9,  col:'#b5a898', sombra:'rgba(180,168,152,.9)', vel:0.00035,
+      r:34, sz:9, col:'#b5a898', sombra:'rgba(180,168,152,.9)', vel:0.00035,
       msg:'Eres lo primero que pienso al despertar.\n\nAntes del café, antes del teléfono, antes de todo — aparece tu nombre en mi cabeza como si hubiera estado esperando ahí toda la noche.\n\nEso es lo que significa estar cerca de alguien de verdad.\n\nJonathan 💕' },
-    { nombre:'Venus',    sub:'El planeta del amor',          emoji:'🤍',
+    { nombre:'Venus', sub:'El planeta del amor', emoji:'🤍',
       r:54, sz:14, col:'#e8c9a0', sombra:'rgba(232,201,160,.9)', vel:0.00025,
       msg:'Venus es el planeta del amor.\nPero yo no necesito mirar al cielo para encontrarlo — lo tengo en ti.\n\nEn tu manera de hablar. En cómo te ríes cuando algo te da mucha gracia. En la forma en que me miras cuando crees que no me doy cuenta.\n\nEres lo más bonito de mi universo.\n\nJonathan 💕' },
-    { nombre:'La Tierra', sub:'Donde te encontré',           emoji:'🌍',
+    { nombre:'La Tierra', sub:'Donde te encontré', emoji:'🌍',
       r:75, sz:15, col:'#6ab8d4', sombra:'rgba(106,184,212,.9)', vel:0.00018,
       msg:'De todos los planetas del universo, tuve la suerte increíble de estar en el mismo.\n\nEn la misma ciudad. En el mismo momento. Contigo.\n\nNo creo en las coincidencias. Creo que el universo conspiró para ponerte en mi camino.\n\nY le voy a agradecer eso por el resto de mi vida.\n\nJonathan 💕' },
-    { nombre:'Marte',    sub:'Mi valentía por ti',           emoji:'🔴',
-      r:96, sz:11, col:'#c45040', sombra:'rgba(196,80,64,.9)',   vel:0.00014,
+    { nombre:'Marte', sub:'Mi valentía por ti', emoji:'🔴',
+      r:96, sz:11, col:'#c45040', sombra:'rgba(196,80,64,.9)', vel:0.00014,
       msg:'Hay cosas en la vida que asustan. Amar de verdad es una de ellas.\n\nPero contigo aprendí que el miedo no es razón suficiente para no intentarlo.\n\nMe da miedo perderte. Me da más miedo no haberte amado con todo.\n\nAsí que aquí estoy — eligiéndote, cada día, con todo el valor que tengo.\n\nJonathan 💕' },
-    { nombre:'Júpiter',  sub:'El más grande de todos',       emoji:'🪐',
+    { nombre:'Júpiter', sub:'El más grande de todos', emoji:'🪐',
       r:118, sz:20, col:'#c8a070', sombra:'rgba(200,160,112,.9)', vel:0.0001,
       msg:'Lo que siento por ti no cabe en pocas palabras.\n\nEs enorme, como Júpiter — que tiene suficiente espacio para que quepan mil tierras dentro.\n\nAsí de grande es el espacio que ocupas en mí. No hay rincón en mi corazón donde no estés.\n\nEres todo, Yesi. Todo.\n\nJonathan 💕' },
-    { nombre:'Saturno',  sub:'Con anillos para ti',          emoji:'💍',
+    { nombre:'Saturno', sub:'Con anillos para ti', emoji:'💍',
       r:140, sz:17, col:'#c8b880', sombra:'rgba(200,184,128,.9)', vel:0.00008,
       msg:'Saturno tiene anillos porque incluso los planetas saben que las cosas más bonitas merecen adorno.\n\nTú no necesitas nada extra — ya eres suficiente tal como eres.\n\nPero si algún día pudiera darte los anillos de Saturno, lo haría. Sin pensarlo.\n\nJonathan 💕' },
-    { nombre:'Urano',    sub:'El diferente, como tú',        emoji:'🩵',
+    { nombre:'Urano', sub:'El diferente, como tú', emoji:'🩵',
       r:160, sz:14, col:'#70c0d0', sombra:'rgba(112,192,208,.9)', vel:0.000055,
       msg:'Urano gira diferente a todos los demás. Inclinado, a su manera, sin pedir permiso.\n\nMe recuerdas a él — no porque seas rara, sino porque eres original.\n\nNo te pareces a nadie que haya conocido. Y eso, Yesi, es una de las cosas que más me enamora de ti.\n\nJonathan 💕' },
-    { nombre:'Neptuno',  sub:'Lo más profundo de mi amor',   emoji:'🌊',
-      r:182, sz:13, col:'#3858d0', sombra:'rgba(56,88,208,.9)',  vel:0.000038,
+    { nombre:'Neptuno', sub:'Lo más profundo de mi amor', emoji:'🌊',
+      r:182, sz:13, col:'#3858d0', sombra:'rgba(56,88,208,.9)', vel:0.000038,
       msg:'Neptuno es el planeta más lejano — el que nadie ve a simple vista. El que hay que buscar con paciencia.\n\nMi amor por ti es así. Profundo, enorme, tranquilo. No siempre lo grito — pero está ahí, constante, en lo más hondo de mí.\n\nTan real como Neptuno. Tan tuyo como siempre.\n\nJonathan 💕' }
   ];
 
@@ -707,40 +643,33 @@ for (let i = 0; i < 18; i++) {
     msg:'Yesica,\n\nSi el sistema solar tiene un sol, tú eres el mío.\nNo porque seas perfecta — sino porque sin ti, todo lo demás pierde su luz.\n\nGiro alrededor de ti sin darme cuenta. Te busco en cada momento. Eres el centro al que siempre vuelvo.\n\nEres mi sol, mi calor, mi razón de seguir.\n\nJonathan 💕'
   };
 
-  // Estrellas de fondo
   var uStars = document.getElementById('uStars');
-  for (var i=0; i<90; i++) {
+  for (var i = 0; i < 90; i++) {
     var s = document.createElement('div');
     s.className = 'u-star';
-    var sz2 = Math.random()*2+0.4;
-    s.style.cssText = 'left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+sz2+'px;height:'+sz2+'px;animation-duration:'+(2+Math.random()*5)+'s;animation-delay:'+(Math.random()*6)+'s;';
+    var sz2 = Math.random() * 2 + 0.4;
+    s.style.cssText = 'left:' + Math.random() * 100 + '%;top:' + Math.random() * 100 + '%;width:' + sz2 + 'px;height:' + sz2 + 'px;animation-duration:' + (2 + Math.random() * 5) + 's;animation-delay:' + (Math.random() * 6) + 's;';
     uStars.appendChild(s);
   }
 
-  // Construir anillos y planetas
   var wrap = document.getElementById('sWrap');
   PLANETAS.forEach(function(p) {
-    // Anillo
     var ring = document.createElement('div');
     ring.className = 'sRing';
-    // El wrap es 480px → radio máx = 240px; r está en esa escala
-    // Usamos % para que escale en móvil igual
     var pct = (p.r / 240) * 100;
-    ring.style.width  = pct*2 + '%';
-    ring.style.height = pct*2 + '%';
+    ring.style.width = pct * 2 + '%';
+    ring.style.height = pct * 2 + '%';
     wrap.appendChild(ring);
 
-    // Punto
     var dot = document.createElement('div');
     dot.className = 'sDot';
-    dot.style.width  = p.sz + 'px';
+    dot.style.width = p.sz + 'px';
     dot.style.height = p.sz + 'px';
     dot.style.background = p.col;
-    dot.style.boxShadow  = '0 0 8px 3px ' + p.sombra;
-    dot.addEventListener('click', (function(pd){ return function(){ openUModal(pd); }; })(p));
+    dot.style.boxShadow = '0 0 8px 3px ' + p.sombra;
+    dot.addEventListener('click', (function(pd) { return function() { openUModal(pd); }; })(p));
     wrap.appendChild(dot);
 
-    // Label
     var lbl = document.createElement('div');
     lbl.className = 'sLbl';
     lbl.textContent = p.nombre;
@@ -751,15 +680,11 @@ for (let i = 0; i < 18; i++) {
     p._ang = Math.random() * Math.PI * 2;
   });
 
-  // Sol click
-  document.getElementById('sSol').addEventListener('click', function(){ openUModal(SOL); });
-
-  // Modal click fondo
-  document.getElementById('uModal').addEventListener('click', function(e){
+  document.getElementById('sSol').addEventListener('click', function() { openUModal(SOL); });
+  document.getElementById('uModal').addEventListener('click', function(e) {
     if (e.target === this) closeUModal();
   });
 
-  // Animación — espera a que el DOM esté pintado para leer offsetWidth
   function animate() {
     var cw = wrap.offsetWidth || 480;
     var cx = cw / 2;
@@ -770,22 +695,20 @@ for (let i = 0; i < 18; i++) {
       var y = cx + Math.sin(p._ang) * rPx;
       var h = p.sz / 2;
       p._dot.style.left = (x - h) + 'px';
-      p._dot.style.top  = (y - h) + 'px';
+      p._dot.style.top = (y - h) + 'px';
       p._lbl.style.left = x + 'px';
-      p._lbl.style.top  = (y - h - 13) + 'px';
+      p._lbl.style.top = (y - h - 13) + 'px';
     });
     requestAnimationFrame(animate);
   }
-  // Esperar un frame para que el layout esté listo
-  requestAnimationFrame(function(){ requestAnimationFrame(animate); });
-
+  requestAnimationFrame(function() { requestAnimationFrame(animate); });
 })();
 
 function openUModal(d) {
   document.getElementById('uEmoji').textContent = d.emoji;
-  document.getElementById('uName').textContent  = d.nombre;
-  document.getElementById('uSub').textContent   = d.sub;
-  document.getElementById('uBody').textContent  = d.msg;
+  document.getElementById('uName').textContent = d.nombre;
+  document.getElementById('uSub').textContent = d.sub;
+  document.getElementById('uBody').textContent = d.msg;
   document.getElementById('uModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -805,7 +728,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 const sections = document.querySelectorAll('section[id]');
-const navLinks  = document.querySelectorAll('nav a');
+const navLinks = document.querySelectorAll('nav a');
 window.addEventListener('scroll', () => {
   let current = 'inicio';
   sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
