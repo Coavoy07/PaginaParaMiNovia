@@ -133,33 +133,19 @@
     }
 
     /* ══ UNIVERSO ══ */
-    #universo {
-      background: radial-gradient(ellipse at 50% 20%, #1c0a1c 0%, #0a0410 55%, #04020a 100%);
-      position: relative; overflow: hidden; padding: 4rem 1.5rem 5rem;
-    }
+    #universo { background: radial-gradient(ellipse at 50% 20%, #1c0a1c 0%, #0a0410 55%, #04020a 100%); position: relative; overflow: hidden; padding: 4rem 1.5rem 5rem; }
     #universo .section-header { position: relative; z-index: 2; }
-    #universo .section-tag   { color: #f5d5d5; }
+    #universo .section-tag { color: #f5d5d5; }
     #universo .section-title { color: #f5d5d5; }
     #universo .divider { background: linear-gradient(90deg,transparent,var(--rose-deep),transparent); }
     .u-stars { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .u-star  { position: absolute; border-radius: 50%; background: #fff; animation: uTwinkle ease-in-out infinite; }
+    .u-star { position: absolute; border-radius: 50%; background: #fff; animation: uTwinkle ease-in-out infinite; }
     @keyframes uTwinkle { 0%,100%{opacity:.12;} 50%{opacity:.85;} }
 
-    #sWrap {
-      position: relative; width: 480px; height: 480px;
-      margin: 2rem auto 0; z-index: 2; flex-shrink: 0;
-    }
+    #sWrap { position: relative; width: 480px; height: 480px; margin: 2rem auto 0; z-index: 2; flex-shrink: 0; }
     @media(max-width:520px){ #sWrap { width:300px; height:300px; } }
 
-    #sSol {
-      position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:48px; height:48px; border-radius:50%; border:none; cursor:pointer;
-      background: radial-gradient(circle at 38% 35%, #ffe8c0, #f4c06e 45%, #c46f7a 75%, #8a2030);
-      box-shadow: 0 0 18px 6px rgba(244,192,110,.45), 0 0 44px 16px rgba(196,111,122,.22);
-      display:flex; align-items:center; justify-content:center;
-      font-family:'Dancing Script',cursive; font-size:.65rem; color:#fff8e0;
-      z-index:10; transition:transform .3s;
-    }
+    #sSol { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background: radial-gradient(circle at 38% 35%, #ffe8c0, #f4c06e 45%, #c46f7a 75%, #8a2030); box-shadow: 0 0 18px 6px rgba(244,192,110,.45), 0 0 44px 16px rgba(196,111,122,.22); display:flex; align-items:center; justify-content:center; font-family:'Dancing Script',cursive; font-size:.65rem; color:#fff8e0; z-index:10; transition:transform .3s; }
     #sSol:hover { transform:translate(-50%,-50%) scale(1.15); }
 
     .sRing { position:absolute; top:50%; left:50%; border-radius:50%; border:1px solid rgba(232,160,160,.2); transform:translate(-50%,-50%); pointer-events:none; }
@@ -274,9 +260,7 @@
       <h2 class="section-title">Tu universo personal</h2>
       <div class="divider"></div>
     </div>
-    <div id="sWrap">
-      <button id="sSol">☀️ Tú</button>
-    </div>
+    <div id="sWrap"><button id="sSol">☀️ Tú</button></div>
     <p class="u-hint">Toca cada planeta para leer su mensaje 💌</p>
   </div>
 </section>
@@ -327,169 +311,186 @@ setInterval(updateCounter, 1000);
 
 const CARTAS = [
   {
-    fecha: "Lunes, 20 de abril de 2026",
-    titulo: "El sábado que no voy a olvidar",
-    preview: "Te vi el sábado y todavía no puedo dejar de pensar en lo hermosa que estabas…",
-    emoji: "💅",
+    fecha: "Lunes, 27 de abril de 2026",
+    titulo: "La distancia que duele en silencio",
+    preview: "No nos vimos esta semana y hay algo raro en los días cuando no estás cerca…",
+    emoji: "🌧️",
     cuerpo: `Yesica,
 
-Te vi el sábado y todavía no puedo dejar de pensar en lo hermosa que estabas.
+No nos vimos esta semana. Y hay algo raro en los días cuando no estás cerca — algo que no sé nombrar bien, pero que se siente como cuando falta una pieza pequeña y el rompecabezas igual no cierra.
 
-Estabas haciéndote las uñas — algo tan simple, tan tuyo — y yo no podía apartar los ojos de ti. Había algo en ese momento que se me quedó grabado: tú, concentrada, cuidándote, siendo tú misma sin pretensiones. Y eras la mujer más bonita que he visto en mi vida.
+No es desesperación. No es angustia. Es más suave que eso.
 
-No necesitas una ocasión especial para brillar, Yesi. Brillas en los momentos más normales, en los más cotidianos, en los que ni siquiera lo intentas. Y eso, para mí, es lo más atractivo del mundo.
+Es extrañarte.
 
-Ese sábado fue un regalo. Verte así, cerca, siendo tú — lo guardo como uno de mis recuerdos favoritos.
+Es llegar a un momento del día — cualquiera, uno tonto — y querer contártelo a ti. Es ver algo que te haría gracia y no poder mandártelo en ese instante. Es que el silencio entre dos personas que se quieren tiene un peso distinto al silencio de estar solo.
+
+Esta semana la viví entera pensando en ti. Sin verte. Pero sintiéndote cerca de todas formas.
+
+Eso es lo que haces, Yesi — no necesitas estar para ocupar espacio en mí.
 
 Con todo mi amor, Jonathan 💕`
   },
   {
-    fecha: "Martes, 21 de abril de 2026",
-    titulo: "Gracias por confiarme tu historia",
-    preview: "Me contaste cosas de tu pasado que no eran fáciles de decir, y eso me importa…",
-    emoji: "🤍",
-    cuerpo: `Mi amor,
-
-Quiero hablarte de algo que llevas cargando tú sola y que el sábado decidiste compartir conmigo.
-
-Me contaste cosas de tu pasado. Cosas que no eran fáciles de decir — lo noté en tu voz, en la manera en que las palabras te salieron despacio, con cuidado. Y quiero que sepas que ese gesto de confianza me llegó muy hondo.
-
-No voy a mentirte: me generó algo por dentro. Una incomodidad pequeña, honesta, humana. No te lo voy a esconder porque prefiero la verdad entre nosotros.
-
-Pero escúchame bien: eso no cambia nada de lo que siento por ti. Tu pasado es tuyo, es lo que te formó, es parte de la mujer que hoy admiro y amo. Y yo te elijo a ti — entera, con todo, con tu historia incluida.
-
-Gracias por confiar en mí. Eso vale más que cualquier cosa.
-
-Jonathan 💕`
-  },
-  {
-    fecha: "Miércoles, 22 de abril de 2026",
-    titulo: "Te amo a pesar de todo, y por todo",
-    preview: "Quiero que lo leas claro: lo que sientes que pudo alejarme, no lo hizo…",
-    emoji: "💖",
-    cuerpo: `Yesica,
-
-Quiero que esto quede escrito para que lo puedas leer las veces que necesites.
-
-Si en algún momento sentiste que me alejé un poco después de nuestra conversación del sábado, necesito pedirte perdón por eso. No fue mi intención hacerte sentir mal ni dejarte sola con algo que te costó tanto contarme.
-
-A veces uno necesita un momento para procesar, para ordenarse por dentro. Pero eso no significa que lo que siento por ti haya cambiado. Al contrario.
-
-Te amo a pesar de todo. Te amo por todo. Te amo con tu historia, con tus cicatrices, con las partes que crees que son difíciles de querer. Porque el amor de verdad no elige solo las partes bonitas — elige a la persona completa.
-
-Y yo te elijo a ti, Yesi. Hoy, mañana y todos los días que siguen.
-
-Jonathan 💕`
-  },
-  {
-    fecha: "Jueves, 23 de abril de 2026",
-    titulo: "Poema — Cada día más",
-    preview: "Hay algo que pasa con el tiempo que nadie te avisa: que se ama más, no menos…",
+    fecha: "Martes, 28 de abril de 2026",
+    titulo: "Poema — El hueco que dejas",
+    preview: "Cuando no estás, los lugares cotidianos se sienten distintos…",
     emoji: "🌙",
     cuerpo: `Para Yesica,
 
-Pensé que con el tiempo
-uno se acostumbraba,
-que el amor se aplainaba
-y el corazón descansaba.
+Hay un hueco con tu forma
+en el lado donde sueles estar,
+un silencio con tu nombre
+que no sé cómo callar.
 
-Pero contigo pasa algo
-que no esperaba sentir —
-cada día que amanece
-te amo más que el día anterior al venir.
+No es vacío lo que siento —
+es presencia al revés,
+es saber que existes tanto
+que te extraño de una vez.
 
-Cada cosa que me cuentas,
-cada silencio compartido,
-cada sábado que pasa
-me deja más convencido.
+El café sabe diferente
+cuando no hay con quién tomarlo,
+y el día se hace más largo
+cuando no hay con quién contarlo.
 
-No te amo menos por saber
-lo que el tiempo cargó en ti —
-te amo más, mucho más,
-porque tuviste el valor de decírmelo a mí.
+Pero en ese mismo hueco
+vive también algo bello:
+la certeza de que vuelvo
+a ti, y tú vuelves a ello.
 
-Eso es lo que somos, Yesi —
-dos personas aprendiendo
-que el amor de verdad no huye:
-se queda, crece, va creciendo.
+Porque extrañar a alguien así
+solo pasa cuando es real —
+y lo nuestro, Yesica mía,
+es de lo más real que hay.
 
 Siempre tuyo,
 Jonathan 💕`
   },
   {
-    fecha: "Viernes, 24 de abril de 2026",
-    titulo: "Tus amigas y la luna son testigos",
-    preview: "Que quede dicho delante de quienes más importan: te amo, y no es poca cosa…",
-    emoji: "🌕",
-    cuerpo: `Mi Yesi,
+    fecha: "Miércoles, 29 de abril de 2026",
+    titulo: "Lo que pienso cuando no tengo palabras",
+    preview: "Hay semanas en que uno no tiene mucho que decir, y eso también es válido…",
+    emoji: "💭",
+    cuerpo: `Mi amor,
 
-Hay cosas que merecen decirse en voz alta, delante de testigos.
+Esta semana no tengo grandes revelaciones ni frases perfectas. No pasó nada extraordinario que pueda contarte con lujo de detalles.
 
-Que lo sepan tus amigas — las que te conocen de verdad, las que han estado en los momentos buenos y en los difíciles, las que te quieren como se quiere a alguien de verdad. Que sepan que hay alguien que te ama con todo, que te ve como mereces ser vista, que está aquí sin condiciones.
+Pero sí pasaste tú — por mi cabeza, por mis pensamientos, por los momentos pequeños del día donde apareces sin aviso y te quedas un rato.
 
-Y que lo sepa la luna — que nos ha visto tantas veces, que guarda los secretos de la noche, que ilumina lo que el día a veces esconde.
+A veces el amor no necesita grandes eventos para demostrarse. A veces es simplemente esto: pensar en alguien en los ratos libres. Desear que le vaya bien. Querer que llegue a casa sana. Esperar con ganas el próximo momento de verla.
 
-Te amo, Yesica. No como un acto pasajero. No como algo que depende de las circunstancias. Te amo de esa manera que no necesita explicación — la que simplemente está, constante, real, tuya.
+No tengo mucho que decirte hoy, Yesi. Pero lo poco que tengo es tuyo:
 
-Que quede dicho. Que quede guardado. Que nunca lo dudes.
+Te amo. Te extraño. Y eso, aunque parezca simple, lo es todo.
 
 Jonathan 💕`
   },
   {
-    fecha: "Sábado, 25 de abril de 2026",
-    titulo: "Poema — La luna nos vio",
-    preview: "Aquella noche la luna estuvo ahí, callada, guardando lo nuestro…",
-    emoji: "✨",
+    fecha: "Jueves, 30 de abril de 2026",
+    titulo: "Poema — Amor sin fecha",
+    preview: "El amor no necesita acontecimiento para existir, solo necesita ser…",
+    emoji: "🌸",
     cuerpo: `Para mi Yesica,
 
-La luna nos vio esa noche —
-callada, redonda, testigo fiel,
-guardando entre sus rayos
-lo que nuestras palabras no supieron bien.
+No hubo gran noticia hoy,
+no hubo evento ni ocasión,
+solo el día pasando quieto
+y tú dentro de mi corazón.
 
-Tus amigas también lo saben,
-las que te conocen el alma,
-las que ven cómo te iluminan los ojos
-cuando tu corazón se calma.
+No hace falta un sábado especial
+ni una noche con estrellas —
+te amo igual en el miércoles gris,
+en las horas más sencillas y bellas.
 
-Yo lo digo sin miedo,
-sin dudas, sin condición:
-te amo con todo lo que soy
-y con todo lo que soy, sin excepción.
+El amor no avisa cuándo llega,
+tampoco pide permiso para quedarse;
+simplemente vive adentro
+y se niega a marcharse.
 
-No importa lo que el ayer guarde,
-no importa lo que el tiempo vivió —
-lo que importa es este momento,
-este amor que entre los dos creció.
-
-La luna fue testigo.
-Tus amigas lo saben ya.
-Y yo lo repito esta noche:
-te amo hoy, y te amaré siempre más.
+Eso soy yo contigo, Yesi —
+constante, aunque no haya nada que contar,
+presente en cada día ordinario,
+tuyo sin condición ni lugar.
 
 Siempre tuyo,
 Jonathan 💕`
   },
   {
-    fecha: "Domingo, 26 de abril de 2026",
-    titulo: "Hasta el fin de mis días",
-    preview: "Hay promesas que uno hace en silencio, pero esta la quiero decir bien alto…",
+    fecha: "Viernes, 1 de mayo de 2026",
+    titulo: "Una semana entera pensando en ti",
+    preview: "Siete días sin verte y mi cabeza siguió inventando maneras de recordarte…",
     emoji: "💕",
     cuerpo: `Yesica,
 
-Hay una cosa que quiero que sepas hoy, mañana y todos los días que vengan.
+Siete días. Una semana entera sin verte.
 
-Te voy a amar hasta el fin de mis días.
+Y mi cabeza, que a veces no me hace caso en otras cosas, esta vez fue muy obediente — no dejó de pensar en ti ni un solo día.
 
-No lo digo como frase hecha. Lo digo porque lo siento en cada parte de mí — en la manera en que pienso en ti cuando no estás, en cómo me alegra el día saber que existes, en lo mucho que me importa todo lo que te pasa.
+Te vi en una canción que sonó de pronto. Te pensé en una tarde aburrida que habría sido menos aburrida contigo. Te recordé en algo que dijiste hace semanas y que me sigue haciendo sonreír sin razón.
 
-Cada día que pasa te amo más que el anterior. Lo viví esta semana. Lo sentí después del sábado, después de tus confesiones, después de los silencios y las palabras. Y la conclusión siempre es la misma: eres tú, Yesi. Siempre vas a ser tú.
+Eso me pasa contigo — te quedas. No como recuerdo que se va apagando sino como algo que crece, que ocupa más espacio cada semana, que se instala en los hábitos sin pedir permiso.
 
-Tus amigas lo saben. La luna lo vio. Y yo te lo digo aquí, escrito, para que nunca lo olvides:
+Una semana sin verte y te sigo amando igual. Más, si se puede.
 
-Eres la mujer de mi vida. Y pienso amarte — con todo, a pesar de todo, por encima de todo — hasta que me quede sin días.
+Eso no tiene explicación racional, Yesi. Simplemente eres tú.
 
-Con todo mi corazón, para siempre,
+Jonathan 💕`
+  },
+  {
+    fecha: "Sábado, 2 de mayo de 2026",
+    titulo: "Poema — La semana que no te vi",
+    preview: "Siete días contados, uno a uno, sin tu presencia pero con tu nombre…",
+    emoji: "🌹",
+    cuerpo: `Para Yesica,
+
+El lunes pasó sin ti
+y te busqué en el ruido,
+el martes fue más largo
+de lo que había previsto.
+
+El miércoles trajo calma
+pero también tu recuerdo,
+el jueves se hizo noche
+y en la noche siempre pienso.
+
+El viernes ya olía a fin de semana,
+a querer verte aparecer,
+a tener tantas ganas de ti
+que no supe qué hacer.
+
+Y el sábado llegó puntual
+con su luz de mañana entera —
+sin ti igual, pero con algo tuyo:
+la certeza de que te quiero.
+
+Siete días contados,
+siete noches con tu nombre.
+Una semana sin verte
+y el amor sigue igual de grande.
+
+Siempre tuyo,
+Jonathan 💕`
+  },
+  {
+    fecha: "Domingo, 3 de mayo de 2026",
+    titulo: "El amor que no necesita verte para crecer",
+    preview: "Aprendí algo esta semana que no esperaba aprender: que la distancia no achica…",
+    emoji: "✨",
+    cuerpo: `Yesica,
+
+Esta semana me enseñó algo que no esperaba aprender.
+
+Que el amor que siento por ti no depende de los encuentros. No se alimenta solo de verte, de tocarte, de estar cerca. Tiene vida propia — crece en silencio, en los días sin noticias, en las semanas quietas como esta.
+
+No nos vimos. Y sin embargo te sentí presente en cada cosa pequeña. En lo que me hizo gracia. En lo que me preocupó. En los momentos que guardé mentalmente para contarte después.
+
+Eso es lo que me pasa contigo, Yesi — me enamoré de una manera que no se apaga cuando te vas. Se queda prendida. Bajito, pero prendida.
+
+Así que hoy, al final de esta semana sin verte, solo quiero decirte esto:
+
+Te amo demasiado. No a pesar de la distancia — también a través de ella.
+
+Hasta pronto, mi amor.
 Jonathan 💕`
   }
 ];
@@ -648,7 +649,7 @@ for (let i = 0; i < 18; i++) {
     var s = document.createElement('div');
     s.className = 'u-star';
     var sz2 = Math.random() * 2 + 0.4;
-    s.style.cssText = 'left:' + Math.random() * 100 + '%;top:' + Math.random() * 100 + '%;width:' + sz2 + 'px;height:' + sz2 + 'px;animation-duration:' + (2 + Math.random() * 5) + 's;animation-delay:' + (Math.random() * 6) + 's;';
+    s.style.cssText = 'left:' + Math.random()*100 + '%;top:' + Math.random()*100 + '%;width:' + sz2 + 'px;height:' + sz2 + 'px;animation-duration:' + (2+Math.random()*5) + 's;animation-delay:' + (Math.random()*6) + 's;';
     uStars.appendChild(s);
   }
 
@@ -667,7 +668,7 @@ for (let i = 0; i < 18; i++) {
     dot.style.height = p.sz + 'px';
     dot.style.background = p.col;
     dot.style.boxShadow = '0 0 8px 3px ' + p.sombra;
-    dot.addEventListener('click', (function(pd) { return function() { openUModal(pd); }; })(p));
+    dot.addEventListener('click', (function(pd){ return function(){ openUModal(pd); }; })(p));
     wrap.appendChild(dot);
 
     var lbl = document.createElement('div');
@@ -680,8 +681,8 @@ for (let i = 0; i < 18; i++) {
     p._ang = Math.random() * Math.PI * 2;
   });
 
-  document.getElementById('sSol').addEventListener('click', function() { openUModal(SOL); });
-  document.getElementById('uModal').addEventListener('click', function(e) {
+  document.getElementById('sSol').addEventListener('click', function(){ openUModal(SOL); });
+  document.getElementById('uModal').addEventListener('click', function(e){
     if (e.target === this) closeUModal();
   });
 
@@ -695,20 +696,20 @@ for (let i = 0; i < 18; i++) {
       var y = cx + Math.sin(p._ang) * rPx;
       var h = p.sz / 2;
       p._dot.style.left = (x - h) + 'px';
-      p._dot.style.top = (y - h) + 'px';
+      p._dot.style.top  = (y - h) + 'px';
       p._lbl.style.left = x + 'px';
-      p._lbl.style.top = (y - h - 13) + 'px';
+      p._lbl.style.top  = (y - h - 13) + 'px';
     });
     requestAnimationFrame(animate);
   }
-  requestAnimationFrame(function() { requestAnimationFrame(animate); });
+  requestAnimationFrame(function(){ requestAnimationFrame(animate); });
 })();
 
 function openUModal(d) {
   document.getElementById('uEmoji').textContent = d.emoji;
-  document.getElementById('uName').textContent = d.nombre;
-  document.getElementById('uSub').textContent = d.sub;
-  document.getElementById('uBody').textContent = d.msg;
+  document.getElementById('uName').textContent  = d.nombre;
+  document.getElementById('uSub').textContent   = d.sub;
+  document.getElementById('uBody').textContent  = d.msg;
   document.getElementById('uModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -728,7 +729,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('nav a');
+const navLinks  = document.querySelectorAll('nav a');
 window.addEventListener('scroll', () => {
   let current = 'inicio';
   sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
