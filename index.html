@@ -40,7 +40,7 @@
     .scroll-hint { margin-top:3.5rem; font-size:.85rem; color:var(--text-light); letter-spacing:.1rem; animation:bounce 2s 1.5s ease infinite; }
     @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
 
-    nav { position:sticky; top:0; z-index:100; background:rgba(253,246,240,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(232,160,160,.3); display:flex; justify-content:center; gap:.5rem; padding:.8rem 1rem; flex-wrap:wrap; }
+    nav { position:sticky; top:0; z-index:100; background:rgba(253,246,240,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(232,160,160,.3); display:flex; justify-content:center; gap:.5rem; padding:.8rem 1rem; }
     nav a { text-decoration:none; color:var(--text-light); font-size:.85rem; letter-spacing:.12rem; text-transform:uppercase; padding:.5rem 1rem; border-radius:50px; transition:all .25s; }
     nav a:hover, nav a.active { background:var(--rose-light); color:var(--rose-deep); }
 
@@ -133,38 +133,91 @@
     }
 
     /* ══ UNIVERSO ══ */
-    #universo { background: radial-gradient(ellipse at 50% 20%, #1c0a1c 0%, #0a0410 55%, #04020a 100%); position: relative; overflow: hidden; padding: 4rem 1.5rem 5rem; }
+    #universo {
+      background: radial-gradient(ellipse at 50% 20%, #1c0a1c 0%, #0a0410 55%, #04020a 100%);
+      position: relative; overflow: hidden; padding: 4rem 1.5rem 5rem;
+    }
     #universo .section-header { position: relative; z-index: 2; }
-    #universo .section-tag { color: #f5d5d5; }
+    #universo .section-tag   { color: #f5d5d5; }
     #universo .section-title { color: #f5d5d5; }
     #universo .divider { background: linear-gradient(90deg,transparent,var(--rose-deep),transparent); }
     .u-stars { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .u-star { position: absolute; border-radius: 50%; background: #fff; animation: uTwinkle ease-in-out infinite; }
+    .u-star  { position: absolute; border-radius: 50%; background: #fff;
+      animation: uTwinkle ease-in-out infinite; }
     @keyframes uTwinkle { 0%,100%{opacity:.12;} 50%{opacity:.85;} }
 
-    #sWrap { position: relative; width: 480px; height: 480px; margin: 2rem auto 0; z-index: 2; flex-shrink: 0; }
+    /* Sistema solar — tamaño fijo, centrado */
+    #sWrap {
+      position: relative; width: 480px; height: 480px;
+      margin: 2rem auto 0; z-index: 2; flex-shrink: 0;
+    }
     @media(max-width:520px){ #sWrap { width:300px; height:300px; } }
 
-    #sSol { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background: radial-gradient(circle at 38% 35%, #ffe8c0, #f4c06e 45%, #c46f7a 75%, #8a2030); box-shadow: 0 0 18px 6px rgba(244,192,110,.45), 0 0 44px 16px rgba(196,111,122,.22); display:flex; align-items:center; justify-content:center; font-family:'Dancing Script',cursive; font-size:.65rem; color:#fff8e0; z-index:10; transition:transform .3s; }
+    #sSol {
+      position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:48px; height:48px; border-radius:50%; border:none; cursor:pointer;
+      background: radial-gradient(circle at 38% 35%, #ffe8c0, #f4c06e 45%, #c46f7a 75%, #8a2030);
+      box-shadow: 0 0 18px 6px rgba(244,192,110,.45), 0 0 44px 16px rgba(196,111,122,.22);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Dancing Script',cursive; font-size:.65rem; color:#fff8e0;
+      z-index:10; transition:transform .3s;
+    }
     #sSol:hover { transform:translate(-50%,-50%) scale(1.15); }
 
-    .sRing { position:absolute; top:50%; left:50%; border-radius:50%; border:1px solid rgba(232,160,160,.2); transform:translate(-50%,-50%); pointer-events:none; }
-    .sDot { position:absolute; border-radius:50%; cursor:pointer; z-index:5; transition:filter .2s; }
+    .sRing {
+      position:absolute; top:50%; left:50%; border-radius:50%;
+      border:1px solid rgba(232,160,160,.2);
+      transform:translate(-50%,-50%); pointer-events:none;
+    }
+    .sDot {
+      position:absolute; border-radius:50%; cursor:pointer; z-index:5;
+      transition:filter .2s;
+    }
     .sDot:hover { filter:brightness(1.5) drop-shadow(0 0 6px #fff); }
-    .sLbl { position:absolute; z-index:6; pointer-events:none; font-family:'Cormorant Garamond',serif; font-size:.6rem; letter-spacing:.07rem; text-transform:uppercase; color:rgba(245,213,213,.8); white-space:nowrap; transform:translateX(-50%); }
-    .u-hint { text-align:center; margin-top:1rem; position:relative; z-index:2; font-size:.82rem; font-style:italic; color:rgba(245,213,213,.38); font-family:'Cormorant Garamond',serif; }
+    .sLbl {
+      position:absolute; z-index:6; pointer-events:none;
+      font-family:'Cormorant Garamond',serif;
+      font-size:.6rem; letter-spacing:.07rem; text-transform:uppercase;
+      color:rgba(245,213,213,.8); white-space:nowrap;
+      transform:translateX(-50%);
+    }
+    .u-hint {
+      text-align:center; margin-top:1rem; position:relative; z-index:2;
+      font-size:.82rem; font-style:italic; color:rgba(245,213,213,.38);
+      font-family:'Cormorant Garamond',serif;
+    }
 
-    #uModal { position:fixed; inset:0; z-index:400; background:rgba(8,3,14,.88); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s; }
+    /* Modal universo */
+    #uModal {
+      position:fixed; inset:0; z-index:400;
+      background:rgba(8,3,14,.88); backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:center;
+      padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s;
+    }
     #uModal.open { opacity:1; pointer-events:all; }
-    #uBox { background:linear-gradient(145deg,#1e0c1e,#120820); border:1px solid rgba(232,160,160,.22); border-radius:22px; max-width:520px; width:100%; padding:2.5rem 2rem; position:relative; max-height:85vh; overflow-y:auto; transform:scale(.92); transition:transform .32s; box-shadow:0 0 55px rgba(196,111,122,.18),0 28px 70px rgba(0,0,0,.65); }
+    #uBox {
+      background:linear-gradient(145deg,#1e0c1e,#120820);
+      border:1px solid rgba(232,160,160,.22); border-radius:22px;
+      max-width:520px; width:100%; padding:2.5rem 2rem;
+      position:relative; max-height:85vh; overflow-y:auto;
+      transform:scale(.92); transition:transform .32s;
+      box-shadow:0 0 55px rgba(196,111,122,.18),0 28px 70px rgba(0,0,0,.65);
+    }
     #uModal.open #uBox { transform:scale(1); }
-    #uClose { position:absolute; top:1rem; right:1.2rem; background:none; border:none; font-size:1.4rem; color:rgba(245,213,213,.4); cursor:pointer; }
+    #uClose {
+      position:absolute; top:1rem; right:1.2rem; background:none;
+      border:none; font-size:1.4rem; color:rgba(245,213,213,.4); cursor:pointer;
+    }
     #uClose:hover { color:var(--rose-light); }
-    #uEmoji { font-size:2.4rem; text-align:center; margin-bottom:.5rem; }
-    #uName { font-family:'Playfair Display',serif; font-size:1.45rem; font-style:italic; color:var(--rose-light); text-align:center; margin-bottom:.3rem; }
-    #uSub { font-size:.7rem; letter-spacing:.16rem; text-transform:uppercase; color:rgba(201,169,110,.85); text-align:center; margin-bottom:1.4rem; }
-    #uBody { font-size:.97rem; line-height:1.95; color:rgba(245,213,213,.85); white-space:pre-line; font-family:'Cormorant Garamond',serif; }
-    #uFirma { margin-top:1.4rem; font-family:'Dancing Script',cursive; font-size:1.25rem; color:var(--rose); text-align:right; }
+    #uEmoji    { font-size:2.4rem; text-align:center; margin-bottom:.5rem; }
+    #uName     { font-family:'Playfair Display',serif; font-size:1.45rem; font-style:italic;
+                 color:var(--rose-light); text-align:center; margin-bottom:.3rem; }
+    #uSub      { font-size:.7rem; letter-spacing:.16rem; text-transform:uppercase;
+                 color:rgba(201,169,110,.85); text-align:center; margin-bottom:1.4rem; }
+    #uBody     { font-size:.97rem; line-height:1.95; color:rgba(245,213,213,.85);
+                 white-space:pre-line; font-family:'Cormorant Garamond',serif; }
+    #uFirma    { margin-top:1.4rem; font-family:'Dancing Script',cursive;
+                 font-size:1.25rem; color:var(--rose); text-align:right; }
   </style>
 </head>
 <body>
@@ -252,6 +305,7 @@
   </div>
 </section>
 
+<!-- SECCIÓN UNIVERSO -->
 <section id="universo">
   <div class="u-stars" id="uStars"></div>
   <div class="section-inner">
@@ -260,11 +314,14 @@
       <h2 class="section-title">Tu universo personal</h2>
       <div class="divider"></div>
     </div>
-    <div id="sWrap"><button id="sSol">☀️ Tú</button></div>
+    <div id="sWrap">
+      <button id="sSol">☀️ Tú</button>
+    </div>
     <p class="u-hint">Toca cada planeta para leer su mensaje 💌</p>
   </div>
 </section>
 
+<!-- Modal universo -->
 <div id="uModal">
   <div id="uBox">
     <button id="uClose" onclick="closeUModal()">✕</button>
@@ -311,186 +368,156 @@ setInterval(updateCounter, 1000);
 
 const CARTAS = [
   {
-    fecha: "Lunes, 27 de abril de 2026",
-    titulo: "La distancia que duele en silencio",
-    preview: "No nos vimos esta semana y hay algo raro en los días cuando no estás cerca…",
-    emoji: "🌧️",
+    fecha: "Lunes, 4 de mayo de 2026",
+    titulo: "Lo más hermoso de este mundo",
+    preview: "Cada vez que te veo, el mundo entero se detiene un segundo y yo entiendo todo…",
+    emoji: "💌",
     cuerpo: `Yesica,
 
-No nos vimos esta semana. Y hay algo raro en los días cuando no estás cerca — algo que no sé nombrar bien, pero que se siente como cuando falta una pieza pequeña y el rompecabezas igual no cierra.
+Cada vez que te veo, el mundo entero se detiene un segundo y yo entiendo todo.
 
-No es desesperación. No es angustia. Es más suave que eso.
+No sé cómo explicarlo. Hay personas que uno ve y simplemente pasan. Y hay personas que uno ve y algo dentro de uno dice: ahí está. Tú eres de las segundas. Siempre.
 
-Es extrañarte.
+Cada vez que apareces, me recuerdas por qué vale la pena el día. No importa cómo haya empezado, no importa qué haya pasado antes — te veo y todo tiene sentido de nuevo.
 
-Es llegar a un momento del día — cualquiera, uno tonto — y querer contártelo a ti. Es ver algo que te haría gracia y no poder mandártelo en ese instante. Es que el silencio entre dos personas que se quieren tiene un peso distinto al silencio de estar solo.
-
-Esta semana la viví entera pensando en ti. Sin verte. Pero sintiéndote cerca de todas formas.
-
-Eso es lo que haces, Yesi — no necesitas estar para ocupar espacio en mí.
+Eres lo más hermoso que tienen mis ojos. Y eso no va a cambiar nunca.
 
 Con todo mi amor, Jonathan 💕`
   },
   {
-    fecha: "Martes, 28 de abril de 2026",
-    titulo: "Poema — El hueco que dejas",
-    preview: "Cuando no estás, los lugares cotidianos se sienten distintos…",
+    fecha: "Martes, 5 de mayo de 2026",
+    titulo: "Gracias por no irte a dormir sin dejarme un te amo",
+    preview: "Aunque hayamos peleado, aunque el orgullo quiera quedarse, tú siempre vuelves…",
     emoji: "🌙",
+    cuerpo: `Mi Yesica,
+
+Aunque hayamos peleado, aunque las palabras hayan sido más duras de lo que queríamos, aunque el orgullo intente ocupar el lugar que solo te pertenece a ti…
+
+Tú siempre vuelves.
+
+Y no hablo de volver físicamente. Hablo de ese mensaje antes de dormir. Ese "te amo" que aparece aunque el día haya sido difícil, aunque tengas razón o aunque no la tengas. Ese "te amo" que es más que una frase — es una promesa.
+
+Prometimos que el día no terminaría sin decirlo, y tú lo cumples. Siempre. Incluso cuando yo no me lo merezca. Incluso cuando el silencio sea más fácil que hablar.
+
+Gracias. Gracias por quedarte. Gracias por no irte a dormir sin recordarme que, pase lo que pase, sigues aquí.
+
+Eso es lo que más amo de nosotros: que el amor siempre gana al final del día.
+
+Con toda mi alma, Jonathan 💕`
+  },
+  {
+    fecha: "Miércoles, 6 de mayo de 2026",
+    titulo: "Poema — Aunque hayamos peleado",
+    preview: "Hay amores que sobreviven la noche aunque el día haya sido difícil…",
+    emoji: "✨",
     cuerpo: `Para Yesica,
 
-Hay un hueco con tu forma
-en el lado donde sueles estar,
-un silencio con tu nombre
-que no sé cómo callar.
+Aunque hayamos peleado,
+aunque el silencio haya pesado
+más que las palabras,
+tú llegaste a la noche
+con tres sílabas en la boca
+que lo arreglan todo.
 
-No es vacío lo que siento —
-es presencia al revés,
-es saber que existes tanto
-que te extraño de una vez.
+Te amo.
 
-El café sabe diferente
-cuando no hay con quién tomarlo,
-y el día se hace más largo
-cuando no hay con quién contarlo.
+No importa el pleito.
+No importa quién tuvo razón.
+Importa que al final del día
+seguimos siendo nosotros —
+con nuestras imperfecciones,
+con nuestro amor que no se rinde.
 
-Pero en ese mismo hueco
-vive también algo bello:
-la certeza de que vuelvo
-a ti, y tú vuelves a ello.
-
-Porque extrañar a alguien así
-solo pasa cuando es real —
-y lo nuestro, Yesica mía,
-es de lo más real que hay.
-
-Siempre tuyo,
-Jonathan 💕`
-  },
-  {
-    fecha: "Miércoles, 29 de abril de 2026",
-    titulo: "Lo que pienso cuando no tengo palabras",
-    preview: "Hay semanas en que uno no tiene mucho que decir, y eso también es válido…",
-    emoji: "💭",
-    cuerpo: `Mi amor,
-
-Esta semana no tengo grandes revelaciones ni frases perfectas. No pasó nada extraordinario que pueda contarte con lujo de detalles.
-
-Pero sí pasaste tú — por mi cabeza, por mis pensamientos, por los momentos pequeños del día donde apareces sin aviso y te quedas un rato.
-
-A veces el amor no necesita grandes eventos para demostrarse. A veces es simplemente esto: pensar en alguien en los ratos libres. Desear que le vaya bien. Querer que llegue a casa sana. Esperar con ganas el próximo momento de verla.
-
-No tengo mucho que decirte hoy, Yesi. Pero lo poco que tengo es tuyo:
-
-Te amo. Te extraño. Y eso, aunque parezca simple, lo es todo.
+Eso somos.
+Y eso me alcanza y me sobra.
 
 Jonathan 💕`
   },
   {
-    fecha: "Jueves, 30 de abril de 2026",
-    titulo: "Poema — Amor sin fecha",
-    preview: "El amor no necesita acontecimiento para existir, solo necesita ser…",
-    emoji: "🌸",
+    fecha: "Jueves, 7 de mayo de 2026",
+    titulo: "Me haces el hombre más feliz",
+    preview: "Hay una felicidad que no necesita razón grande — eres tú, y con eso es suficiente…",
+    emoji: "💖",
+    cuerpo: `Yesica,
+
+Hay una felicidad que no necesita razón grande.
+
+No es la felicidad de los días perfectos ni de los momentos especiales. Es la felicidad de saber que estás. De recibir tu mensaje. De escuchar tu voz. De saber que esta noche, antes de dormir, voy a escuchar que me amas.
+
+Esa felicidad eres tú.
+
+Me haces el hombre más feliz del mundo, Yesi. No porque todo sea perfecto — sino porque contigo, incluso lo imperfecto se siente como el lugar correcto.
+
+Gracias por existir. Gracias por ser mía.
+
+Jonathan 💕`
+  },
+  {
+    fecha: "Viernes, 8 de mayo de 2026",
+    titulo: "Esta semana es tuya — tú puedes",
+    preview: "Sé que esta semana viene fuerte, pero yo conozco de lo que eres capaz…",
+    emoji: "🌹",
+    cuerpo: `Mi Yesi hermosa,
+
+Sé que esta semana viene fuerte. Que hay días que van a pesar, momentos que van a cansar, situaciones que van a poner a prueba esa fortaleza tuya que tanto admiro.
+
+Pero yo conozco de lo que eres capaz.
+
+He visto cómo cargas el mundo sin quejarte demasiado. He visto cómo llegas agotada y aún así encuentras energía para dar. Eres más fuerte de lo que crees, Yesi — y eso no lo digo por decirlo, lo digo porque te he visto.
+
+Esta semana es difícil, sí. Pero tú puedes con ella y con todo lo que venga.
+
+Y yo aquí estoy, acompañándote desde donde puedo.
+
+Con todo mi amor, Jonathan 💕`
+  },
+  {
+    fecha: "Sábado, 9 de mayo de 2026",
+    titulo: "Los malentendidos no nos definen",
+    preview: "Hemos tenido roces, momentos difíciles — pero lo que somos es mucho más grande que eso…",
+    emoji: "🌷",
+    cuerpo: `Yesica,
+
+Hemos tenido malentendidos. Momentos en que las palabras no salieron bien, en que el cansancio habló antes que el amor, en que nos miramos sin entendernos del todo.
+
+Y aun así, aquí estamos.
+
+Porque lo que somos juntos es mucho más grande que cualquier pelea. Somos dos personas que se eligieron y que siguen eligiéndose — incluso en los días difíciles, incluso cuando cuesta, incluso cuando la noche llega cargada de silencios.
+
+Los malentendidos no nos definen. Lo que nos define es cómo terminamos cada noche: diciéndonos te amo.
+
+Eso somos. Y eso es todo.
+
+Jonathan 💕`
+  },
+  {
+    fecha: "Domingo, 10 de mayo de 2026",
+    titulo: "Poema — Cada vez que te veo",
+    preview: "No me canso. Nunca me voy a cansar de verte y sentir lo mismo de siempre…",
+    emoji: "💕",
     cuerpo: `Para mi Yesica,
 
-No hubo gran noticia hoy,
-no hubo evento ni ocasión,
-solo el día pasando quieto
-y tú dentro de mi corazón.
+Cada vez que te veo
+es como la primera vez —
+algo se mueve por dentro
+que no sé cómo detener.
 
-No hace falta un sábado especial
-ni una noche con estrellas —
-te amo igual en el miércoles gris,
-en las horas más sencillas y bellas.
+Tus ojos verdes primero,
+luego esa sonrisa tuya,
+y yo ahí, sin palabras,
+pensando que no lo merezco.
 
-El amor no avisa cuándo llega,
-tampoco pide permiso para quedarse;
-simplemente vive adentro
-y se niega a marcharse.
+Pero aquí estoy igual.
+Mirándote como un tonto.
+Enamorándome de nuevo
+como si fuera el comienzo.
 
-Eso soy yo contigo, Yesi —
-constante, aunque no haya nada que contar,
-presente en cada día ordinario,
-tuyo sin condición ni lugar.
-
-Siempre tuyo,
-Jonathan 💕`
-  },
-  {
-    fecha: "Viernes, 1 de mayo de 2026",
-    titulo: "Una semana entera pensando en ti",
-    preview: "Siete días sin verte y mi cabeza siguió inventando maneras de recordarte…",
-    emoji: "💕",
-    cuerpo: `Yesica,
-
-Siete días. Una semana entera sin verte.
-
-Y mi cabeza, que a veces no me hace caso en otras cosas, esta vez fue muy obediente — no dejó de pensar en ti ni un solo día.
-
-Te vi en una canción que sonó de pronto. Te pensé en una tarde aburrida que habría sido menos aburrida contigo. Te recordé en algo que dijiste hace semanas y que me sigue haciendo sonreír sin razón.
-
-Eso me pasa contigo — te quedas. No como recuerdo que se va apagando sino como algo que crece, que ocupa más espacio cada semana, que se instala en los hábitos sin pedir permiso.
-
-Una semana sin verte y te sigo amando igual. Más, si se puede.
-
-Eso no tiene explicación racional, Yesi. Simplemente eres tú.
-
-Jonathan 💕`
-  },
-  {
-    fecha: "Sábado, 2 de mayo de 2026",
-    titulo: "Poema — La semana que no te vi",
-    preview: "Siete días contados, uno a uno, sin tu presencia pero con tu nombre…",
-    emoji: "🌹",
-    cuerpo: `Para Yesica,
-
-El lunes pasó sin ti
-y te busqué en el ruido,
-el martes fue más largo
-de lo que había previsto.
-
-El miércoles trajo calma
-pero también tu recuerdo,
-el jueves se hizo noche
-y en la noche siempre pienso.
-
-El viernes ya olía a fin de semana,
-a querer verte aparecer,
-a tener tantas ganas de ti
-que no supe qué hacer.
-
-Y el sábado llegó puntual
-con su luz de mañana entera —
-sin ti igual, pero con algo tuyo:
-la certeza de que te quiero.
-
-Siete días contados,
-siete noches con tu nombre.
-Una semana sin verte
-y el amor sigue igual de grande.
+No me canso, Yesi.
+Nunca me voy a cansar.
+Cada vez que te veo
+te vuelvo a elegir.
 
 Siempre tuyo,
-Jonathan 💕`
-  },
-  {
-    fecha: "Domingo, 3 de mayo de 2026",
-    titulo: "El amor que no necesita verte para crecer",
-    preview: "Aprendí algo esta semana que no esperaba aprender: que la distancia no achica…",
-    emoji: "✨",
-    cuerpo: `Yesica,
-
-Esta semana me enseñó algo que no esperaba aprender.
-
-Que el amor que siento por ti no depende de los encuentros. No se alimenta solo de verte, de tocarte, de estar cerca. Tiene vida propia — crece en silencio, en los días sin noticias, en las semanas quietas como esta.
-
-No nos vimos. Y sin embargo te sentí presente en cada cosa pequeña. En lo que me hizo gracia. En lo que me preocupó. En los momentos que guardé mentalmente para contarte después.
-
-Eso es lo que me pasa contigo, Yesi — me enamoré de una manera que no se apaga cuando te vas. Se queda prendida. Bajito, pero prendida.
-
-Así que hoy, al final de esta semana sin verte, solo quiero decirte esto:
-
-Te amo demasiado. No a pesar de la distancia — también a través de ella.
-
-Hasta pronto, mi amor.
 Jonathan 💕`
   }
 ];
@@ -612,30 +639,31 @@ for (let i = 0; i < 18; i++) {
 
 // ══ UNIVERSO ══
 (function() {
+  // Datos de cada cuerpo
   var PLANETAS = [
     { nombre:'Mercurio', sub:'El más cercano a tu corazón', emoji:'🪨',
-      r:34, sz:9, col:'#b5a898', sombra:'rgba(180,168,152,.9)', vel:0.00035,
+      r:34, sz:9,  col:'#b5a898', sombra:'rgba(180,168,152,.9)', vel:0.00035,
       msg:'Eres lo primero que pienso al despertar.\n\nAntes del café, antes del teléfono, antes de todo — aparece tu nombre en mi cabeza como si hubiera estado esperando ahí toda la noche.\n\nEso es lo que significa estar cerca de alguien de verdad.\n\nJonathan 💕' },
-    { nombre:'Venus', sub:'El planeta del amor', emoji:'🤍',
+    { nombre:'Venus',    sub:'El planeta del amor',          emoji:'🤍',
       r:54, sz:14, col:'#e8c9a0', sombra:'rgba(232,201,160,.9)', vel:0.00025,
       msg:'Venus es el planeta del amor.\nPero yo no necesito mirar al cielo para encontrarlo — lo tengo en ti.\n\nEn tu manera de hablar. En cómo te ríes cuando algo te da mucha gracia. En la forma en que me miras cuando crees que no me doy cuenta.\n\nEres lo más bonito de mi universo.\n\nJonathan 💕' },
-    { nombre:'La Tierra', sub:'Donde te encontré', emoji:'🌍',
+    { nombre:'La Tierra', sub:'Donde te encontré',           emoji:'🌍',
       r:75, sz:15, col:'#6ab8d4', sombra:'rgba(106,184,212,.9)', vel:0.00018,
       msg:'De todos los planetas del universo, tuve la suerte increíble de estar en el mismo.\n\nEn la misma ciudad. En el mismo momento. Contigo.\n\nNo creo en las coincidencias. Creo que el universo conspiró para ponerte en mi camino.\n\nY le voy a agradecer eso por el resto de mi vida.\n\nJonathan 💕' },
-    { nombre:'Marte', sub:'Mi valentía por ti', emoji:'🔴',
-      r:96, sz:11, col:'#c45040', sombra:'rgba(196,80,64,.9)', vel:0.00014,
+    { nombre:'Marte',    sub:'Mi valentía por ti',           emoji:'🔴',
+      r:96, sz:11, col:'#c45040', sombra:'rgba(196,80,64,.9)',   vel:0.00014,
       msg:'Hay cosas en la vida que asustan. Amar de verdad es una de ellas.\n\nPero contigo aprendí que el miedo no es razón suficiente para no intentarlo.\n\nMe da miedo perderte. Me da más miedo no haberte amado con todo.\n\nAsí que aquí estoy — eligiéndote, cada día, con todo el valor que tengo.\n\nJonathan 💕' },
-    { nombre:'Júpiter', sub:'El más grande de todos', emoji:'🪐',
+    { nombre:'Júpiter',  sub:'El más grande de todos',       emoji:'🪐',
       r:118, sz:20, col:'#c8a070', sombra:'rgba(200,160,112,.9)', vel:0.0001,
       msg:'Lo que siento por ti no cabe en pocas palabras.\n\nEs enorme, como Júpiter — que tiene suficiente espacio para que quepan mil tierras dentro.\n\nAsí de grande es el espacio que ocupas en mí. No hay rincón en mi corazón donde no estés.\n\nEres todo, Yesi. Todo.\n\nJonathan 💕' },
-    { nombre:'Saturno', sub:'Con anillos para ti', emoji:'💍',
+    { nombre:'Saturno',  sub:'Con anillos para ti',          emoji:'💍',
       r:140, sz:17, col:'#c8b880', sombra:'rgba(200,184,128,.9)', vel:0.00008,
       msg:'Saturno tiene anillos porque incluso los planetas saben que las cosas más bonitas merecen adorno.\n\nTú no necesitas nada extra — ya eres suficiente tal como eres.\n\nPero si algún día pudiera darte los anillos de Saturno, lo haría. Sin pensarlo.\n\nJonathan 💕' },
-    { nombre:'Urano', sub:'El diferente, como tú', emoji:'🩵',
+    { nombre:'Urano',    sub:'El diferente, como tú',        emoji:'🩵',
       r:160, sz:14, col:'#70c0d0', sombra:'rgba(112,192,208,.9)', vel:0.000055,
       msg:'Urano gira diferente a todos los demás. Inclinado, a su manera, sin pedir permiso.\n\nMe recuerdas a él — no porque seas rara, sino porque eres original.\n\nNo te pareces a nadie que haya conocido. Y eso, Yesi, es una de las cosas que más me enamora de ti.\n\nJonathan 💕' },
-    { nombre:'Neptuno', sub:'Lo más profundo de mi amor', emoji:'🌊',
-      r:182, sz:13, col:'#3858d0', sombra:'rgba(56,88,208,.9)', vel:0.000038,
+    { nombre:'Neptuno',  sub:'Lo más profundo de mi amor',   emoji:'🌊',
+      r:182, sz:13, col:'#3858d0', sombra:'rgba(56,88,208,.9)',  vel:0.000038,
       msg:'Neptuno es el planeta más lejano — el que nadie ve a simple vista. El que hay que buscar con paciencia.\n\nMi amor por ti es así. Profundo, enorme, tranquilo. No siempre lo grito — pero está ahí, constante, en lo más hondo de mí.\n\nTan real como Neptuno. Tan tuyo como siempre.\n\nJonathan 💕' }
   ];
 
@@ -644,33 +672,40 @@ for (let i = 0; i < 18; i++) {
     msg:'Yesica,\n\nSi el sistema solar tiene un sol, tú eres el mío.\nNo porque seas perfecta — sino porque sin ti, todo lo demás pierde su luz.\n\nGiro alrededor de ti sin darme cuenta. Te busco en cada momento. Eres el centro al que siempre vuelvo.\n\nEres mi sol, mi calor, mi razón de seguir.\n\nJonathan 💕'
   };
 
+  // Estrellas de fondo
   var uStars = document.getElementById('uStars');
-  for (var i = 0; i < 90; i++) {
+  for (var i=0; i<90; i++) {
     var s = document.createElement('div');
     s.className = 'u-star';
-    var sz2 = Math.random() * 2 + 0.4;
-    s.style.cssText = 'left:' + Math.random()*100 + '%;top:' + Math.random()*100 + '%;width:' + sz2 + 'px;height:' + sz2 + 'px;animation-duration:' + (2+Math.random()*5) + 's;animation-delay:' + (Math.random()*6) + 's;';
+    var sz2 = Math.random()*2+0.4;
+    s.style.cssText = 'left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+sz2+'px;height:'+sz2+'px;animation-duration:'+(2+Math.random()*5)+'s;animation-delay:'+(Math.random()*6)+'s;';
     uStars.appendChild(s);
   }
 
+  // Construir anillos y planetas
   var wrap = document.getElementById('sWrap');
   PLANETAS.forEach(function(p) {
+    // Anillo
     var ring = document.createElement('div');
     ring.className = 'sRing';
+    // El wrap es 480px → radio máx = 240px; r está en esa escala
+    // Usamos % para que escale en móvil igual
     var pct = (p.r / 240) * 100;
-    ring.style.width = pct * 2 + '%';
-    ring.style.height = pct * 2 + '%';
+    ring.style.width  = pct*2 + '%';
+    ring.style.height = pct*2 + '%';
     wrap.appendChild(ring);
 
+    // Punto
     var dot = document.createElement('div');
     dot.className = 'sDot';
-    dot.style.width = p.sz + 'px';
+    dot.style.width  = p.sz + 'px';
     dot.style.height = p.sz + 'px';
     dot.style.background = p.col;
-    dot.style.boxShadow = '0 0 8px 3px ' + p.sombra;
+    dot.style.boxShadow  = '0 0 8px 3px ' + p.sombra;
     dot.addEventListener('click', (function(pd){ return function(){ openUModal(pd); }; })(p));
     wrap.appendChild(dot);
 
+    // Label
     var lbl = document.createElement('div');
     lbl.className = 'sLbl';
     lbl.textContent = p.nombre;
@@ -681,11 +716,15 @@ for (let i = 0; i < 18; i++) {
     p._ang = Math.random() * Math.PI * 2;
   });
 
+  // Sol click
   document.getElementById('sSol').addEventListener('click', function(){ openUModal(SOL); });
+
+  // Modal click fondo
   document.getElementById('uModal').addEventListener('click', function(e){
     if (e.target === this) closeUModal();
   });
 
+  // Animación — espera a que el DOM esté pintado para leer offsetWidth
   function animate() {
     var cw = wrap.offsetWidth || 480;
     var cx = cw / 2;
@@ -702,7 +741,9 @@ for (let i = 0; i < 18; i++) {
     });
     requestAnimationFrame(animate);
   }
+  // Esperar un frame para que el layout esté listo
   requestAnimationFrame(function(){ requestAnimationFrame(animate); });
+
 })();
 
 function openUModal(d) {
